@@ -1,0 +1,39 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+
+<extension type = "module" version = "1.0.0" client = "site" method="upgrade">
+
+   <name>JerNews</name>
+   <author>Jeremy Robson</author>
+   <version>1.0.0</version>
+   <description>Jeremy's Custom News Module</description>
+   
+    <files>
+        <filename>mod_jernews.xml</filename>
+        <filename module = "mod_jernews">mod_jernews.php</filename>
+        <filename>index.html</filename>
+        <filename>helper.php</filename>
+        <filename>tmpl/default.php</filename>
+        <filename>tmpl/index.html</filename>
+    </files>
+
+   <config>
+        <fields name="params">
+            <fieldset name="basic">
+                <field
+                    name="title"
+                    type="sql"
+                    default="1"
+                    label="Select a category"
+                    query="SELECT id AS value, title FROM #__categories" />
+                <field
+                    name="header"
+                    type="text"
+                    default="JerNews"
+                    label="Enter a Title"
+                    description="Enter a title"
+                    filter="raw" />
+            </fieldset>
+        </fields>
+   </config>
+
+</extension>
