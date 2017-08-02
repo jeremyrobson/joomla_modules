@@ -52,7 +52,7 @@ class BookListModelBookList extends JModelItem
             $this->books = array();
         }
 
-        if (!isset($this->messages[$id]))
+        if (!isset($this->books[$id]))
         {
             $jinput = JFactory::getApplication()->input;
             $id     = $jinput->get('id', 1, 'INT');
@@ -63,7 +63,7 @@ class BookListModelBookList extends JModelItem
             // Load the book
             $table->load($id);
 
-            // Assign the message
+            // Assign the book
             $this->books[$id] = $table->book;
         }
 

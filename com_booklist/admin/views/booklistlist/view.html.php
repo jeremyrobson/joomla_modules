@@ -26,11 +26,9 @@ class BookListViewBookListList extends JViewLegacy
 	 */
 	function display($tpl = null)
 	{
-		// Get data from the model
 		$this->items		= $this->get('Items');
 		$this->pagination	= $this->get('Pagination');
 
-		// Check for errors.
 		if (count($errors = $this->get('Errors')))
 		{
 			JError::raiseError(500, implode('<br />', $errors));
@@ -38,7 +36,23 @@ class BookListViewBookListList extends JViewLegacy
 			return false;
 		}
 
-		// Display the template
+		$this->addToolBar();
+
 		parent::display($tpl);
+	}
+
+	/**
+	 * Add the page title and toolbar.
+	 *
+	 * @return  void
+	 *
+	 * @since   1.6
+	 */
+	protected function addToolBar()
+	{
+		JToolbarHelper::title(JText::_('COM_BOOKLIST_MANAGER_BOOKLISTLIST'));
+		JToolbarHelper::addNew('booklist.add');
+		JToolbarHelper::editList('booklist.edit');
+		JToolbarHelper::deleteList('', 'booklistlist.delete');
 	}
 }
