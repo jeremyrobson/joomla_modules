@@ -10,11 +10,20 @@
 // No direct access to this file
 defined('_JEXEC') or die('Restricted access');
 
-// Get an instance of the controller prefixed by BookList
-$controller = JControllerLegacy::getInstance('BookList');
-
-// Perform the Request task
-$controller->execute(JFactory::getApplication()->input->get('task'));
-
-// Redirect if set by the controller
-$controller->redirect();
+/**
+ * General Controller of BookList component
+ *
+ * @package     Joomla.Administrator
+ * @subpackage  com_booklist
+ * @since       0.0.7
+ */
+class BookListController extends JControllerLegacy
+{
+	/**
+	 * The default view for the display method.
+	 *
+	 * @var string
+	 * @since 12.2
+	 */
+	protected $default_view = 'booklistview';
+}
