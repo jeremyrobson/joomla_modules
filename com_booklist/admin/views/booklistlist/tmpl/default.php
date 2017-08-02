@@ -19,7 +19,7 @@ defined('_JEXEC') or die('Restricted Access');
 				<?php echo JHtml::_('grid.checkall'); ?>
 			</th>
 			<th width="90%">
-				<?php echo JText::_('COM_BOOKLIST_BOOKLISTLIST_NAME') ;?>
+				<?php echo JText::_('COM_BOOKLIST_BOOKLISTLIST_TITLE') ;?>
 			</th>
 			<th width="5%">
 				<?php echo JText::_('COM_BOOKLIST_PUBLISHED'); ?>
@@ -48,10 +48,10 @@ defined('_JEXEC') or die('Restricted Access');
 							<?php echo JHtml::_('grid.id', $i, $row->id); ?>
 						</td>
 						<td>
-							<?php echo $row->greeting; ?>
+							<?php echo $row->title; ?>
 						</td>
 						<td align="center">
-							<?php echo JHtml::_('jgrid.published', $row->published, $i, 'booklistlist.', true, 'cb'); ?>
+							<?php //echo JHtml::_('jgrid.published', $row->published, $i, 'booklistlist.', true, 'cb'); ?>
 						</td>
 						<td align="center">
 							<?php echo $row->id; ?>
