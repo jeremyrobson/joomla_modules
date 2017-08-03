@@ -8,6 +8,7 @@ CREATE TABLE `#__booklist` (
     `edition` VARCHAR(255),
     `publish_year` INT(4),
     `authors` VARCHAR(255),
+    `published` TINYINT(4) NOT NULL DEFAULT '1',
     PRIMARY KEY (`id`)
 )
     ENGINE = MyISAM
@@ -15,4 +16,4 @@ CREATE TABLE `#__booklist` (
     DEFAULT CHARSET = utf8;
 
 INSERT INTO `#__booklist` (`cover_image`,`content_id`,`title`,`edition`,`publish_year`,`authors`) VALUES
-('test.jpg','#',"1","First Edition","2017","Jeremy Robson");
+('test.jpg',"1","Title goes here","First Edition","2017","Jeremy Robson");

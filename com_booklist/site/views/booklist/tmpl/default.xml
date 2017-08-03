@@ -11,8 +11,8 @@
 			<field
 					name="id"
 					type="booklist"
-					label="COM_BOOKLIST_BOOKLIST_FIELD_GREETING_LABEL"
-					description="COM_BOOKLIST_BOOKLIST_FIELD_GREETING_DESC"
+					label="COM_BOOKLIST_BOOKLIST_FIELD_TITLE_LABEL"
+					description="COM_BOOKLIST_BOOKLIST_FIELD_TITLE_DESC"
                     />
             </field>
 		</fieldset>

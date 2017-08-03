@@ -35,7 +35,7 @@ class JFormFieldBookList extends JFormFieldList
 	{
 		$db    = JFactory::getDBO();
 		$query = $db->getQuery(true);
-		$query->select('id,title');
+		$query->select('*');
 		$query->from('#__booklist');
 		$db->setQuery((string) $query);
 		$books = $db->loadObjectList();

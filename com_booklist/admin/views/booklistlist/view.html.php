@@ -18,7 +18,7 @@ defined('_JEXEC') or die('Restricted access');
 class BookListViewBookListList extends JViewLegacy
 {
 	/**
-	 * Display the Book List view
+	 * Display the Book List List view (multiple)
 	 *
 	 * @param   string  $tpl  The name of the template file to parse; automatically searches through the template paths.
 	 *

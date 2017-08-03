@@ -8,6 +8,7 @@ CREATE TABLE `#__booklist` (
     `edition` VARCHAR(255),
     `publish_year` INT(4),
     `authors` VARCHAR(255),
+    `published` TINYINT(4) NOT NULL DEFAULT '1',
     PRIMARY KEY (`id`)
 )
     ENGINE = MyISAM

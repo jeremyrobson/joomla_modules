@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension type="component" version="3.2.0" method="upgrade">
 
-	<name>BookList</name>
+	<name>COM_BOOKLIST</name>
 	<!-- The following elements are optional and free of formatting constraints -->
 	<creationDate>August 2017</creationDate>
 	<author>Jeremy Robson</author>
@@ -10,9 +10,9 @@
 	<copyright></copyright>
 	<license></license>
 	<!--  The version string is recorded in the components table -->
-	<version>0.0.1</version>
+	<version>0.0.2</version>
 	<!-- The description is optional and defaults to the name -->
-	<description>This is a list of stuff</description>
+	<description>COM_BOOKLIST_DESCRIPTION</description>
 
 	<install>
 		<sql>

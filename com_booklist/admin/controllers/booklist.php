@@ -18,4 +18,5 @@ defined('_JEXEC') or die('Restricted access');
  */
 class BookListControllerBookList extends JControllerForm
 {
+    protected $view_list = "BookListList"; //pressing cancel will return to this view
 }
