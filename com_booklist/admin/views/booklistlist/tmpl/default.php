@@ -66,7 +66,7 @@ defined('_JEXEC') or die('Restricted Access');
 							<?php echo JHtml::_('grid.id', $i, $row->id); ?>
 						</td>
 						<td>
-							<img src="<?php echo $row->cover_image; ?>" width="120px">
+							<img src="<?php echo JURI::root() . $row->cover_image; ?>" width="120px">
 						</td>
 						<td>
 							<?php echo $row->content_id; ?>

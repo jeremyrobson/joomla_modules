@@ -7,7 +7,7 @@
                 />
         <field
                 name="cover_image"
-                type="imagelist"
+                type="media"
                 label="COM_BOOKLIST_BOOKLIST_COVER_IMAGE_LABEL"
                 description="COM_BOOKLIST_BOOKLIST_COVER_IMAGE_DESC"
                 directory=""
