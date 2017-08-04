@@ -1,6 +1,6 @@
 <?php
 /**
- * @package     Joomla.Administrator
+ * @package     Joomla.Site
  * @subpackage  com_booklist
  *
  * @copyright   Copyright (C) 2005 - 2016 Open Source Matters, Inc. All rights reserved.
@@ -45,7 +45,7 @@ class BookListModelBookList extends JModelItem
     *
     * @return book
     */
-    public function getBook($id = 1)
+    public function getItem($id = 1)
     {
         if (!is_array($this->books))
         {
@@ -54,17 +54,12 @@ class BookListModelBookList extends JModelItem
 
         if (!isset($this->books[$id]))
         {
-            $jinput = JFactory::getApplication()->input;
-            $id     = $jinput->get('id', 1, 'INT');
+            $id = JFactory::getApplication()->input->get('id', 1, 'INT');
 
-            // Get a TableBookList instance
             $table = $this->getTable();
-
-            // Load the book
             $table->load($id);
 
-            // Assign the book
-            $this->books[$id] = $table->book;
+            $this->books[$id] = $table; //fyi: a table is an instance of the model
         }
 
         return $this->books[$id];

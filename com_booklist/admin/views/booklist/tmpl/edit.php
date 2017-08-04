@@ -11,6 +11,7 @@
 defined('_JEXEC') or die('Restricted access');
 
 ?>
+
 <form action="<?php echo JRoute::_('index.php?option=com_booklist&layout=edit&id=' . (int) $this->item->id); ?>"
     method="post" name="adminForm" id="adminForm">
     <div class="form-horizontal">

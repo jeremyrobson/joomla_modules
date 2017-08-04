@@ -1,30 +1,29 @@
 <?php
 /**
- * @package     Joomla.Administrator
+ * @package     Joomla.Site
  * @subpackage  com_booklist
  *
- * @copyright   Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) 2005 - 2016 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
-
+ 
 // No direct access to this file
-defined('_JEXEC') or die('Restricted Access');
+defined('_JEXEC') or die('Restricted access');
 ?>
-<form action="index.php?option=com_booklist&view=booklistlist" method="post" id="adminForm" name="adminForm">
+
+<h1>
+    <?php echo $this->header; ?>
+</h1>
+
+<form action="index.php?option=com_booklist&view=booklistlist" method="post" id="booklistForm" name="booklistForm">
 	<table class="table table-striped table-hover">
 		<thead>
 		<tr>
 			<th width="1%">
 				<?php echo JText::_('COM_BOOKLIST_NUM'); ?>
 			</th>
-			<th width="2%">
-				<?php echo JHtml::_('grid.checkall'); ?>
-			</th>
 			<th width="5%">
 				<?php echo JText::_('COM_BOOKLIST_IMAGE') ;?>
-			</th>
-			<th width="15%">
-				<?php echo JText::_('COM_BOOKLIST_ARTICLE') ;?>
 			</th>
 			<th width="35%">
 				<?php echo JText::_('COM_BOOKLIST_TITLE') ;?>
@@ -32,17 +31,11 @@ defined('_JEXEC') or die('Restricted Access');
 			<th width="10%">
 				<?php echo JText::_('COM_BOOKLIST_EDITION') ;?>
 			</th>
-			<th width="5%">
+			<th width="10%">
 				<?php echo JText::_('COM_BOOKLIST_YEAR') ;?>
 			</th>
 			<th width="20%">
 				<?php echo JText::_('COM_BOOKLIST_AUTHORS') ;?>
-			</th>
-			<th width="5%">
-				<?php echo JText::_('COM_BOOKLIST_PUBLISHED'); ?>
-			</th>
-			<th width="2%">
-				<?php echo JText::_('COM_BOOKLIST_ID'); ?>
 			</th>
 		</tr>
 		</thead>
@@ -57,23 +50,20 @@ defined('_JEXEC') or die('Restricted Access');
 			<?php if (!empty($this->items)) : ?>
 				<?php foreach ($this->items as $i => $row) :
 					$image_link = JURI::root() . $row->cover_image;
-					$edit_link = JRoute::_('index.php?option=com_booklist&task=booklist.edit&id=' . $row->id);
+					//$view_link = JRoute::_('index.php?option=com_booklist&task=display&id=' . $row->id);
+					$view_link = JRoute::_('index.php?option=com_content&view=article&id=' . $row->content_id);
 				?>
 					<tr>
 						<td>
 							<?php echo $this->pagination->getRowOffset($i); ?>
 						</td>
 						<td>
-							<?php echo JHtml::_('grid.id', $i, $row->id); ?>
+							<a href="<?php echo $view_link; ?>">
+								<img src="<?php echo $image_link; ?>" width="120px">
+							</a>
 						</td>
 						<td>
-							<img src="<?php echo $image_link; ?>" width="120px">
-						</td>
-						<td>
-							<?php echo $row->article_title; ?>
-						</td>
-						<td>
-							<a href="<?php echo $edit_link; ?>" title="<?php echo JText::_('COM_BOOKLIST_EDIT_BOOKLIST'); ?>">
+							<a href="<?php echo $view_link; ?>">
 								<?php echo $row->booklist_title; ?>
 							</a>
 						</td>
@@ -86,18 +76,11 @@ defined('_JEXEC') or die('Restricted Access');
 						<td>
 							<?php echo $row->authors; ?>
 						</td>
-						<td align="center">
-							<?php echo JHtml::_('jgrid.published', $row->published, $i, 'booklistlist.', true, 'cb'); ?>
-						</td>
-						<td align="center">
-							<?php echo $row->id; ?>
-						</td>
 					</tr>
 				<?php endforeach; ?>
 			<?php endif; ?>
 		</tbody>
 	</table>
 	<input type="hidden" name="task" value=""/>
-	<input type="hidden" name="boxchecked" value="0"/>
 	<?php echo JHtml::_('form.token'); ?>
 </form>

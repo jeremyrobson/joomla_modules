@@ -15,7 +15,7 @@ defined('_JEXEC') or die('Restricted access');
  *
  * @since  0.0.1
  */
-class BookListViewBookList extends JViewLegacy
+class BookListViewBookListList extends JViewLegacy
 {
 	/**
 	 * Display the BookList view
@@ -26,8 +26,9 @@ class BookListViewBookList extends JViewLegacy
 	 */
 	function display($tpl = null)
 	{
-		$this->item = $this->get('Item'); //calls getItem(id) in booklist model
-		$this->header = JText::_("COM_BOOKLIST_BOOKLIST_HEADER");
+		$this->items		= $this->get('Items');
+		$this->pagination	= $this->get('Pagination');
+        $this->header = JText::_("COM_BOOKLIST_BOOKLISTLIST_HEADER");
 
 		if (count($errors = $this->get('Errors')))
 		{
