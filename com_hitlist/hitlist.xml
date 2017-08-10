@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="component" version="3.2.0" method="upgrade">
+
+	<name>COM_HITLIST</name>
+	<creationDate>August 2017</creationDate>
+	<author>Jeremy Robson</author>
+	<authorEmail>jeremy@dragonflyit.ca</authorEmail>
+	<authorUrl></authorUrl>
+	<copyright></copyright>
+	<license></license>
+	<version>0.0.1</version>
+	<description>COM_HITLIST_DESCRIPTION</description>
+
+	<administration>
+		<menu link='index.php?option=com_hitlist'>COM_HITLIST_MENU</menu>
+		<files folder="admin">
+			<filename>index.html</filename>
+			<filename>hitlist.php</filename>
+			<filename>controller.php</filename>
+			<folder>models</folder>
+			<folder>views</folder>
+			<folder>controllers</folder>
+		</files>
+		<languages folder="admin/language">
+            <language tag="en-GB">en-GB/en-GB.com_hitlist.ini</language>
+            <language tag="en-GB">en-GB/en-GB.com_hitlist.sys.ini</language>
+		</languages>
+	</administration>
+
+</extension>

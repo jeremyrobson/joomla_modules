@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fieldset
+        name="basic"
+        addfieldpath="/administrator/components/com_content/models/fields"
+    >
+        <field
+                name="id"
+                type="hidden"
+                />
+        <field
+                name="hidden_catid"
+                id="hidden_catid"
+                type="hidden"
+                />
+        <field
+            name="catid"
+            type="sql"
+            default=""
+            label="COM_HITLIST_HITLIST_CATEGORY_LABEL"
+            description="COM_HITLIST_HITLIST_CATEGORY_DESC"
+            query="SELECT id, title FROM #__categories WHERE extension = 'com_content'"
+            key_field="id"
+            value_field="title">
+            <option value="">COM_HITLIST_HITLIST_ALL</option>
+        </field>
+    </fieldset>
+</form>
