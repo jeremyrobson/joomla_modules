@@ -56,7 +56,7 @@ class HitListViewHitListList extends JViewLegacy
 	protected function addToolBar()
 	{
 		JToolbarHelper::title(JText::_('COM_HITLIST_MANAGER_HITLISTLIST'));
-		JToolBarHelper :: custom( 'downloadCSV', 'icon-download', 'icon-download', 'Download CSV', false, false );
+		JToolBarHelper :: custom( 'downloadCSV', 'download', 'download', 'Download CSV', false, false );
 
 		//pagination doesn't work without these lines (unless adding an add/edit/delete button)
 		JHtml::_('behavior.core');
