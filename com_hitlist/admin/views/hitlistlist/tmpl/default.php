@@ -64,20 +64,20 @@ defined('_JEXEC') or die('Restricted Access');
 			<?php endif; ?>
 		</tbody>
 	</table>
-	<input type="hidden" name="task" id="task" value=""/>
+	<input type="hidden" name="task" id="hidden_task" value=""/>
 	<?php echo JHtml::_('form.token'); ?>
 </form>
 
 <script>
 
 function update_list() {
-	$("#task").val("update");
-	$("#adminForm").submit();
+	jQuery("#hidden_task").val("update");
+	jQuery("#adminForm").submit();
 }
 
 function clear_list() {
-	$("#task").val("clear");
-	$("#adminForm").submit();
+	jQuery("#hidden_task").val("clear");
+	jQuery("#adminForm").submit();
 }
 
 </script>
