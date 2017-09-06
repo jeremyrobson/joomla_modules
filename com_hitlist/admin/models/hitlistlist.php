@@ -50,12 +50,14 @@ class HitListModelHitListList extends JModelList
 
 	protected function loadFormData()
 	{
-		if (isset($_POST["update_button"]) && !empty($_POST["jform"]["catid"])) {
-			$this->catid = $_POST["jform"]["catid"];
-		}
-
-		if (isset($_POST["clear_button"])) {
-			$this->catid = "";
+		//todo: convert these to real tasks in controller.php
+		if (isset($_POST["task"]) && !empty($_POST["jform"]["catid"])) {
+			if ($_POST["task"] == "update") {
+				$this->catid = $_POST["jform"]["catid"];
+			}
+			else {
+				$this->catid = "";
+			}
 		}
 
 		$data = array(

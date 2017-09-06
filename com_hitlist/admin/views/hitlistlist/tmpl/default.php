@@ -19,8 +19,8 @@ defined('_JEXEC') or die('Restricted Access');
 		</div>
 	<?php endforeach; ?>
 
-	<button type="submit" id="update_button" name="update_button" value="update" class="btn btn-primary">Update</button>
-	<button type="submit" id="update_button" name="clear_button" value="clear" class="btn btn-primary">Clear</button>
+	<button type="button" onclick="update_list()" id="update_button" name="update_button" value="update" class="btn btn-primary">Update</button>
+	<button type="button" onclick="clear_list()" id="clear_button" name="clear_button" value="clear" class="btn btn-primary">Clear</button>
 
 	<br>
 	<br>
@@ -64,6 +64,20 @@ defined('_JEXEC') or die('Restricted Access');
 			<?php endif; ?>
 		</tbody>
 	</table>
-	<input type="hidden" name="task" value=""/>
+	<input type="hidden" name="task" id="task" value=""/>
 	<?php echo JHtml::_('form.token'); ?>
 </form>
+
+<script>
+
+function update_list() {
+	$("#task").val("update");
+	$("#adminForm").submit();
+}
+
+function clear_list() {
+	$("#task").val("clear");
+	$("#adminForm").submit();
+}
+
+</script>

@@ -64,7 +64,9 @@ class HitListController extends JControllerLegacy
 		fclose($f);
 
 		JFactory::getApplication()->enqueueMessage(JText::_('CSV Downloaded'), 'success');
+		//JRequest::setVar('task', ''); //this doesn't seem to work so javascript was added to tmpl\default.php
 		jexit();
+		
 		$this->display();
 	}
 }
