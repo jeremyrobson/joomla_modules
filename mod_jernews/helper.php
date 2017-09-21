@@ -8,8 +8,8 @@
           $query->select(array('a.*', 'b.username'))
                   ->from($db->quoteName('#__content', 'a'))
                   ->join('INNER', $db->quoteName('#__users', 'b') . ' ON (' . $db->quoteName('a.created_by') . ' = ' . $db->quoteName('b.id') . ')')
-                  ->where('catid='.$db->quote($categoryId))
-                  ->order('RAND() LIMIT 4');
+                  ->where('catid='.$db->quote($categoryId) . ' AND state=1')
+                  ->order('modified DESC LIMIT 4');
           try {
               $db->setQuery($query);
               $result = $db->loadObjectList();

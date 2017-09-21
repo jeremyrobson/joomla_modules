@@ -4,7 +4,6 @@ defined('_JEXEC') or die;
 
 <style>
 .jernewsbox {
-  width: 50%;
   padding: 20px 0px;
 }
 
@@ -35,12 +34,27 @@ defined('_JEXEC') or die;
         $id = $article->id;
         $alias = $article->alias;
         $title = $article->title;
-        $text = substr(str_replace(array("\r", "\n"), "", strip_tags($article->fulltext)), 0, 100) . "...";
         $modified = date("M d, Y \a\\t H:i", strtotime($article->modified));
         $images = json_decode($article->images, true);
         $image_intro = $images["image_intro"];
         $username = $article->username;
         $url = "index.php/" . $category->alias . "/" . $id . "-" . $alias;
+
+         //show end publish date if end publish date is greater than current date + 7 days
+        if (strtotime($article->publish_down) > time() + 7 * 24 * 60 * 60) {
+            $date = date("M d, Y \- H:i", strtotime($article->publish_down));
+            $title = $title . " - $date";
+        }
+
+        if (!empty($article->fulltext)) {
+            $text = substr(str_replace(array("\r", "\n"), "", strip_tags($article->fulltext)), 0, 100) . "...";
+        }
+        else if (!empty($article->introtext)) {
+            $text = substr(str_replace(array("\r", "\n"), "", strip_tags($article->introtext)), 0, 100) . "...";
+        }
+        else {
+            $text = "Click here for more information!";
+        }
 ?>
 
             <a href="<?php echo $url; ?>" class="list-group-item">
