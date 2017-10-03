@@ -32,6 +32,7 @@ defined('_JEXEC') or die;
 <?php
     foreach ($articles as $index => $article) :
         $id = $article->id;
+        $catid = $article->catid;
         $alias = $article->alias;
         $title = $article->title;
         $modified = date("M d, Y \a\\t H:i", strtotime($article->modified));
@@ -39,6 +40,7 @@ defined('_JEXEC') or die;
         $image_intro = $images["image_intro"];
         $username = $article->username;
         $url = "index.php/" . $category->alias . "/" . $id . "-" . $alias;
+        $url = JRoute::_("index.php?view=article&id=$id&catid=$catid");
 
         //show end publish date if end publish date is greater than current date + 7 days
         if (strtotime($article->publish_down) > time() + 7 * 24 * 60 * 60) {
