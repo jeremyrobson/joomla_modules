@@ -42,11 +42,11 @@ defined('_JEXEC') or die;
 
         //show end publish date if end publish date is greater than current date + 7 days
         if (strtotime($article->publish_down) > time() + 7 * 24 * 60 * 60) {
-            $publish_down_date = date("M/d/Y", strtotime($article->publish_down));
+            $publish_down_date = date("m/d/Y", strtotime($article->publish_down));
         }
 
-        if (!empty($publish_down_date)) { //if there is an end publish date, show date instead of intro text
-            $text = $publish_down_date;
+        if (!empty($publish_down_date)) { //if there is an end publish date, show date instead of picture, don't show intro text
+            $text = "";
         }
         else if (!empty($article->fulltext)) { //show article sample
             $text = substr(str_replace(array("\r", "\n"), "", strip_tags($article->fulltext)), 0, 100) . "...";
@@ -61,21 +61,22 @@ defined('_JEXEC') or die;
 
             <a href="<?php echo $url; ?>" class="list-group-item">
                 <div class="row">
-                    <?php if (!empty($image_intro)): ?>
                     <div class="col-sm-4">
-                        <img src="<?php echo $image_intro; ?>" width="200px" height="100px">
+                        <?php if (!empty($image_intro)): ?>
+                            <img src="<?php echo $image_intro; ?>" width="200px" height="100px">
+                        <?php else: ?>
+                            <b><?php echo $publish_down_date; ?></b>
+                        <?php endif; ?>
                     </div>
                     <div class="col-sm-8">
-                    <?php else: ?>
-                    <div class="col-sm-12">
-                    <?php endif; ?>
-
                         <div class="list-group-item-heading">
                             <?php echo $title; ?>
                         </div>
-                        <p class="list-group-item-text"?>
-                            <?php echo $text; ?>
-                        </p>
+                        <?php if (!empty($text)): ?>
+                            <p class="list-group-item-text"?>
+                                <?php echo $text; ?>
+                            </p>
+                        <?php endif; ?>
                         <!--
                         <p>
                             <span>by <?php echo $username; ?></span>&nbsp;/&nbsp;<span><?php echo $modified; ?></span>
