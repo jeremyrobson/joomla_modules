@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<access component="com_jeregister">
+	<section name="component">
+		<action name="core.admin" title="JACTION_ADMIN" description="JACTION_ADMIN_COMPONENT_DESC" />
+		<action name="core.manage" title="JACTION_MANAGE" description="JACTION_MANAGE_COMPONENT_DESC" />
+		<action name="core.create" title="JEREGISTER_REGISTRATION_CREATE" description="JEREGISTER_REGISTRATION_CREATE_DESC" />
+		<action name="core.edit" title="JEREGISTER_REGISTRATION_EDIT" description="JREGISTER_REGISTRATION_EDIT_DESC" />
+	</section>
+</access>

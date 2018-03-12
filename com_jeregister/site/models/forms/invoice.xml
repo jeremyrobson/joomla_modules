@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fieldset
+				name="invoice_details"
+				label="COM_JEREGISTER_INVOICE_DETAILS"
+	>
+		<field
+				name="id"
+				type="hidden"
+		/>
+
+		<field
+				name="producer_name"
+				type="hidden"
+		/>
+		<field
+				name="name"
+				type="hidden"
+		/>
+		<field
+				name="membership_fee"
+				type="hidden"
+		/>
+
+		<field
+				name="payment_method"
+				type="list"
+				default=""
+				label="COM_JEREGISTER_INVOICE_SELECT_PAYMENT_LABEL"
+				description=""
+		>
+			<option value="paypal">Paypal</option>
+			<option value="credit">Credit Card</option>
+			<option value="cheque">Cheque</option>
+		</field>
+
+    </fieldset>
+</form>
