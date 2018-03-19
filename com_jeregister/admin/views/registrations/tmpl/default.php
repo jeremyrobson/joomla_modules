@@ -44,7 +44,6 @@ defined('_JEXEC') or die('Restricted Access');
 		<tbody>
 			<?php if (!empty($this->items)) : ?>
 				<?php foreach ($this->items as $i => $row) : ?>
-
 					<tr>
 						<td>
 							<?php echo $this->pagination->getRowOffset($i); ?>
@@ -53,7 +52,7 @@ defined('_JEXEC') or die('Restricted Access');
 							<?php echo JHtml::_('grid.id', $i, $row->id); ?>
 						</td>
 						<td>
-							<a href="http://192.168.1.19/administrator/index.php?option=com_users&task=user.edit&id=<?php echo $row->user_id; ?>">
+							<a href="<?php echo JUri::base(); ?>index.php?option=com_users&task=user.edit&id=<?php echo $row->user_id; ?>">
 								<?php echo $row->username; ?>
 							</a>
 						</td>

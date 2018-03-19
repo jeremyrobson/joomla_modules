@@ -12,8 +12,10 @@ JHtml::_('behavior.formvalidator');
 			<legend><?php echo JText::_('COM_JEREGISTER_SUMMARY_DETAILS_LEGEND') ?></legend>
 			<div class="row-fluid">
 				<div class="span6">
-					<p>Producer Name:				<?php echo $this->form->getValue("producer_name"); ?></p>
-					<p>Blueberry Bearing Acres:		<?php echo $this->form->getValue("blueberry_bearing_acres"); ?></p>
+					<?php $data = $this->form->getValue("main"); ?>
+					<p>Producer Name:				<?php echo $data->producer_name; ?></p>
+					<p>Contact Name:				<?php echo $data->contact_name; ?></p>
+					<p>Blueberry Bearing Acres:		<?php echo $data->blueberry_bearing_acres; ?></p>
 				</div>
 			</div>
 		</fieldset>

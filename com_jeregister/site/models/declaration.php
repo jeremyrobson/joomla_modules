@@ -127,15 +127,10 @@ class JeRegisterModelDeclaration extends JModelAdmin
 		$user = JFactory::getUser();
 		
 		$jinput = JFactory::getApplication()->input; //TODO: shouldn't this data already be in $table?
-		$formData = new JRegistry($jinput->get('jform', '', 'array'));
-
-		$json = array(
-			"producer_name" => $formData["producer_name"],
-			"blueberry_bearing_acres" => $formData["blueberry_bearing_acres"]
-		);
+		$formData = $jinput->get('jform', '', 'array');
 		
 		$table->user_id = $table->user_id ?? $user->id;
 		$table->create_date = $table->create_date ?? date("Y-m-d H:i:s");
-		$table->json = json_encode($json);
+		$table->json = json_encode($formData);
 	}
 }

@@ -16,21 +16,31 @@ defined('_JEXEC') or die('Restricted access');
  */
 class JeRegisterModelRegistrations extends JModelList
 {
-	/**
-	 * Method to build an SQL query to load the list data.
-	 *
-	 * @return      string  An SQL query
-	 */
-	protected function getListQuery()
-	{
-		// Initialize variables.
-		$db    = JFactory::getDbo();
-		$query = $db->getQuery(true);
+        protected function getListQuery()
+        {
+                // Initialize variables.
+                $db    = JFactory::getDbo();
+                $query = $db->getQuery(true);
 
-		// Create the base select statement.
-		$query->select('*')
-                ->from($db->quoteName('#__registration'));
+                // Create the base select statement.
+                $query
+                        ->select('*')
+                        ->from($db->quoteName("#__registration", "a"))
+                        ->join("LEFT", $db->quoteName("#__users", "b") . " ON " . $db->quoteName("a.user_id") . " = " . $db->quoteName("b.id"));
 
-		return $query;
-	}
+                return $query;
+        }
+
+        //intercept and modify items before query hits the view
+        public function getItems()
+        {
+                $items = parent::getItems();
+
+                foreach ($items as $id => $item) {
+                        $json = $item->json;
+                        $items[$id]->json = json_decode($json, true);
+                }
+
+                return $items;
+        }
 }
