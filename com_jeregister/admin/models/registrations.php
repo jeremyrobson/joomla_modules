@@ -1,19 +1,8 @@
 <?php
-/**
- * @package     Joomla.Administrator
- * @subpackage  com_helloworld
- *
- * @copyright   Copyright (C) 2005 - 2018 Open Source Matters, Inc. All rights reserved.
- * @license     GNU General Public License version 2 or later; see LICENSE.txt
- */
-// No direct access to this file
 defined('_JEXEC') or die('Restricted access');
 
-/**
- * HelloWorldList Model
- *
- * @since  0.0.1
- */
+JLoader::import('helpers.registration',dirname(JPATH_COMPONENT_ADMINISTRATOR .DIRECTORY_SEPARATOR.'helpers'.DIRECTORY_SEPARATOR));
+
 class JeRegisterModelRegistrations extends JModelList
 {
         protected function getListQuery()
@@ -39,6 +28,7 @@ class JeRegisterModelRegistrations extends JModelList
                 foreach ($items as $id => $item) {
                         $json = $item->json;
                         $items[$id]->json = json_decode($json, true);
+                        $items[$id]->registration_status = RegistrationHelper::getRegistrationStatus($item->user_id);
                 }
 
                 return $items;

@@ -1,9 +1,8 @@
 <?php
 defined('_JEXEC') or die('Restricted Access');
 
-
 ?>
-<form action="index.php?option=com_jeregister&view=registrations" method="post" id="adminForm" name="adminForm">
+<form action="" method="" id="adminForm" name="adminForm">
 	<table class="table table-striped table-hover">
 		<thead>
 		<tr>
@@ -17,13 +16,13 @@ defined('_JEXEC') or die('Restricted Access');
 				<?php echo JText::_('COM_JEREGISTER_USERNAME'); ?>
 			</th>
 			<th width="40%">
-				<?php echo JText::_('COM_JEREGISTER_PRODUCER_NAME'); ?>
+				<?php echo JText::_('COM_JEREGISTER_MEMBERSHIP_FEE'); ?>
 			</th>
 			<th width="20%">
-				<?php echo JText::_('COM_JEREGISTER_MEMBERSHIP_STATUS'); ?>
+				<?php echo JText::_('COM_JEREGISTER_'); ?>
 			</th>
 			<th width="20%">
-				<?php echo JText::_('COM_JEREGISTER_TRANSACTIONS'); ?>
+				<?php echo JText::_('COM_JEREGISTER_'); ?>
 			</th>
 			<th width="2%">
 				<?php echo JText::_('COM_JEREGISTER_ID'); ?>
@@ -53,15 +52,13 @@ defined('_JEXEC') or die('Restricted Access');
 							</a>
 						</td>
 						<td>
-							<?php echo $row->json["main"]["producer_name"]; ?>
+							<?php echo $row->membership_fee; ?>
 						</td>
 						<td>
-							<?php echo JText::_($row->registration_status); ?>
+							
 						</td>
 						<td>
-							<a href="<?php echo JUri::base(); ?>index.php?option=com_jeregister&task=transaction.view&user_id=<?php echo $row->user_id; ?>">
-								View
-							</a>
+							
 						</td>
 						<td align="center">
 							<?php echo $row->id; ?>

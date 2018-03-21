@@ -72,6 +72,7 @@
 			<folder>views</folder>
 			<folder>controllers</folder>
 			<folder>language</folder>
+			<folder>helpers</folder>
 		</files>
 		<languages folder="admin/language">
 			<language tag="en-GB">en-GB/en-GB.com_jeregister.ini</language>

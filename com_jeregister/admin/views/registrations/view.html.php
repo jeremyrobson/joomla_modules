@@ -53,9 +53,9 @@ class JeRegisterViewRegistrations extends JViewLegacy
 		//JeRegisterHelper::addSubmenu('registrations');
 
 		// Options button.
-		if (JFactory::getUser()->authorise('core.admin', 'com_helloworld')) 
+		if (JFactory::getUser()->authorise('core.admin', 'com_jeregister')) 
 		{
-			JToolBarHelper::preferences('com_helloworld');
+			JToolBarHelper::preferences('com_jeregister');
 		}
 
 		// Set the toolbar and number of found items
