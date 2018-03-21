@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form
+    addrulepath="/administrator/components/com_helloworld/models/rules"
+    >
+    <fieldset
+				name="details"
+				label="COM_JEREGISTER_PROFILE_DETAILS"
+	>
+		<field
+			name="id"
+			type="hidden"
+			/>
+		<field
+			name="farm_name"
+			type="text"
+			label="COM_JEREGISTER_PROFILE_FARM_NAME"
+			description="COM_JEREGISTER_PROFILE_FARM_NAME_DESC"
+			SIZE="255"
+			class="inputbox"
+			validate="string"
+			required="true"
+			default=""
+			/>
+	</fieldset>
+</form>
