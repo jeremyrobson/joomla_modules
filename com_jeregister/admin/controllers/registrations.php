@@ -96,6 +96,8 @@ class JeRegisterControllerRegistrations extends JControllerForm
 
 		}
 
+		echo "<pre>"; print_r($items); die;
+
 		//done
 
 	}
