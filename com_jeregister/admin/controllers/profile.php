@@ -3,36 +3,21 @@
 defined('_JEXEC') or die('Restricted access');
 
 class JeRegisterControllerProfile extends JControllerForm
-{   
+{
 
-	public function view($key = null, $urlVar = null)
-	{
-		$input = JFactory::getApplication()->input;
-		$user_id = $input->get('user_id');
-
-		if (isset($user_id)) {
-			$model = $this->getModel("profile");
-			$model->setState("profile.user_id", $user_id);
-			$view = $this->getView("profile", "html");
-			$view->user_id = $user_id;
-		}
-		else {
-			$model = $this->getModel('profiles');
-			$model->setState("profile.user_id", $user_id);
-			$view = $this->getView('profiles','html');
-		}
-
-		$view->setModel($model, true);
-		$view->display();
-	}
-
+	//must override save because parent redirects to "profiles" with an "s" by default
 	public function save($key = null, $urlVar = null)
 	{
-		echo "todo";
+		$return = parent::save($key, $urlVar);
+		$this->setRedirect(JRoute::_('index.php?option=com_jeregister&view=registrations'));
+		return $return;
 	}
 
-	public function cancel($key = null, $urlVar = null)
+	public function cancel()
 	{
-		echo "todo";
+		$return = parent::cancel();
+		$this->setRedirect(JRoute::_('index.php?option=com_jeregister&view=registrations'));
+		return $return;
 	}
+
 }

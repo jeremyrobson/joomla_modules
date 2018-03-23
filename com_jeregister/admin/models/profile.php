@@ -3,27 +3,10 @@ defined('_JEXEC') or die('Restricted access');
 
 class JeRegisterModelProfile extends JModelAdmin
 {
-	public function getTable($type = "Profile", $prefix = "ProfileTable", $config = array())
-	{	
+	public function getTable($type = "Profile", $prefix = "JeRegisterTable", $config = array())
+	{
 		return JTable::getInstance($type, $prefix, $config);
 	}
-
-	public function getItem($pk = null)
-	{
-		$user_id = $this->getState("profile.user_id");
-		
-		$db = JFactory::getDbo();
-		$query = $db->getQuery(true);
-		$query
-			->select("*")
-			->from("#__farm_profile")
-			->where("id = " . $user_id);
-		$db->setQuery($query);
-		$item = $db->loadAssoc();
-
-		return $item;
-	}
-
 
 	public function getForm($data = array(), $loadData = true)
 	{
@@ -53,7 +36,9 @@ class JeRegisterModelProfile extends JModelAdmin
 		);
 
 		if (empty($data)) {
-			$data = $this->getItem();
+			$input = JFactory::getApplication()->input;
+			$user_id = $input->get("user_id");
+			$data = $this->getItem($user_id);
 		}
 
 		return $data;

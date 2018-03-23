@@ -56,7 +56,7 @@ defined('_JEXEC') or die('Restricted Access');
 							</a>
 						</td>
 						<td>
-							<a href="<?php echo JUri::base(); ?>index.php?option=com_jeregister&task=profile.view&user_id=<?php echo $row->user_id; ?>">
+							<a href="<?php echo JUri::base(); ?>index.php?option=com_jeregister&task=profile.edit&id=<?php echo $row->user_id; ?>">
 								View Profile
 							</a>
 						</td>

@@ -22,16 +22,18 @@ class JeRegisterModelTransactions extends JModelList
         return $query;
     }
 
-    //intercept and modify items before query hits the view
-    public function getItems()
-    {
-        $items = parent::getItems();
+	//intercept and modify items before query hits the view
+	public function getItems()
+	{
+		$items = parent::getItems();
 
-        foreach ($items as $id => $item) {
-            $json = json_decode($item->json, true);
-            $items[$id]->membership_fee = $json["membership_fee"];
-        }
+		foreach ($items as $id => $item) {
+			$json = json_decode($item->json, true);
 
-        return $items;
-    }
+			foreach ($json as $key => $value) {
+				$items[$id]->$key = $value;
+			}
+		}
+		return $items;
+	}
 }
