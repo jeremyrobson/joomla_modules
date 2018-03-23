@@ -29,26 +29,18 @@ class JeRegisterViewRegistrations extends JViewLegacy
 			JToolBarHelper::preferences('com_jeregister');
 		}
 
-		// Set the toolbar and number of found items
 		$this->addToolBar();
 
-		// Display the template
 		parent::display($tpl);
 
-		// Set the document
 		$this->setDocument();
 	}
 
-	/**
-	 * Add the page title and toolbar.
-	 *
-	 * @return  void
-	 *
-	 * @since   1.6
-	 */
 	protected function addToolBar()
 	{
 		$title = JText::_('COM_JEREGISTER_MANAGER_REGISTRATIONS');
+
+		JToolBarHelper::custom("registrations.import", "archive", "", "Import CSV", false);
 
 		/*
 		if ($this->pagination->total)
@@ -77,11 +69,7 @@ class JeRegisterViewRegistrations extends JViewLegacy
 		}
 		*/
 	}
-	/**
-	 * Method to set up the document properties
-	 *
-	 * @return void
-	 */
+	
 	protected function setDocument() 
 	{
 		$document = JFactory::getDocument();
