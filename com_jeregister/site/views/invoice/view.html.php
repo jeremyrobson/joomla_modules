@@ -13,21 +13,19 @@ class JeRegisterViewInvoice extends JViewLegacy
 		$app =JFactory::getApplication();
 		$page = $app->getUserState("$option.page", "1");
 
-		// Get the form to display
-		$this->form = $this->get('Form');
-		
+		$this->form = $this->get("Form");
 		$this->item = $this->get("Item");
+		$this->script = $this->get("Script");
 
-		// Call the parent display to display the layout file
 		parent::display($tpl);
 
-		// Set properties of the html document
 		$this->setDocument();
 	}
 
 	protected function setDocument() 
 	{
 		$document = JFactory::getDocument();
-		$document->setTitle(JText::_('COM_JEREGISTER_DECLARATION_SUMMARY'));
+		$document->setTitle(JText::_('COM_JEREGISTER_DECLARATION_INVOICE'));
+		$document->addScript(JURI::root() . $this->script);
 	}
 }

@@ -50,7 +50,7 @@ class JeRegisterControllerSummary extends JControllerForm
 
 		$this->setRedirect(
 				$currentUri,
-				JText::_('COM_JEREGISTER_DECLARATION_SUCCESSFUL')
+				JText::_('COM_JEREGISTER_DECLARATION_SAVED')
 				);
             
 		return true;

@@ -1,43 +1,20 @@
 <?php
-/**
- * @package     Joomla.Administrator
- * @subpackage  com_helloworld
- *
- * @copyright   Copyright (C) 2005 - 2018 Open Source Matters, Inc. All rights reserved.
- * @license     GNU General Public License version 2 or later; see LICENSE.txt
- */
 
-// No direct access to this file
 defined('_JEXEC') or die('Restricted access');
 
-/**
- * HelloWorld View
- * This is the site view presenting the user with the ability to add a new Helloworld record
- * 
- */
 class JeRegisterViewDeclaration extends JViewLegacy
 {
 
 	protected $form = null;
 	protected $canDo;
 
-	/**
-	 * Display the Hello World view
-	 *
-	 * @param   string  $tpl  The name of the layout file to parse.
-	 *
-	 * @return  void
-	 */
 	public function display($tpl = null)
 	{
-		// Get the form to display
 		$this->form = $this->get('Form');
 		
-		// Get the javascript script file for client-side validation
 		$this->script = $this->get('Script'); 
 		$this->item = $this->get("Item");
 
-		// Check that the user has permissions to create a new helloworld record
 		$this->canDo = JHelperContent::getActions('com_jeregister');
 		if (!($this->canDo->get('core.create'))) 
 		{
@@ -47,24 +24,16 @@ class JeRegisterViewDeclaration extends JViewLegacy
 			return;
 		}
         
-		// Check for errors.
 		if (count($errors = $this->get('Errors')))
 		{
 			throw new Exception(implode("\n", $errors), 500);
 		}
 
-		// Call the parent display to display the layout file
 		parent::display($tpl);
 
-		// Set properties of the html document
 		$this->setDocument();
 	}
 
-	/**
-	 * Method to set up the html document properties
-	 *
-	 * @return void
-	 */
 	protected function setDocument() 
 	{
 		$document = JFactory::getDocument();

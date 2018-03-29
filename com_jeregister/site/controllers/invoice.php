@@ -20,6 +20,12 @@ class JeRegisterControllerInvoice extends JControllerForm
 		$input = $app->input;
 		$data = $input->get('jform', array(), 'array');
 
+		$model = $this->getModel();
+		$form = $model->getForm($data, false);
+
+		$validData = $model->validate($form, $data);
+		echo "<pre>"; print_r($model->getErrors()); die;
+
 		//get transaction
 		$transaction_id = $data["id"];
 		$transaction = JModelLegacy::getInstance("Transaction", "JeRegisterModel"); 
@@ -45,7 +51,7 @@ class JeRegisterControllerInvoice extends JControllerForm
 
 		$this->setRedirect(
 				$currentUri,
-				JText::_('COM_JEREGISTER_DECLARATION_SUCCESSFUL')
+				JText::_('COM_JEREGISTER_DECLARATION_SAVED')
 				);
             
 		return true;

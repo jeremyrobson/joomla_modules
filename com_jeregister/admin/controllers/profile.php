@@ -13,7 +13,7 @@ class JeRegisterControllerProfile extends JControllerForm
 		return $return;
 	}
 
-	public function cancel()
+	public function cancel($key = null)
 	{
 		$return = parent::cancel();
 		$this->setRedirect(JRoute::_('index.php?option=com_jeregister&view=registrations'));

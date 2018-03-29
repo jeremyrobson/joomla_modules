@@ -13,15 +13,11 @@ class JeRegisterViewSummary extends JViewLegacy
 		$mainframe =JFactory::getApplication();
 		$page = $mainframe->getUserState("$option.page", "1");
 
-		// Get the form to display
 		$this->form = $this->get('Form');
-		
 		$this->item = $this->get("Item");
 
-		// Call the parent display to display the layout file
 		parent::display($tpl);
 
-		// Set properties of the html document
 		$this->setDocument();
 	}
 

@@ -10,7 +10,7 @@ class JeRegisterViewPreview extends JViewLegacy
 		$this->pagination = $this->get('Pagination');
 		$this->filename = JRequest::getVar("filename");
 
-		JToolBarHelper::title(JText::_("COM_JEREGISTER_MEMBER_IMPORT_PREVIEW"));
+		JToolBarHelper::title(JText::_("COM_JEREGISTER_IMPORT_PREVIEW"));
 
 		if (JFactory::getUser()->authorise('core.admin', 'com_jeregister')) 
 		{
@@ -25,6 +25,6 @@ class JeRegisterViewPreview extends JViewLegacy
 	protected function setDocument() 
 	{
 		$document = JFactory::getDocument();
-		$document->setTitle(JText::_('COM_JEREGISTER_MEMBER_IMPORT_PREVIEW'));
+		$document->setTitle(JText::_('COM_JEREGISTER_IMPORT_PREVIEW'));
 	}
 }

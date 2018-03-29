@@ -47,6 +47,16 @@
 					validate="string"
 					required="true"
 			/>
+			<field
+					name="city"
+					type="text"
+					class="inputbox"
+					label="COM_JEREGISTER_DECLARATION_CITY"
+					description="COM_JEREGISTER_DECLARATION_CITY_DESC"
+					size="100"
+					validate="string"
+					required="true"
+			/>
 			<field		
 					name="province"
 					type="list"
@@ -216,7 +226,7 @@
 				label="COM_JEREGISTER_DECLARATION_STRAWBERRY_ACREAGE"
 		>
 			<field
-					name="june_strawberries_bearing_acres"
+					name="june_strawberry_bearing_acres"
 					type="number"
 					label="COM_JEREGISTER_DECLARATION_JUNE_STRAWBERRY_BEARING_ACRES"
 					description="COM_JEREGISTER_DECLARATION_JUNE_STRAWBERRY_BEARING_ACRES_DESC"
@@ -227,7 +237,7 @@
 					default="0"
 			/>
 			<field
-					name="june_strawberries_non_bearing_acres"
+					name="june_strawberry_non_bearing_acres"
 					type="number"
 					label="COM_JEREGISTER_DECLARATION_JUNE_STRAWBERRY_NON_BEARING_ACRES"
 					description="COM_JEREGISTER_DECLARATION_JUNE_STRAWBERRY_NON_BEARING_ACRES_DESC"
@@ -238,7 +248,7 @@
 					default="0"
 			/>
 			<field
-					name="day_neutral_strawberries_bearing_acres"
+					name="day_neutral_strawberry_bearing_acres"
 					type="number"
 					label="COM_JEREGISTER_DECLARATION_DAY_NEUTRAL_STRAWBERRY_BEARING_ACRES"
 					description="COM_JEREGISTER_DECLARATION_DAY_NEUTRAL_STRAWBERRY_BEARING_ACRES_DESC"

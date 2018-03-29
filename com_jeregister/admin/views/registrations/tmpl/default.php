@@ -67,7 +67,7 @@ defined('_JEXEC') or die('Restricted Access');
 							<?php echo JText::_($row->registration_status); ?>
 						</td>
 						<td>
-							<a href="<?php echo JUri::base(); ?>index.php?option=com_jeregister&task=transaction.view&user_id=<?php echo $row->user_id; ?>">
+							<a href="<?php echo JUri::base(); ?>index.php?option=com_jeregister&task=transactions.view&user_id=<?php echo $row->user_id; ?>">
 								View Transactions
 							</a>
 						</td>

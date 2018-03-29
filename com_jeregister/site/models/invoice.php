@@ -44,9 +44,9 @@ class JeRegisterModelInvoice extends JModelAdmin
 		$query = $db->getQuery(true);
 		$query
 			->select(array("t.id", "t.json as transaction", "r.json as registration", "u.name"))
-            ->from($db->quoteName("#__transaction", "t"))
-            ->join("LEFT", $db->quoteName("#__registration", "r") . " ON (" . $db->quoteName("t.registration_id") . " = " . $db->quoteName("r.id") . ")")
-            ->join("LEFT", $db->quoteName("#__users", "u") . " ON (" . $db->quoteName("t.user_id") . " = " . $db->quoteName("u.id") . ")")
+			->from($db->quoteName("#__transaction", "t"))
+			->join("LEFT", $db->quoteName("#__registration", "r") . " ON (" . $db->quoteName("t.registration_id") . " = " . $db->quoteName("r.id") . ")")
+			->join("LEFT", $db->quoteName("#__users", "u") . " ON (" . $db->quoteName("t.user_id") . " = " . $db->quoteName("u.id") . ")")
 			->where("registration_id = " . $registration_id)
 			->order("date DESC"); //get most recent transaction
 		$db->setQuery($query);
@@ -63,6 +63,11 @@ class JeRegisterModelInvoice extends JModelAdmin
 		//echo "<pre>"; print_r($item); die;
 
 		return $item;
+	}
+
+	public function getScript()
+	{
+		return "administrator/components/com_jeregister/models/forms/payment_methods.js";
 	}
 
 	protected function prepareTable($table)

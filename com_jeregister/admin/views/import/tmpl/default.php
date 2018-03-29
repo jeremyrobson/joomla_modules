@@ -7,7 +7,7 @@ JHtml::_('behavior.formvalidator');
 
 	<div class="form-horizontal">
 		<fieldset class="adminform">
-			<legend><?php echo JText::_('COM_JEREGISTER_PROFILE_EDIT') ?></legend>
+			<legend><?php echo JText::_('COM_JEREGISTER_IMPORT_MEMBERS') ?></legend>
 			<div class="row-fluid">
 				<div class="span6">
 					<?php echo $this->form->renderFieldset('import');  ?>
@@ -19,7 +19,7 @@ JHtml::_('behavior.formvalidator');
 	<div class="btn-toolbar">
 		<div class="btn-group">
 			<button type="button" class="btn btn-primary" onclick="Joomla.submitbutton('registrations.upload')">
-				<span class="icon-ok"></span><?php echo JText::_('JUPLOAD') ?>
+				<span class="icon-ok"></span><?php echo JText::_('COM_JEREGISTER_UPLOAD') ?>
 			</button>
 		</div>
 		<div class="btn-group">

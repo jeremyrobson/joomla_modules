@@ -22,8 +22,6 @@ class JeRegisterViewProfile extends JViewLegacy
 
 		$this->addToolBar();
 
-		JToolBarHelper::title("Profile for " . $this->item->farm_name);
-
 		parent::display($tpl);
 	}
 
@@ -33,7 +31,7 @@ class JeRegisterViewProfile extends JViewLegacy
 
 		$input->set('hidemainmenu', true);
 
-		JToolBarHelper::title(JText::_('COM_JEREGISTER_PROFILE_EDIT'), 'profile');
+		JToolBarHelper::title(JText::_('COM_JEREGISTER_PROFILE_FOR') . " " . $this->item->farm_name);
 
 		if ($this->canDo->get('core.edit'))
 		{

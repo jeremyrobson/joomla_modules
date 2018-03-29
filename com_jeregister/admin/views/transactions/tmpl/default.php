@@ -2,7 +2,7 @@
 defined('_JEXEC') or die('Restricted Access');
 
 ?>
-<form action="" method="" id="adminForm" name="adminForm">
+<form action="" method="POST" id="adminForm" name="adminForm">
 	<table class="table table-striped table-hover">
 		<thead>
 		<tr>
@@ -69,6 +69,7 @@ defined('_JEXEC') or die('Restricted Access');
 		</tbody>
 	</table>
 
-
+	<input type="hidden" name="task" value="" />
+	<?php echo JHtml::_('form.token'); ?>
 
 </form>

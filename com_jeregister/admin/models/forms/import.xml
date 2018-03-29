@@ -2,7 +2,7 @@
 <form>
 	<fieldset
 		name="import"
-		label="COM_JEREGISTER_IMPORT"
+		label="COM_JEREGISTER_IMPORT_MEMBERS"
 		>
 		<field
 			name="id"
@@ -12,7 +12,7 @@
 			name="file"
 			type="file"
 			method="POST"
-			label="COM_JEREGISTER_FILE"
+			label="COM_JEREGISTER_MEMBERS_CSV"
 			accept=".csv"
 			required="true"
 			/>

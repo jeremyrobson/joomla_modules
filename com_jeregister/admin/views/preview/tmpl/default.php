@@ -8,22 +8,22 @@ defined('_JEXEC') or die('Restricted Access');
 		<tr>
 			<th width="1%"><?php echo JText::_('COM_JEREGISTER_NUM'); ?></th>
 			<th width="1%"><?php echo JHtml::_('grid.checkall'); ?></th>
-			<th width="5%"><?php echo JText::_('COM_JEREGISTER_FARM_NAME'); ?></th>
-			<th width="5%"><?php echo JText::_('COM_JEREGISTER_ADDRESS'); ?></th>
-			<th width="2%"><?php echo JText::_('COM_JEREGISTER_CITY'); ?></th>
-			<th width="1%"><?php echo JText::_('COM_JEREGISTER_PROVINCE'); ?></th>
-			<th width="2%"><?php echo JText::_('COM_JEREGISTER_POSTAL_CODE'); ?></th>
-			<th width="5%">contact</th>
-			<th width="3%">telephone</th>
-			<th width="4%">email</th>
-			<th width="5%">website</th>
-			<th width="7%">acres</th>
-			<th width="10%">other crops</th>
-			<th width="10%">description</th>
-			<th width="2%">latitude</th>
-			<th width="2%">longitude</th>
-			<th width="4%">facebook</th>
-			<th width="6%">tags</th>
+			<th width="5%"><?php echo JText::_('COM_JEREGISTER_PROFILE_FARM_NAME'); ?></th>
+			<th width="5%"><?php echo JText::_('COM_JEREGISTER_PROFILE_ADDRESS'); ?></th>
+			<th width="2%"><?php echo JText::_('COM_JEREGISTER_PROFILE_CITY'); ?></th>
+			<th width="1%"><?php echo JText::_('COM_JEREGISTER_PROFILE_PROVINCE'); ?></th>
+			<th width="2%"><?php echo JText::_('COM_JEREGISTER_PROFILE_POSTAL_CODE'); ?></th>
+			<th width="5%"><?php echo JText::_('COM_JEREGISTER_PROFILE_CONTACT'); ?></th>
+			<th width="3%"><?php echo JText::_('COM_JEREGISTER_PROFILE_TELEPHONE'); ?></th>
+			<th width="4%"><?php echo JText::_('COM_JEREGISTER_PROFILE_EMAIL'); ?></th>
+			<th width="5%"><?php echo JText::_('COM_JEREGISTER_PROFILE_WEBSITE'); ?></th>
+			<th width="7%"><?php echo JText::_('COM_JEREGISTER_PROFILE_ACRES'); ?></th>
+			<th width="10%"><?php echo JText::_('COM_JEREGISTER_PROFILE_OTHER_CROPS'); ?></th>
+			<th width="10%"><?php echo JText::_('COM_JEREGISTER_PROFILE_DESCRIPTION'); ?></th>
+			<th width="2%"><?php echo JText::_('COM_JEREGISTER_PROFILE_LATITUDE'); ?></th>
+			<th width="2%"><?php echo JText::_('COM_JEREGISTER_PROFILE_LONGITUDE'); ?></th>
+			<th width="4%"><?php echo JText::_('COM_JEREGISTER_PROFILE_FACEBOOK'); ?></th>
+			<th width="6%"><?php echo JText::_('COM_JEREGISTER_PROFILE_TAGS'); ?></th>
 		</tr>
 		</thead>
 		<tfoot>

@@ -13,7 +13,7 @@ class JeRegisterModelTransactions extends JModelList
                 ->from($db->quoteName("#__transaction", "a"))
                 ->join("LEFT", $db->quoteName("#__users", "b") . " ON " . $db->quoteName("a.user_id") . " = " . $db->quoteName("b.id"));
 
-        $user_id = $this->getState("transaction.user_id");
+        $user_id = $this->getState("transactions.user_id");
 
         if (isset($user_id)) {
             $query->where("user_id = $user_id");
