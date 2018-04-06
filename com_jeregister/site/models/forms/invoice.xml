@@ -32,7 +32,7 @@
 				description=""
 				required="true"
 				class="required"
-				validate="telephone"
+				validate=""
 				default=""
 		>
 			<option value="">Choose...</option>

@@ -28,7 +28,8 @@ class JeRegisterControllerRegistrations extends JControllerForm
 			case 0:
 				break;
 			default:
-				echo JText::_("COM_JEREGISTER_FILE_UPLOAD_ERROR");
+				$message = JText::_("COM_JEREGISTER_FILE_UPLOAD_ERROR");
+				$this->setRedirect(JRoute::_("index.php?option=com_jeregister&view=import", false), $message, "error");
 				return;
 		}
 		
@@ -39,18 +40,20 @@ class JeRegisterControllerRegistrations extends JControllerForm
 
 		if (file_exists($srcPath)) {
 			if (copy($source = $srcPath, $dest = $folder . "/" . $filename)) {
-				$this->setRedirect(JRoute::_("index.php?option=com_jeregister&task=registrations.preview&filename=$filename", false));
-				$this->redirect();
-				return JText::_("COM_JEREGISTER_FILE_UPLOAD_SUCCESS");
+				$message = JText::_("COM_JEREGISTER_FILE_UPLOAD_SUCCESS");
+				$this->setRedirect(JRoute::_("index.php?option=com_jeregister&task=registrations.preview&filename=$filename", false), $message, "success");
+				//$this->redirect();
+				return ;
 			}
 			else {
-				echo JText::_("COM_JEREGISTER_FILE_COPY_ERROR");
+				$message = JText::_("COM_JEREGISTER_FILE_COPY_ERROR");
 			}
 		}
 		else {
-			echo JText::_("COM_JEREGISTER_UPLOAD_FOLDER_MISSING_ERROR");
+			$message = JText::_("COM_JEREGISTER_UPLOAD_FOLDER_MISSING_ERROR");
 		}
 
+		$this->setRedirect(JRoute::_("index.php?option=com_jeregister&view=import", false), $message, "error");
 		return "";
 	}
 
@@ -84,27 +87,60 @@ class JeRegisterControllerRegistrations extends JControllerForm
 			$items = array_intersect_key($items, array_flip($checked));
 		}
 
-		echo "<pre>"; print_r($items); die;
+		//get registered/public group ids
+		$db = JFactory::getDbo();
+		$db->setQuery("SELECT `id` FROM `#__usergroups` WHERE `title` IN ('Public','Registered')");
+		$db->query();
+		$groups = $db->loadObjectList("id");
+		$group_ids = array_keys($groups);
+
+		jimport('joomla.user.helper');
 
 		foreach ($items as $index => $item) {
+			$db = JFactory::getDBO();
+			$query = $db->getQuery(true);
+			$query->select("*");
+			$query->from("#__users");
+			$query->where("email = '$item->email'");
+			$db->setQuery((string) $query);
+
+			//don't add existing emails
+			if (count($db->loadObjectList())) {
+				continue;
+			}
+
+			$data = array(
+				"name" => $item->contact,
+				"username" => $item->email,
+				"password" => "welcome1",
+				"password2" => "welcome1",
+				"email" => $item->email,
+				"block" => 0,
+				"groups" => $group_ids
+			);
+		
+			$user = new JUser;
+			
+			if(!$user->bind($data)) {
+				throw new Exception("Could not bind data. Error: " . $user->getError());
+			}
+
+			if (!$user->save()) {
+				throw new Exception("Could not save user. Error: " . $user->getError());
+			}
+		
+			echo $user->id; die;
 
 			//todo
-			//check to make sure email doesn't already exist
-			//create user account
 			//create profile
 			//change declaration to attempt to get info from profile if last declaration is over a year old	
 
 		}
-
-		echo "<pre>"; print_r($items); die;
-
-		//done
-
 	}
 
 	public function cancel($key = null, $urlVar = null)
 	{
-                $this->setRedirect(JRoute::_('index.php?option=com_jeregister&view=registrations'));
+		$this->setRedirect(JRoute::_('index.php?option=com_jeregister&view=registrations'));
 	}
 
 }

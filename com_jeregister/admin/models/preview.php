@@ -21,12 +21,12 @@ class JeRegisterModelPreview extends JModelList
 		foreach ($items as $index => $arr) {
 			//convert to list of objects
 			$items[$index] = (object) $arr;
-                        
+
 			//get lat long
 			preg_match_all("/-?\d+\.\d+/", $arr["location"], $matches);
 			if (!empty($matches[0])) {
-	                        $items[$index]->latitude = floatval($matches[0][0]);
-        	                $items[$index]->longitude = floatval($matches[0][1]);
+				$items[$index]->latitude = floatval($matches[0][0]);
+				$items[$index]->longitude = floatval($matches[0][1]);
 			}
 			else {
 				$items[$index]->latitude = 0;
@@ -35,7 +35,7 @@ class JeRegisterModelPreview extends JModelList
 			
 
 			//get tags
-                        $items[$index]->tags = strtolower($arr["tags"]);
+			$items[$index]->tags = strtolower($arr["tags"]);
 		}
 
 		return $items;

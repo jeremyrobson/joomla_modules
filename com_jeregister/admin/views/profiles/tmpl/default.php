@@ -17,13 +17,13 @@ defined('_JEXEC') or die('Restricted Access');
 				<?php echo JText::_('COM_JEREGISTER_USERNAME'); ?>
 			</th>
 			<th width="30%">
-				<?php echo JText::_('COM_JEREGISTER_FARM_NAME'); ?>
+				<?php echo JText::_('COM_JEREGISTER_PROFILE_FARM_NAME'); ?>
 			</th>
 			<th width="20%">
-				<?php echo JText::_('COM_JEREGISTER_CONTACT'); ?>
+				<?php echo JText::_('COM_JEREGISTER_PROFILE_CONTACT'); ?>
 			</th>
 			<th width="15%">
-				<?php echo JText::_('COM_JEREGISTER_EMAIL'); ?>
+				<?php echo JText::_('COM_JEREGISTER_PROFILE_EMAIL'); ?>
 			</th>
 			<th width="15%">
 				<?php echo JText::_('COM_JEREGISTER_ACTIONS'); ?>
@@ -68,6 +68,14 @@ defined('_JEXEC') or die('Restricted Access');
 							<a href="<?php echo JUri::base(); ?>index.php?option=com_jeregister&task=profile.edit&id=<?php echo $row->id; ?>">
 								View Profile
 							</a>
+							&nbsp;
+							<a href="<?php echo JUri::base(); ?>index.php?option=com_jeregister&view=declaration&id=<?php echo $row->id; ?>">
+								View Declaration
+							</a>
+							&nbsp;
+							<a href="<?php echo JUri::base(); ?>index.php?option=com_jeregister&task=transactions.view&user_id=<?php echo $row->id; ?>">
+								View Transactions
+							</a>
 						</td>
 						<td align="center">
 							<?php echo $row->id; ?>
@@ -77,4 +85,7 @@ defined('_JEXEC') or die('Restricted Access');
 			<?php endif; ?>
 		</tbody>
 	</table>
+
+	<input type="hidden" name="task" value="" />
+	<?php echo JHtml::_('form.token'); ?>
 </form>

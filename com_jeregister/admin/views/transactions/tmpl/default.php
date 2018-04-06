@@ -2,7 +2,7 @@
 defined('_JEXEC') or die('Restricted Access');
 
 ?>
-<form action="" method="POST" id="adminForm" name="adminForm">
+<form action="index.php?option=com_jeregister&view=transactions" method="POST" id="adminForm" name="adminForm">
 	<table class="table table-striped table-hover">
 		<thead>
 		<tr>

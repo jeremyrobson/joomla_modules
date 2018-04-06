@@ -13,18 +13,38 @@ class JeRegisterControllerInvoice extends JControllerForm
     
     public function next($key = null, $urlVar = null)
     {
-		// Check for request forgeries.
+		echo "test"; die;
 		JSession::checkToken() or jexit(JText::_('JINVALID_TOKEN'));
         
 		$app = JFactory::getApplication(); 
 		$input = $app->input;
 		$data = $input->get('jform', array(), 'array');
+		$currentUri = (string)JUri::getInstance();
 
 		$model = $this->getModel();
 		$form = $model->getForm($data, false);
 
+		if (!$form) {
+			$app->enqueueMessage($model->getError(), "error");
+			return false;
+		}
+
 		$validData = $model->validate($form, $data);
-		echo "<pre>"; print_r($model->getErrors()); die;
+
+		if ($validData === false) {
+			$errors = $model->getErrors();
+			for ($i = 0, $n = count($errors); $i < $n && $i < 3; $i++) {
+				if ($errors[$i] instanceof Exception) {
+					$app->enqueueMessage($errors[$i]->getMessage(), "warning");
+				}
+				else {
+					$app->enqueueMessage($errors[$i], "warning");
+				}
+			}
+			//$app->setUserState($context . ".data", $data);
+			$this->setRedirect($currentUri);
+			return false;
+		}
 
 		//get transaction
 		$transaction_id = $data["id"];
@@ -32,7 +52,7 @@ class JeRegisterControllerInvoice extends JControllerForm
 		$table = $transaction->getTable();
 		$table->load($transaction_id);
 
-		//create new transaction
+		//update transaction
 		$data = array(
 			"id" => $transaction_id,
 			"json" => json_encode(array(
@@ -50,9 +70,9 @@ class JeRegisterControllerInvoice extends JControllerForm
 		$app->setUserState("com_jeregister.page", "thankyou");
 
 		$this->setRedirect(
-				$currentUri,
-				JText::_('COM_JEREGISTER_DECLARATION_SAVED')
-				);
+			$currentUri,
+			JText::_('COM_JEREGISTER_DECLARATION_SAVED')
+		);
             
 		return true;
         

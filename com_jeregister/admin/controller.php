@@ -25,5 +25,5 @@ class JeRegisterController extends JControllerLegacy
 	 * @var string
 	 * @since 12.2
 	 */
-	protected $default_view = 'registrations';
+	protected $default_view = 'profiles';
 }
