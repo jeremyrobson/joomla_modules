@@ -3,7 +3,7 @@
 defined('_JEXEC') or die('Restricted access');
 
 class JeRegisterControllerTransactions extends JControllerAdmin
-{   
+{
 	
 	public function view($key = null, $urlVar = null)
 	{
@@ -19,9 +19,9 @@ class JeRegisterControllerTransactions extends JControllerAdmin
 		$view->display();
 	}
 	
-        public function cancel($key = null)
-        {
-                $this->setRedirect(JRoute::_('index.php?option=com_jeregister&view=registrations'));
-        }
+	public function cancel($key = null)
+	{
+		$this->setRedirect(JRoute::_('index.php?option=com_jeregister&view=registrations'));
+	}
 
 }

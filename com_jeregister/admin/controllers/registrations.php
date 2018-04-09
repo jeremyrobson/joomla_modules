@@ -97,7 +97,6 @@ class JeRegisterControllerRegistrations extends JControllerForm
 		jimport('joomla.user.helper');
 
 		foreach ($items as $index => $item) {
-			$db = JFactory::getDBO();
 			$query = $db->getQuery(true);
 			$query->select("*");
 			$query->from("#__users");
@@ -109,16 +108,24 @@ class JeRegisterControllerRegistrations extends JControllerForm
 				continue;
 			}
 
+			$username = !empty($item->email) ? trim($item->email) : "newuser" . random_int(10000, 100000);
+			$email = !empty($item->email) ? trim($item->email) : "jeremy.robson+$username@gmail.com";
+			$contact = !empty($item->contact) ? trim($item->contact) : $item->farm_name;
+
+			if ($email === "lindleyfarmand market@gmail.com") {
+				$email = "lindleysfarmandmarket@gmail.com";
+			}
+
 			$data = array(
-				"name" => $item->contact,
-				"username" => $item->email,
+				"name" => $contact,
+				"username" => $username,
 				"password" => "welcome1",
 				"password2" => "welcome1",
-				"email" => $item->email,
+				"email" => $email,
 				"block" => 0,
 				"groups" => $group_ids
 			);
-		
+
 			$user = new JUser;
 			
 			if(!$user->bind($data)) {
@@ -128,14 +135,39 @@ class JeRegisterControllerRegistrations extends JControllerForm
 			if (!$user->save()) {
 				throw new Exception("Could not save user. Error: " . $user->getError());
 			}
-		
-			echo $user->id; die;
 
-			//todo
-			//create profile
-			//change declaration to attempt to get info from profile if last declaration is over a year old	
+			//make "clean" object to insert instead of item
+			$profile = new stdClass();
+			$profile->id = $user->id;
+			$profile->farm_name = $item->farm_name;
+			$profile->address = $item->address;
+			$profile->city = $item->city;
+			$profile->province = $item->province;
+			$profile->postal_code = $item->postal_code;
+			$profile->contact = $item->contact;
+			$profile->telephone = $item->telephone;
+			$profile->website = $item->website;
+			$profile->other_crops = $item->other_crops;
+			$profile->description = $item->description;
+			$profile->facebook = $item->facebook;
+			$profile->tags = $item->tags;
+			$profile->latitude = $item->latitude;
+			$profile->longitude = $item->longitude;
+			$profile->published = 1;
+			$profile->email = $item->email;
 
+			//extract acres
+			$profile->acres_strawberry = preg_match('/\d+(\.\d+)?/', $item->acres_strawberry, $matches);
+			$profile->acres_raspberry = preg_match('/\d+(\.\d+)?/', $item->acres_raspberry, $matches);
+			$profile->acres_blueberry = preg_match('/\d+(\.\d+)?/', $item->acres_blueberry, $matches);
+			$profile->acres_fall_strawberry = preg_match('/\d+(\.\d+)?/', $item->acres_fall_strawberry, $matches);
+			$profile->acres_fall_raspberry = preg_match('/\d+(\.\d+)?/', $item->acres_fall_raspberry, $matches);
+
+			$db->insertObject("#__farm_profile", $profile, $user->id);
 		}
+
+		$message = JText::_("COM_JEREGISTER_IMPORT_COMPLETE");
+		$this->setRedirect(JRoute::_("index.php?option=com_jeregister&view=import", false), $message, "success");
 	}
 
 	public function cancel($key = null, $urlVar = null)
