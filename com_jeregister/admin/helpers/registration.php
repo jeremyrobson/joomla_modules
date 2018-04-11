@@ -29,4 +29,16 @@ abstract class RegistrationHelper
             return "COM_JEREGISTER_STATUS_CURRENT";
         }
     }
+
+    public static function createProfile($registration_id) {
+        $app = JFactory::getApplication();
+
+        $registration_model = $app->getModel("registration");
+        $registration = $registration_model->getItem($registration_id);
+
+        $profile = $app->getModel("profile");
+        $profile->id = $registration["user_id"];
+        $profile->farm_name = $registration["main"]["farm_name"];
+        return $profile->save();
+    }
 }

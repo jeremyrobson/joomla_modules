@@ -1,6 +1,7 @@
 <?php
 
 defined('_JEXEC') or die('Restricted access');
+JLoader::import('helpers.registration',dirname(JPATH_COMPONENT_ADMINISTRATOR .DIRECTORY_SEPARATOR.'helpers'.DIRECTORY_SEPARATOR));
 
 class JeRegisterControllerInvoice extends JControllerForm
 {   
@@ -13,7 +14,6 @@ class JeRegisterControllerInvoice extends JControllerForm
     
     public function next($key = null, $urlVar = null)
     {
-		echo "test"; die;
 		JSession::checkToken() or jexit(JText::_('JINVALID_TOKEN'));
         
 		$app = JFactory::getApplication(); 
@@ -64,18 +64,23 @@ class JeRegisterControllerInvoice extends JControllerForm
 		//save transaction
 		$transaction->save($data);
 
-		$currentUri = (string)JUri::getInstance();
-		
-		//set next page in session
-		$app->setUserState("com_jeregister.page", "thankyou");
-
-		$this->setRedirect(
-			$currentUri,
-			JText::_('COM_JEREGISTER_DECLARATION_SAVED')
-		);
+        //todo: create profile
+        if (RegistrationHelper::createProfile($registration_id)) {
+            $currentUri = (string)JUri::getInstance();
             
-		return true;
-        
+            //set next page in session
+            $app->setUserState("com_jeregister.page", "thankyou");
+
+            $this->setRedirect(
+                $currentUri,
+                JText::_('COM_JEREGISTER_DECLARATION_SAVED')
+            );
+                
+            return true;
+        }
+        else {
+            //error creating profile
+        }
     }
 
 }

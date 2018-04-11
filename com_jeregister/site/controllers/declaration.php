@@ -20,7 +20,7 @@ class JeRegisterControllerDeclaration extends JControllerForm
 		$app = JFactory::getApplication(); 
 		$input = $app->input; 
 		$model = $this->getModel('declaration');
-        
+
 		$currentUri = (string)JUri::getInstance();
 
 		if (!JFactory::getUser()->authorise( "core.create", "com_jeregister")) {
@@ -30,9 +30,9 @@ class JeRegisterControllerDeclaration extends JControllerForm
 		}
         
 		$data = $input->get('jform', array(), 'array');
-        
+
 		$context = "$this->option.edit.$this->context";
-        
+
 		$form = $model->getForm($data, false);
 
 		if (!$form) {
@@ -40,7 +40,7 @@ class JeRegisterControllerDeclaration extends JControllerForm
 			return false;
 		}
 
-		$validData = $model->validate($form, $data);
+        $validData = $model->validate($form, $data);
 
 		if ($validData === false) {
 			$errors = $model->getErrors();
@@ -58,7 +58,7 @@ class JeRegisterControllerDeclaration extends JControllerForm
 			$this->setRedirect($currentUri);
 			return false;
 		}
-		
+
 		if (!$model->save($validData)) {
 			$app->setUserState($context . '.data', $validData);
 			$this->setError(JText::sprintf('JLIB_APPLICATION_ERROR_SAVE_FAILED', $model->getError()));
@@ -101,7 +101,7 @@ class JeRegisterControllerDeclaration extends JControllerForm
 		}
 		
 		//set next page in session
-		$app->setUserState("com_jeregister.page", "summary");
+        $app->setUserState("$this->option.page", "summary");
 
 		$this->setRedirect(
 			$currentUri,

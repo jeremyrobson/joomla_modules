@@ -13,7 +13,7 @@ JHtml::_('behavior.formvalidator');
 				<div class="span12">
 					<p>Producer Name:				<?php echo $this->form->getValue("producer_name"); ?></p>
 					<p>User Name:					<?php echo $this->form->getValue("name"); ?></p>
-					<p>Membership Fee:				<?php echo $this->form->getValue("membership_fee"); ?></p>
+					<p>Membership Fee:				<?php echo "$" . number_format($this->form->getValue("membership_fee"), 2); ?></p>
 				</div>
 				<div class="span12">
 					<?php echo $this->form->renderFieldset('invoice_details');  ?>
@@ -25,7 +25,16 @@ JHtml::_('behavior.formvalidator');
 					credit card
 				</div>
 				<div class="span12 payment_method_div" id="cheque_div" style="display: none;">
-					cheque
+					<p>Please mail your cheque to:</p>
+                    <p style="font-weight: 700;">
+                        Ontario Berry Growers Membership<br>
+                        30 Harmony Way<br>
+                        Kemptville, Ont<br>
+                        K0G-1J0
+                    </p>
+				</div>
+				<div class="span12 payment_method_div" id="etransfer_div" style="display: none;">
+					e-transfer
 				</div>
 			</div>
 		</fieldset>

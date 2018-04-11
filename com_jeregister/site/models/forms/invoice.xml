@@ -39,6 +39,7 @@
 			<option value="paypal">Paypal</option>
 			<option value="credit">Credit Card</option>
 			<option value="cheque">Cheque</option>
+			<option value="etransfer">e-Transfer</option>
 		</field>
 	</fieldset>
 </form>

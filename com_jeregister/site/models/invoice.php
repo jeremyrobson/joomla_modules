@@ -53,14 +53,12 @@ class JeRegisterModelInvoice extends JModelAdmin
 		$item = $db->loadAssoc();
 
 		$registration = json_decode($item["registration"], true);
-		$item = array_merge($item, $registration);
+		$item = array_merge($item, $registration["main"]);
 		unset($item["registration"]);
 
 		$transaction = json_decode($item["transaction"], true);
 		$item = array_merge($item, $transaction);
-		unset($item["transaction"]);
-
-		//echo "<pre>"; print_r($item); die;
+        unset($item["transaction"]);
 
 		return $item;
 	}

@@ -1,20 +1,7 @@
 <?php
-/**
- * @package     Joomla.Administrator
- * @subpackage  com_helloworld
- *
- * @copyright   Copyright (C) 2005 - 2018 Open Source Matters, Inc. All rights reserved.
- * @license     GNU General Public License version 2 or later; see LICENSE.txt
- */
 
-// No direct access to this file
 defined('_JEXEC') or die('Restricted access');
 
-/**
- * HelloWorld Model
- *
- * @since  0.0.1
- */
 class JeRegisterModelDeclaration extends JModelAdmin
 {
 
@@ -25,7 +12,6 @@ class JeRegisterModelDeclaration extends JModelAdmin
 
 	public function getForm($data = array(), $loadData = true)
 	{
-		// Get the form.
 		$form = $this->loadForm(
 			'com_jeregister.declaration',
 			'declaration',
@@ -76,10 +62,11 @@ class JeRegisterModelDeclaration extends JModelAdmin
 			->where("user_id = " . $user->id)
 			->order("create_date DESC");
 		$db->setQuery($query);
-		$item = $db->loadAssoc();
-
+        $item = $db->loadAssoc();
+        $id = $item["id"];
 		$json = json_decode($item["json"], true);
-		$item = array_merge($item, $json);
+        $item = array_merge($item, $json);
+        $item["id"] = $id;
 		unset($item["json"]);
 
 		return $item;
