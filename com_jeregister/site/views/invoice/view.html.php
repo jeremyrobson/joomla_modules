@@ -10,7 +10,7 @@ class JeRegisterViewInvoice extends JViewLegacy
 	public function display($tpl = null)
 	{
 		$option = JRequest::getCmd('option'); //com_jregister namespace
-		$app =JFactory::getApplication();
+		$app = JFactory::getApplication();
 		$page = $app->getUserState("$option.page", "1");
 
 		$this->form = $this->get("Form");

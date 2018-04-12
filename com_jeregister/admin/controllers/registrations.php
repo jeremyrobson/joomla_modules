@@ -34,7 +34,8 @@ class JeRegisterControllerRegistrations extends JControllerForm
 		}
 		
 		$tempName = $file["tmp_name"][$key];
-		$srcPath = ini_get("upload_tmp_dir") . $tempName; //path must have full permissions too
+        //$srcPath = ini_get("upload_tmp_dir") . $tempName; //path must have full permissions too
+        $srcPath = $tempName;
 		$filename = $file["name"][$key];
 		$folder = JPATH_SITE . "/uploads";
 
