@@ -17,24 +17,24 @@ jQuery(function ($) {
             });
 
             $.each(farm_profiles, function () {
-
                 var infowindow = new google.maps.InfoWindow({
                     content: '<div>' +
                         '<div id="siteNotice">' +
                         '</div>' +
-                        '<h4>' + this["farm_name"] + '</h4>' +
+                        '<h2>' + this["farm_name"] + '</h2>' +
                         '<div id="bodyContent">' +
                         '<table class="table">' +
                         '<tbody>' +
-                        '<tr><th>Address</th><td>' + this["market_addr_1"] + '</td></tr>' +
-                        '<tr><th>City</th><td>' + this["market_city"] + '</td></tr>' +
-                        '<tr><th>Postal Code</th><td>' + this["market_post_code"] + '</td></tr>' +
-                        '<tr><th>Open Date</th><td>' + this["opening_date"] + '</td></tr>' +
-                        '<tr><th>Close Date</th><td>' + this["closing_date"] + '</td></tr>' +
-                        '<tr><th>Number of Vendors</th><td>' + this["market_number_of_vendors"] + '</td></tr>' +
+                        '<tr><th>Address</th><td>' + this["address"] + '</td></tr>' +
+                        '<tr><th>City</th><td>' + this["city"] + '</td></tr>' +
+                        '<tr><th>Postal Code</th><td>' + this["postal_code"] + '</td></tr>' +
+                        '<tr><th>Contact</th><td>' + this["contact"] + '</td></tr>' +
+                        '<tr><th>Telephone</th><td>' + this["telephone"] + '</td></tr>' +
+                        '<tr><th>Email</th><td>' + this["email"] + '</td></tr>' +
+                        '<tr><th>Website</th><td>' + this["website"] + '</td></tr>' +
                         '</tbody>' +
                         '</table>' +
-                        '<a href="' + this["link"] + '" class="btn pull-right">View Location Details&nbsp;<i class="fa fa-arrow-right"></i></a>' +
+                        '<a href="' + this["profile_link"] + '" class="btn pull-right">View Profile&nbsp;<i class="fa fa-arrow-right"></i></a>' +
                         '</div>' +
                         '</div>'
                 });

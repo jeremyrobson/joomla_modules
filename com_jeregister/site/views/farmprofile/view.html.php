@@ -2,21 +2,22 @@
 
 defined('_JEXEC') or die('Restricted access');
 
-class JeRegisterViewFindAFarm extends JViewLegacy
+class JeRegisterViewFarmProfile extends JViewLegacy
 {
 
     public function display($tpl = null)
     {
+        $jinput = JFactory::getApplication()->input;
+        $profile_id = $jinput->get("id");
+        
         $db = JFactory::getDbo();
-        $db->setQuery("SELECT * FROM `#__farm_profile`");
+        $db->setQuery("SELECT * FROM `#__farm_profile` WHERE id = $profile_id");
         $db->query();
         $farm_profiles = $db->loadObjectList("id");
-        
-        foreach ($farm_profiles as $id => $farm_profile) {
-            $farm_profiles[$id]->profile_link = Juri::root() . "index.php?option=com_jeregister&view=farmprofile&id=$id";
-        }
+        $farm_profile = reset($farm_profiles);
 
-        $this->farm_profiles = json_encode($farm_profiles, JSON_FORCE_OBJECT);
+        $this->profile = $farm_profile;
+        $this->farm_profile = json_encode($farm_profile, JSON_FORCE_OBJECT);
 
         parent::display($tpl);
         
@@ -32,9 +33,9 @@ class JeRegisterViewFindAFarm extends JViewLegacy
         $document = JFactory::getDocument();
         $document->setTitle(JText::_('COM_JEREGISTER_FARMMAP'));
         $document->addScript("http://maps.googleapis.com/maps/api/js?key=$GOOGLE_API_KEY");
-        $document->addScript(JURI::root() . "administrator/components/com_jeregister/models/forms/findafarm.js");
+        $document->addScript(JURI::root() . "administrator/components/com_jeregister/models/forms/farmprofile.js");
         $document->addScriptDeclaration("
-            var farm_profiles = $this->farm_profiles;
+            var farm_profile = $this->farm_profile;
         ");
     }
 }
