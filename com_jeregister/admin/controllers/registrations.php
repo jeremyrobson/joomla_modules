@@ -154,7 +154,7 @@ class JeRegisterControllerRegistrations extends JControllerForm
 			$profile->tags = $item->tags;
 			$profile->latitude = $item->latitude;
 			$profile->longitude = $item->longitude;
-			$profile->published = 1;
+			$profile->published = $item->published;
 			$profile->email = $item->email;
 
 			//extract acres

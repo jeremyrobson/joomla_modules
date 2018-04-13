@@ -18,12 +18,13 @@ defined('_JEXEC') or die('Restricted Access');
 			<th width="4%"><?php echo JText::_('COM_JEREGISTER_PROFILE_EMAIL'); ?></th>
 			<th width="5%"><?php echo JText::_('COM_JEREGISTER_PROFILE_WEBSITE'); ?></th>
 			<th width="7%"><?php echo JText::_('COM_JEREGISTER_PROFILE_ACRES'); ?></th>
-			<th width="10%"><?php echo JText::_('COM_JEREGISTER_PROFILE_OTHER_CROPS'); ?></th>
+			<th width="9%"><?php echo JText::_('COM_JEREGISTER_PROFILE_OTHER_CROPS'); ?></th>
 			<th width="10%"><?php echo JText::_('COM_JEREGISTER_PROFILE_DESCRIPTION'); ?></th>
 			<th width="2%"><?php echo JText::_('COM_JEREGISTER_PROFILE_LATITUDE'); ?></th>
 			<th width="2%"><?php echo JText::_('COM_JEREGISTER_PROFILE_LONGITUDE'); ?></th>
 			<th width="4%"><?php echo JText::_('COM_JEREGISTER_PROFILE_FACEBOOK'); ?></th>
 			<th width="6%"><?php echo JText::_('COM_JEREGISTER_PROFILE_TAGS'); ?></th>
+			<th width="1%"><?php echo JText::_('COM_JEREGISTER_PROFILE_PUBLISHED');?></th>
 		</tr>
 		</thead>
 		<tfoot>
@@ -66,6 +67,7 @@ defined('_JEXEC') or die('Restricted Access');
 						<td><?php echo $row->longitude ?? "null"; ?></td>
 						<td><?php echo $row->facebook ?? "null"; ?></td>
 						<td><?php echo $row->tags ?? "null"; ?></td>
+						<td><?php echo $row->published ? "Yes" : "No"; ?></td>
 					</tr>
 				<?php endforeach; ?>
 			<?php endif; ?>

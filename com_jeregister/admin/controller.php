@@ -1,34 +1,13 @@
 <?php
-/**
- * @package     Joomla.Administrator
- * @subpackage  com_helloworld
- *
- * @copyright   Copyright (C) 2005 - 2018 Open Source Matters, Inc. All rights reserved.
- * @license     GNU General Public License version 2 or later; see LICENSE.txt
- */
 
-// No direct access to this file
 defined('_JEXEC') or die('Restricted access');
 
-/**
- * General Controller of HelloWorld component
- *
- * @package     Joomla.Administrator
- * @subpackage  com_helloworld
- * @since       0.0.7
- */
 class JeRegisterController extends JControllerLegacy
 {
-	/**
-	 * The default view for the display method.
-	 *
-	 * @var string
-	 * @since 12.2
-	 */
 	protected $default_view = 'profiles';
 
 	public function import_articles($key = null)
-	{
+	{/*
 		$option = array();
 		$option['driver']   = 'mysql';
 		$option['host']     = '192.168.1.19';
@@ -44,12 +23,52 @@ class JeRegisterController extends JControllerLegacy
 		$db->setQuery((string) $query);
 		
 		$recipes = $db->loadObjectList();
+*/
+
+		//this code converts excel csv to array
+		$csvData = file_get_contents(JPATH_ROOT . "/tmp/recipes2.csv");
+		$csvData = str_replace("\r", "", $csvData);
+
+		$first_line = strtok($csvData, "\n");
+		$headers = explode(",", $first_line);
+		$data = array();
+		$row = array();
+		$buffer = "";
+		$enclosure = false;
+		$h = 0;
+		for ($i=0; $i<strlen($csvData); $i++) {
+			$char = $csvData[$i];
+			if ($char == "," && $enclosure == false) {
+				$row[$headers[$h]] = $buffer;
+				$buffer = "";
+				$h++;
+			}
+			else if ($char == "\"" && $enclosure == false) {
+				$enclosure = true;
+			}
+			else if ($char == "\"" && $enclosure == true) {
+				$enclosure = false;
+			}
+			else if ($char == "\n" && $enclosure == false) {
+				$row[$headers[$h]] = $buffer;
+				$buffer = "";
+				$data[] = $row;
+				$row = array();
+				$h = 0;
+			}
+			else {
+				$buffer .= $char;
+			}
+		}
+
+		array_shift($data); //begone header!
+		echo "<Pre>"; print_r($data); die;
 
 		$basePath = JPATH_ADMINISTRATOR.'/components/com_content';
 		require_once $basePath.'/models/article.php';
 
 		foreach ($recipes as $index => $recipe) {
-			if ($recipe->id > 158) {
+			if ($recipe->id > -1) {
 				$ingredients = "<h3>Ingredients</h3>" . $recipe->ingredients;
 				$directions = "<h3>Directions</h3>" . $recipe->directions;
 				$serves = "<h3>Serves</h3>" . $recipe->serves;
@@ -74,7 +93,7 @@ class JeRegisterController extends JControllerLegacy
 					'tags' => array("2", "3", "4")
 				);
 
-				$article_model =  JModelLegacy::getInstance('Article','ContentModel');
+				$article_model = JModelLegacy::getInstance('Article','ContentModel');
 				if (!$article_model->save($article_data)) {
 					$err_msg = $article_model->getError();
 					echo $err_msg; die;
@@ -82,4 +101,5 @@ class JeRegisterController extends JControllerLegacy
 			}
 		}
 	}
+
 }
