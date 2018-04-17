@@ -50,7 +50,7 @@ defined('_JEXEC') or die('Restricted access');
         }
     ?>
         <div class="grid-item <?php echo implode(" ", $filter_classes); ?>">
-            <a href="index.php?option=com_jeregister&view=farm_profile&id=<?=$id?>">
+            <a href="index.php?option=com_jeregister&view=farmprofile&id=<?=$id?>">
                 <strong><?php echo $profile->farm_name; ?></strong>
                 <p>
                     <?php echo $profile->address; ?><br>

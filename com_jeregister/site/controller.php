@@ -24,7 +24,6 @@ class JeRegisterController extends JControllerLegacy
                 $page = $app->getUserState("com_jeregister.page", "declaration");
                 break;
         }
-
         JRequest::setVar('view', $page);
         JRequest::setVar('layout', $page);
 

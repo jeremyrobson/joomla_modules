@@ -9,12 +9,10 @@ class JeRegisterViewFarmProfile extends JViewLegacy
     {
         $jinput = JFactory::getApplication()->input;
         $profile_id = $jinput->get("id");
-        
-        echo $profile_id; die;
 
-        //if (empty($profile_id)) {
-        //    JError::raiseError(404, "That profile does not exist!");
-        //};
+        if (empty($profile_id)) {
+            JError::raiseError(404, "That profile does not exist!");
+        };
 
         $db = JFactory::getDbo();
         $db->setQuery("SELECT * FROM `#__farm_profile` WHERE id = $profile_id");
@@ -37,7 +35,7 @@ class JeRegisterViewFarmProfile extends JViewLegacy
         JHtml::_('jquery.framework');
 
         $document = JFactory::getDocument();
-        $document->setTitle(JText::_('COM_JEREGISTER_FARMMAP'));
+        $document->setTitle(JText::_('COM_JEREGISTER_FARMPROFILE'));
         $document->addScript("http://maps.googleapis.com/maps/api/js?key=$GOOGLE_API_KEY");
         $document->addScript(JURI::root() . "administrator/components/com_jeregister/models/forms/farmprofile.js");
         $document->addScriptDeclaration("

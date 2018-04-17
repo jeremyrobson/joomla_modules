@@ -2,7 +2,7 @@
 defined('_JEXEC') or die('Restricted access');
 ?>
 
-<h2><?=$this->profile->farm_name; ?></h2>
+<h4><?=$this->profile->farm_name; ?></h4>
 <p><?=$this->profile->description; ?></p>
 
 <div class="row">
@@ -29,11 +29,11 @@ defined('_JEXEC') or die('Restricted access');
                 <td><?=$this->profile->contact; ?></td>
             </tr>
             <tr>
-                <th>email</td>
+                <th>Email</td>
                 <td><a href="mailto:<?=$this->profile->email; ?>"><?=$this->profile->email; ?></a></td>
             </tr>
             <tr>
-                <th>website</td>
+                <th>Website</td>
                 <td><a href="<?=$this->profile->website; ?>"><?=$this->profile->website; ?></a></td>
             </tr>
             <tr>

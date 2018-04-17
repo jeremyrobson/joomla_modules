@@ -45,6 +45,6 @@ class JeRegisterViewFarmProfiles extends JViewLegacy
         JHtml::_('jquery.framework');
 
         $document = JFactory::getDocument();
-        $document->setTitle(JText::_('COM_JEREGISTER_FARMMAP'));
+        $document->setTitle(JText::_('COM_JEREGISTER_FARMPROFILES'));
     }
 }
