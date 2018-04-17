@@ -10,6 +10,12 @@ class JeRegisterViewFarmProfile extends JViewLegacy
         $jinput = JFactory::getApplication()->input;
         $profile_id = $jinput->get("id");
         
+        echo $profile_id; die;
+
+        //if (empty($profile_id)) {
+        //    JError::raiseError(404, "That profile does not exist!");
+        //};
+
         $db = JFactory::getDbo();
         $db->setQuery("SELECT * FROM `#__farm_profile` WHERE id = $profile_id");
         $db->query();
