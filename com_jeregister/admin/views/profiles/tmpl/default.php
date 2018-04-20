@@ -1,7 +1,5 @@
 <?php
 defined('_JEXEC') or die('Restricted Access');
-
-
 ?>
 <form action="index.php?option=com_jeregister&view=profiles" method="post" id="adminForm" name="adminForm">
 	<table class="table table-striped table-hover">
@@ -66,15 +64,15 @@ defined('_JEXEC') or die('Restricted Access');
 						</td>
 						<td>
 							<a href="<?php echo JUri::base(); ?>index.php?option=com_jeregister&task=profile.edit&id=<?php echo $row->id; ?>">
-								View Profile
+								Profile
 							</a>
 							&nbsp;
 							<a href="<?php echo JUri::base(); ?>index.php?option=com_jeregister&view=declaration&id=<?php echo $row->id; ?>">
-								View Declaration
+								Declaration
 							</a>
 							&nbsp;
 							<a href="<?php echo JUri::base(); ?>index.php?option=com_jeregister&task=transactions.view&user_id=<?php echo $row->id; ?>">
-								View Transactions
+								Transactions
 							</a>
 						</td>
 						<td align="center">

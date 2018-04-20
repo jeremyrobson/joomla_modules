@@ -1,13 +1,20 @@
 <?php
 defined('_JEXEC') or die('Restricted access');
 
-class JeRegisterViewProfiles extends JViewLegacy
+class JeRegisterViewDeclarations extends JViewLegacy
 {
 
 	function display($tpl = null)
 	{
 		$this->items = $this->get('Items');
 		$this->pagination = $this->get('Pagination');
+
+		JToolBarHelper::title(JText::_("COM_JEREGISTER_DECLARATIONS"));
+
+		if (JFactory::getUser()->authorise('core.admin', 'com_jeregister')) 
+		{
+			JToolBarHelper::preferences('com_jeregister');
+		}
 
 		$this->addToolBar();
 
@@ -20,14 +27,12 @@ class JeRegisterViewProfiles extends JViewLegacy
 	{
 		$title = JText::_('COM_JEREGISTER_MANAGER_REGISTRATIONS');
 
-		JToolBarHelper::custom("registrations.import", "archive", "", "Import CSV", false);
-		JToolBarHelper::custom("declarations.list", "archive", "", "View Declarations", false);
+		JToolBarHelper::custom("declarations.export", "archive", "", "Download Declarations CSV", false);
 	}
 
 	protected function setDocument() 
 	{
 		$document = JFactory::getDocument();
-		$document->setTitle(JText::_('COM_JEREGISTER_PROFILES'));
-		JToolBarHelper::title("BGO Profiles");
+		$document->setTitle(JText::_('COM_JEREGISTER_DECLARATIONS'));
 	}
 }
