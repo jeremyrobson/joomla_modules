@@ -33,7 +33,7 @@ defined('_JEXEC') or die('Restricted Access');
 		</thead>
 		<tfoot>
 			<tr>
-				<td colspan="5">
+				<td colspan="8">
 					<?php echo $this->pagination->getListFooter(); ?>
 				</td>
 			</tr>
@@ -67,7 +67,7 @@ defined('_JEXEC') or die('Restricted Access');
 								Profile
 							</a>
 							&nbsp;
-							<a href="<?php echo JUri::base(); ?>index.php?option=com_jeregister&view=declaration&id=<?php echo $row->id; ?>">
+							<a href="<?php echo JUri::base(); ?>index.php?option=com_jeregister&view=declarations&id=<?php echo $row->id; ?>">
 								Declaration
 							</a>
 							&nbsp;

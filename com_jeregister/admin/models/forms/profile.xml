@@ -187,12 +187,10 @@
 			/>
 		<field
 			name="tags"
-			type="tag"
-			custom="deny"
+			type="profiletags"
 			label="JTAG"
 			description="JTAG_DESC"
-			mode="ajax"
-			class="inputbox span12 small"
+			class="inputbox"
 			multiple="true"
 			/>
 		<field

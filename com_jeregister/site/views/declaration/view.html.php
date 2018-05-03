@@ -6,7 +6,6 @@ class JeRegisterViewDeclaration extends JViewLegacy
 {
 
 	protected $form = null;
-	protected $canDo;
 
 	public function display($tpl = null)
 	{
@@ -15,15 +14,6 @@ class JeRegisterViewDeclaration extends JViewLegacy
 		$this->script = $this->get('Script'); 
 		$this->item = $this->get("Item");
 
-		$this->canDo = JHelperContent::getActions('com_jeregister');
-		if (!($this->canDo->get('core.create'))) 
-		{
-			$app = JFactory::getApplication(); 
-			$app->enqueueMessage(JText::_('JERROR_ALERTNOAUTHOR'), 'error');
-			$app->setHeader('status', 403, true);
-			return;
-		}
-        
 		if (count($errors = $this->get('Errors')))
 		{
 			throw new Exception(implode("\n", $errors), 500);

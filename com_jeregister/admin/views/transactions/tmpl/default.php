@@ -21,7 +21,10 @@ defined('_JEXEC') or die('Restricted Access');
 			<th width="20%">
 				<?php echo JText::_('COM_JEREGISTER_PAYMENT_METHOD'); ?>
 			</th>
-			<th width="20%">
+			<th width="15%">
+				<?php echo JText::_('COM_JEREGISTER_TRANSACTION_DATE'); ?>
+			</th>
+			<th width="5%">
 				<?php echo JText::_('COM_JEREGISTER_STATUS'); ?>
 			</th>
 			<th width="2%">
@@ -31,7 +34,7 @@ defined('_JEXEC') or die('Restricted Access');
 		</thead>
 		<tfoot>
 			<tr>
-				<td colspan="5">
+				<td colspan="8">
 					<?php echo $this->pagination->getListFooter(); ?>
 				</td>
 			</tr>
@@ -56,6 +59,9 @@ defined('_JEXEC') or die('Restricted Access');
 						</td>
 						<td>
 							<?php echo $row->payment_method ?? "Unknown"; ?>
+						</td>
+						<td>
+							<?php echo $row->date; ?>
 						</td>
 						<td>
 							<?php echo $row->status; ?>

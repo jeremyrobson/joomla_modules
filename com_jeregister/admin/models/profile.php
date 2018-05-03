@@ -8,6 +8,11 @@ class JeRegisterModelProfile extends JModelAdmin
 		return JTable::getInstance($type, $prefix, $config);
 	}
 
+    protected function prepareTable($table)
+    {
+        $table->tags = implode(",", $table->tags);
+    }
+
 	public function getForm($data = array(), $loadData = true)
 	{
 		$form = $this->loadForm(
@@ -42,5 +47,5 @@ class JeRegisterModelProfile extends JModelAdmin
 		}
 
 		return $data;
-	}
+    }
 }

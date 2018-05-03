@@ -48,10 +48,7 @@ class JeRegisterControllerSummary extends JControllerForm
 		//save registration_id in session
 		$app->setUserState("com_jeregister.registration_id", $registration_id);
 
-		$this->setRedirect(
-				$currentUri,
-				JText::_('COM_JEREGISTER_DECLARATION_SAVED')
-				);
+		$this->setRedirect($currentUri, JText::_('COM_JEREGISTER_DECLARATION_SAVED'));
             
 		return true;
         

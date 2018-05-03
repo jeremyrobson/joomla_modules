@@ -21,7 +21,8 @@ class JeRegisterControllerInvoice extends JControllerForm
 		$data = $input->get('jform', array(), 'array');
 		$currentUri = (string)JUri::getInstance();
 
-		$model = $this->getModel();
+        $model = $this->getModel();
+        
 		$form = $model->getForm($data, false);
 
 		if (!$form) {
@@ -64,23 +65,39 @@ class JeRegisterControllerInvoice extends JControllerForm
 		//save transaction
 		$transaction->save($data);
 
-        //todo: create profile
-        if (RegistrationHelper::createProfile($registration_id)) {
-            $currentUri = (string)JUri::getInstance();
-            
-            //set next page in session
+        $current_user = JFactory::getUser();
+        $user_id = $current_user->id;
+
+        $currentUri = (string)JUri::getInstance();
+
+        //create or update profile
+        if (RegistrationHelper::createOrUpdateProfile($user_id)) {
             $app->setUserState("com_jeregister.page", "thankyou");
 
             $this->setRedirect(
                 $currentUri,
-                JText::_('COM_JEREGISTER_DECLARATION_SAVED')
+                JText::_('COM_JEREGISTER_DECLARATION_SAVED_SUCCESS')
             );
-                
+            
+            //send email to user and admins
+            $params = array(
+                "username" => $current_user->get("username"),
+                "email" => $current_user->get("email")
+            );
+            
+            RegistrationHelper::send_email($params);
+            
             return true;
         }
         else {
-            //error creating profile
+            $app->setUserState("com_jeregister.page", "invoice");
+
+            $this->setRedirect(
+                $currentUri,
+                JText::_('COM_JEREGISTER_DECLARATION_SAVED_FAILED')
+            );
         }
+
     }
 
 }

@@ -112,7 +112,7 @@ JHtml::_('behavior.formvalidator');
 							<td><?php echo $data->june_strawberry_non_bearing_acres; ?></td>
 						</tr>
 						<tr>
-							<th><?php echo JText::_('COM_JEREGISTER_DECLARATION_DAY_NEUTRAL_STRAWBERRY_BEARING_ACRES'); ?></th>
+							<th><?php echo JText::_('COM_JEREGISTER_DECLARATION_DAY_NEUTRAL_STRAWBERRY'); ?></th>
 							<td><?php echo $data->day_neutral_strawberry_bearing_acres; ?></td>
 						</tr>
 						<tr>

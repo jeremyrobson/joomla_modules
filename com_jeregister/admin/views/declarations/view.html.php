@@ -27,6 +27,7 @@ class JeRegisterViewDeclarations extends JViewLegacy
 	{
 		$title = JText::_('COM_JEREGISTER_MANAGER_REGISTRATIONS');
 
+		JToolBarHelper::back();
 		JToolBarHelper::custom("declarations.export", "archive", "", "Download Declarations CSV", false);
 	}
 

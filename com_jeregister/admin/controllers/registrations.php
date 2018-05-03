@@ -71,6 +71,15 @@ class JeRegisterControllerRegistrations extends JControllerForm
 
 	}
 
+    public function createUsername($in) {
+        $out = $in;
+        $out = preg_replace("/[&\.\']/", "", $out);
+        $out = preg_replace("/[\s\-]/", "_", $out);
+        $out = preg_replace("/__/", "_", $out);
+        $out = strtolower($out);
+        return $out;
+    }
+
 	public function process1($key = null, $urlVar = null)
 	{
 		$app = JFactory::getApplication();
@@ -95,26 +104,26 @@ class JeRegisterControllerRegistrations extends JControllerForm
 		$groups = $db->loadObjectList("id");
 		$group_ids = array_keys($groups);
 
+        $count = 0;
+        $existing = array();
+
 		jimport('joomla.user.helper');
 
 		foreach ($items as $index => $item) {
+            $username = !empty($item->email) ? trim($item->email) : $this->createUsername($item->farm_name);
+            $email = !empty($item->email) ? trim($item->email) : "jeremy.robson+$username@gmail.com";
+            $contact = !empty($item->contact) ? trim($item->contact) : $item->farm_name;
+
 			$query = $db->getQuery(true);
 			$query->select("*");
 			$query->from("#__users");
-			$query->where("email = '$item->email'");
+			$query->where("email = '$email'");
 			$db->setQuery((string) $query);
 
 			//don't add existing emails
 			if (count($db->loadObjectList())) {
+                $existing[] = $email;
 				continue;
-			}
-
-			$username = !empty($item->email) ? trim($item->email) : "newuser" . random_int(10000, 100000);
-			$email = !empty($item->email) ? trim($item->email) : "jeremy.robson+$username@gmail.com";
-			$contact = !empty($item->contact) ? trim($item->contact) : $item->farm_name;
-
-			if ($email === "lindleyfarmand market@gmail.com") {
-				$email = "lindleysfarmandmarket@gmail.com";
 			}
 
 			$data = array(
@@ -164,11 +173,22 @@ class JeRegisterControllerRegistrations extends JControllerForm
 			$profile->acres_fall_strawberry = preg_match('/\d+(\.\d+)?/', $item->acres_fall_strawberry, $matches);
 			$profile->acres_fall_raspberry = preg_match('/\d+(\.\d+)?/', $item->acres_fall_raspberry, $matches);
 
-			$db->insertObject("#__farm_profile", $profile, $user->id);
+            $db->insertObject("#__farm_profile", $profile, $user->id);
+            $count++;
 		}
 
-		$message = JText::_("COM_JEREGISTER_IMPORT_COMPLETE");
-		$this->setRedirect(JRoute::_("index.php?option=com_jeregister&view=import", false), $message, "success");
+        $message = "Import Complete<br>";
+        $message = "Imported $count users<br>";
+
+        if (count($existing)) {
+            $message .= "<br>The following users could not be created because their emails already exist:<br>";
+            $message .= implode("<br>", $existing);
+            $status = "warning";
+        }
+        else {
+            $status = "success";
+        }
+		$this->setRedirect(JRoute::_("index.php?option=com_jeregister&view=import", false), JText::_($message), $status);
 	}
 
 	public function cancel($key = null, $urlVar = null)

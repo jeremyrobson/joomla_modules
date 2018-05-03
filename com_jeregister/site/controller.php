@@ -20,7 +20,7 @@ class JeRegisterController extends JControllerLegacy
             case "farmprofiles":
                 $page = "farmprofiles";
                 break;
-            case "declaration":
+            default:
                 $page = $app->getUserState("com_jeregister.page", "declaration");
                 break;
         }

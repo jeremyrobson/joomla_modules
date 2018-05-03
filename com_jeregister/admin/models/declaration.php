@@ -2,7 +2,7 @@
 
 defined('_JEXEC') or die('Restricted access');
 
-class JeRegisterModelDeclaration extends JModelAdmin
+class JeRegisterModelDeclaration extends JModelAdmin //might not be used
 {
 	public function getTable($type = 'Declaration', $prefix = 'JeRegisterTable', $config = array())
 	{
@@ -12,6 +12,8 @@ class JeRegisterModelDeclaration extends JModelAdmin
 	public function getItem($pk = null)
 	{
 		$user = JFactory::getUser();
+
+        echo "<pre>"; print_r($user); die;
 
 		$db = JFactory::getDbo();
 		$query = $db->getQuery(true);

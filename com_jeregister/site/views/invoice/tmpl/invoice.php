@@ -1,6 +1,11 @@
 <?php
 defined('_JEXEC') or die('Restricted access');
 JHtml::_('behavior.formvalidator');
+
+$fee = $this->form->getValue("membership_fee");
+$tax = 0;
+$total = number_format($fee + $tax, 2);
+
 ?>
 
 <form action="<?php echo JRoute::_('index.php?option=com_jeregister&view=invoice&layout=invoice'); ?>"
@@ -11,9 +16,11 @@ JHtml::_('behavior.formvalidator');
 			<legend><?php echo JText::_('COM_JEREGISTER_INVOICE_DETAILS_LEGEND') ?></legend>
 			<div class="row-fluid">
 				<div class="span12">
-					<p>Producer Name:				<?php echo $this->form->getValue("producer_name"); ?></p>
-					<p>User Name:					<?php echo $this->form->getValue("name"); ?></p>
-					<p>Membership Fee:				<?php echo "$" . number_format($this->form->getValue("membership_fee"), 2); ?></p>
+					<p>Producer Name:					<?php echo $this->form->getValue("producer_name"); ?></p>
+					<p>User Name:						<?php echo $this->form->getValue("name"); ?></p>
+					<p>Membership Fee:					<?php echo "$" . $fee; ?></p>
+					<p>Tax:								<?php echo "$" . $tax; ?></p>
+					<p style="font-weight: 700;">Total:	<?php echo "$" . $total; ?></p>
 				</div>
 				<div class="span12">
 					<?php echo $this->form->renderFieldset('invoice_details');  ?>
@@ -34,7 +41,10 @@ JHtml::_('behavior.formvalidator');
                     </p>
 				</div>
 				<div class="span12 payment_method_div" id="etransfer_div" style="display: none;">
-					e-transfer
+					<p>Please send an e-transfer to:</p>
+                    <p style="font-weight: 700;">
+                        info@ontarioberries.com
+                    </p>
 				</div>
 			</div>
 		</fieldset>

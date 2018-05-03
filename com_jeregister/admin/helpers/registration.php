@@ -4,6 +4,37 @@ defined('_JEXEC') or die('Restricted access');
 
 abstract class RegistrationHelper
 {
+	public static function send_email($params) {
+        $mailer = JFactory::getMailer();
+        $mailer->isHTML(true);
+        $mailer->setSender("info@ontarioberries.com");
+        $mailer->addRecipient($params["email"]);
+        $mailer->addBcc("jeremy@dragonflyit.ca");
+        $mailer->addBcc("info@ontarioberries.com");
+        $mailer->setSubject("Thank you for submitting you Ontario Berry Growser Declaration for the 2018 season!");
+        
+        require_once(JPATH_ROOT .'/components/com_jeregister/models/summary.php');
+        require_once(JPATH_ROOT .'/components/com_jeregister/views/summary/view.html.php');
+        
+        $model = JModelLegacy::getInstance("Summary", "JeregisterModel");
+
+        $view = new JeRegisterViewSummary();
+        $view->item = $model->getItem();
+
+		try {
+            ob_start();
+            $view->setLayout("summary");
+            $view->display();
+            $body = ob_get_clean();
+            $mailer->setBody($body);
+			$mailer->send();
+		}
+		catch (Exception $e){
+            echo $e->getMessage(); die;
+			JLog::add('Caught exception: ' . $e->getMessage(), JLog::Error, 'jerror');
+		}
+    }
+
     public static function getRegistrationStatus($user_id) {
 		$db = JFactory::getDbo();
 		$query = $db->getQuery(true);
@@ -30,15 +61,27 @@ abstract class RegistrationHelper
         }
     }
 
-    public static function createProfile($registration_id) {
-        $app = JFactory::getApplication();
+    public static function createOrUpdateProfile($user_id) {
+		$db = JFactory::getDbo();
+		$query = $db->getQuery(true);
+		$query
+			->select(array("*"))
+			->from("#__registration")
+			->where("user_id = " . $user_id);
+		$db->setQuery($query);
+        $registration = $db->loadObject();
+        $json = json_decode($registration->json);
 
-        $registration_model = $app->getModel("registration");
-        $registration = $registration_model->getItem($registration_id);
+        $profile = JModelLegacy::getInstance("farmprofile", "JeregisterModel");
 
-        $profile = $app->getModel("profile");
-        $profile->id = $registration["user_id"];
+        /*
+        echo "<pre>"; print_r($json); die;
+
+        $profile->id = $user_id;
         $profile->farm_name = $registration["main"]["farm_name"];
         return $profile->save();
+        */
+
+        return true;
     }
 }
