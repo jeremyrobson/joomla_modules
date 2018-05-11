@@ -10,7 +10,7 @@
 	<copyright>2018</copyright>
 	<license>Free</license>
 	<!--  The version string is recorded in the components table -->
-	<version>0.0.19</version>
+	<version>0.0.20</version>
 	<!-- The description is optional and defaults to the name -->
 	<description>A cool component for cool websites only</description>
 
