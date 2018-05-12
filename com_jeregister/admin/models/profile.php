@@ -10,7 +10,8 @@ class JeRegisterModelProfile extends JModelAdmin
 
     protected function prepareTable($table)
     {
-        $table->tags = implode(",", $table->tags);
+        //$table->tags = implode(",", $table->tags); //only if converting to/from multi-select
+        //note: the field "tags" is reserved by joomla in AdminModel.php, use "profile_tags" instead!
     }
 
 	public function getForm($data = array(), $loadData = true)

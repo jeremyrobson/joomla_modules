@@ -49,7 +49,7 @@ CREATE TABLE `#__farm_profile` (
 	`latitude`		DECIMAL(10,8)	NOT NULL,
 	`longitude`		DECIMAL(11,8)	NOT NULL,
 	`facebook`		VARCHAR(255)	NULL,
-	`tags`			VARCHAR(255)	NULL,		
+	`profile_tags`			VARCHAR(255)	NULL,		
 	`published`		INT(1)		NOT NULL DEFAULT 1
 )
     ENGINE = MyISAM

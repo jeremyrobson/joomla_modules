@@ -15,8 +15,6 @@ class JeRegisterViewProfile extends JViewLegacy
 		$this->script = $this->get('Script');
 		$this->canDo = JHelperContent::getActions('com_jeregister', 'profile', $this->item->id);
 
-        $this->item->tags = explode(",", $this->item->tags);
-
 		if (count($errors = $this->get('Errors')))
 		{
 			throw new Exception(implode("\n", $errors), 500);

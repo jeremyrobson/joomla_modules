@@ -13,7 +13,7 @@ $id = (int) $this->item->id;
 			<legend><?php echo JText::_('COM_JEREGISTER_PROFILE_EDIT') ?></legend>
 			<div class="row-fluid">
 				<div class="span6">
-					<?php echo $this->form->renderFieldset('details');  ?>
+					<?php echo $this->form->renderFieldset('profile');  ?>
 				</div>
 			</div>
 		</fieldset>

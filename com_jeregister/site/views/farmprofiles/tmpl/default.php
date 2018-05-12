@@ -44,7 +44,7 @@ defined('_JEXEC') or die('Restricted access');
     <?php foreach ($this->farm_profiles as $id => $profile):
         $filter_classes = array();
         $filter_classes[] = "letter-" . substr($profile->farm_name, 0, 1);
-        $tags = explode(",", $profile->tags);
+        $tags = explode(",", $profile->profile_tags);
         foreach ($tags as $tag) {
             $filter_classes[] = $tag;
         }

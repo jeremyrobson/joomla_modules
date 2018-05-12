@@ -3,8 +3,8 @@
     addrulepath="/administrator/components/com_jeregister/models/rules"
     >
     <fieldset
-				name="details"
-				label="COM_JEREGISTER_PROFILE_DETAILS"
+			name="profile"
+			label="COM_JEREGISTER_PROFILE"
 	>
 		<field
 			name="id"
@@ -186,12 +186,13 @@
 			default=""
 			/>
 		<field
-			name="tags"
-			type="profiletags"
-			label="JTAG"
-			description="JTAG_DESC"
+			name="profile_tags"
+			type="text"
+			label="COM_JEREGISTER_PROFILE_TAGS"
+			description="COM_JEREGISTER_PROFILE_TAGS_DESC"
 			class="inputbox"
-			multiple="true"
+			size="255"
+			default=""
 			/>
 		<field
 			name="published"
