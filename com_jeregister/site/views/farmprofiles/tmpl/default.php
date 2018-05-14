@@ -72,6 +72,9 @@ defined('_JEXEC') or die('Restricted access');
         }
 
         $(document).ready(function() {
+            afilter = $("#letter-select").val();
+            bfilter = $("#berry-type-select").val();
+
             $("#letter-select").on("change", function() {
                 afilter = $(this).val();
                 filter(afilter, bfilter);
@@ -86,6 +89,8 @@ defined('_JEXEC') or die('Restricted access');
                 itemSelector: '.grid-item',
                 layoutMode: 'fitRows'
             });
+
+            filter(afilter, bfilter);
         });
     })(jQuery);
 

@@ -28,7 +28,7 @@ class JeRegisterViewFarmProfiles extends JViewLegacy
             "saskatoon-berries" => "Saskatoon Berries",
             "currants" => "Currants",
             "gooseberries" =>"Gooseberries",
-            "elterberries" => "Elderberries",
+            "elderberries" => "Elderberries",
             "haskaps" => "Haskaps",
             "sea-buckthorn" => "Sea Buckthorn"
         );
