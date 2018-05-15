@@ -2,7 +2,7 @@
 defined('_JEXEC') or die('Restricted access');
 JHtml::_('behavior.formvalidator');
 
-$fee = $this->form->getValue("membership_fee");
+$fee = $this->form->getValue("membership_fee") ?? 100;
 $tax = 0;
 $total = number_format($fee + $tax, 2);
 
@@ -29,7 +29,7 @@ $total = number_format($fee + $tax, 2);
 					paypal
 				</div>
 				<div class="span12 payment_method_div" id="credit_div" style="display: none;">
-					credit card
+					<button type="button" id="test">test</button> 
 				</div>
 				<div class="span12 payment_method_div" id="cheque_div" style="display: none;">
 					<p>Please mail your cheque to:</p>

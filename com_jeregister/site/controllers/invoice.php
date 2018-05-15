@@ -100,4 +100,18 @@ class JeRegisterControllerInvoice extends JControllerForm
 
     }
 
+    public function test() {
+        $a = JFactory::getApplication()->input->get('test');
+
+        $data = array(
+            "test" => $a
+        );
+
+        JFactory::getDocument()->setMimeEncoding('application/json');
+        JResponse::setHeader('Content-Disposition','attachment;filename="progress-report-results.json"');
+
+        echo json_encode($data);
+
+        jexit();
+    }
 }

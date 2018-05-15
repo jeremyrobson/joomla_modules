@@ -2,6 +2,8 @@
 
 defined('_JEXEC') or die('Restricted access');
 
+require_once(JPATH_ROOT . '/libraries/stripe-php-6.7.1/lib/Stripe.php');
+
 class JeRegisterViewInvoice extends JViewLegacy
 {
 	protected $form = null;
@@ -14,8 +16,10 @@ class JeRegisterViewInvoice extends JViewLegacy
 		$page = $app->getUserState("$option.page", "1");
 
 		$this->form = $this->get("Form");
-		$this->item = $this->get("Item");
 		$this->script = $this->get("Script");
+
+        $this->STRIPE_API_SECRET_KEY = "sk_test_0F4ACQwFV5DmOYQVGJx0yDko";
+        $this->STRIPE_API_KEY = "pk_test_W0dpF99Dq117oQj7buKVUqxP";
 
 		parent::display($tpl);
 
