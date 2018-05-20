@@ -21,8 +21,10 @@ defined('_JEXEC') or die('Restricted access');
             <div class="col-md-6">
                 <i class="icon-phone"></i>&nbsp;<?=$this->profile->telephone; ?><br>
                 <a href="mailto:<?=$this->profile->email; ?>"><i class="icon-envelope"></i>&nbsp;<?=$this->profile->email; ?></a><br>
-                <a href="<?=$this->profile->website; ?>"><i class="icon-home"></i>&nbsp;Visit Website</a><br>
-                <a href="<?=$this->profile->facebook; ?>"><i class="icon-home"></i>&nbsp;Visit Facebook</a>
+                <a href="http://<?=$this->profile->website; ?>"><i class="icon-home"></i>&nbsp;Visit Website</a><br>
+                <?php if (!empty($this->profile->facebook)): ?>
+                    <a href="<?=$this->profile->facebook; ?>"><i class="icon-home"></i>&nbsp;Visit Facebook</a>
+                <?php endif; ?>
             </div>
         </div>
 
