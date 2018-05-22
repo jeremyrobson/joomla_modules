@@ -3,6 +3,8 @@ defined('_JEXEC') or die('Restricted Access');
 
 ?>
 <form action="index.php?option=com_jeregister&view=transactions" method="POST" id="adminForm" name="adminForm">
+	<input type="hidden" name="user_id" value="<?php echo $this->user_id; ?>" />
+
 	<table class="table table-striped table-hover">
 		<thead>
 		<tr>

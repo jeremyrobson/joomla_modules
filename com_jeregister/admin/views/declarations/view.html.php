@@ -11,11 +11,6 @@ class JeRegisterViewDeclarations extends JViewLegacy
 
 		JToolBarHelper::title(JText::_("COM_JEREGISTER_DECLARATIONS"));
 
-		if (JFactory::getUser()->authorise('core.admin', 'com_jeregister')) 
-		{
-			JToolBarHelper::preferences('com_jeregister');
-		}
-
 		$this->addToolBar();
 
 		parent::display($tpl);

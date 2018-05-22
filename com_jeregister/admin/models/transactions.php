@@ -30,10 +30,27 @@ class JeRegisterModelTransactions extends JModelList
 		foreach ($items as $id => $item) {
 			$json = json_decode($item->json, true);
 
-			foreach ($json as $key => $value) {
-				$items[$id]->$key = $value;
-			}
+            if (is_array($json)) {
+                foreach ($json as $key => $value) {
+                    $items[$id]->$key = $value;
+                }
+            }
 		}
 		return $items;
-	}
+    }
+    
+    public function delete()
+    {
+        $cids = JRequest::getVar('cid', array(0), 'post', 'array');
+        $row = $this->getTable();
+
+        foreach($cids as $cid) {
+            if (!$row->delete( $cid )) {
+                $this->setError( $row->getErrorMsg() );
+                return false;
+            }
+        }
+
+        return true;
+    }
 }
