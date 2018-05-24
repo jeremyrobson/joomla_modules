@@ -17,6 +17,7 @@ jQuery(function ($) {
             });
 
             $.each(farm_profiles, function () {
+                var link = this["profile_link"];
                 var infowindow = new google.maps.InfoWindow({
                     content: '<div>' +
                         '<div id="siteNotice">' +
@@ -34,7 +35,7 @@ jQuery(function ($) {
                         '<tr><th>Website</th><td>' + this["website"] + '</td></tr>' +
                         '</tbody>' +
                         '</table>' +
-                        '<a href="' + this["profile_link"] + '" class="btn pull-right">View Profile&nbsp;<i class="fa fa-arrow-right"></i></a>' +
+                        //'<a href="' + link + '" class="btn pull-right">View Profile&nbsp;<i class="fa fa-arrow-right"></i></a>' +
                         '</div>' +
                         '</div>'
                 });
@@ -49,7 +50,15 @@ jQuery(function ($) {
                 });
 
                 marker.addListener('click', function () {
+                    window.location = link;
+                });
+
+                marker.addListener('mouseover', function () {
                     infowindow.open(map, marker);
+                });
+
+                marker.addListener('mouseout', function () {
+                    infowindow.close();
                 });
             });
 
@@ -58,15 +67,15 @@ jQuery(function ($) {
         }
 
         if (typeof market_view !== "undefined") {
-            var center = { "lat": parseFloat(market_latlng["lat"]), "lng": parseFloat(market_latlng["lng"]) };
+            var latlng = new google.maps.LatLng(parseFloat(market_latlng["lat"]), parseFloat(market_latlng["lng"]));
 
             map = new google.maps.Map(document.getElementById("map"), {
                 zoom: 15,
-                center: center
+                center: latlng
             });
 
             var marker = new google.maps.Marker({
-                position: center,
+                position: latlng,
                 map: map
             });
 
