@@ -8,7 +8,7 @@ class JeRegisterViewFindAFarm extends JViewLegacy
     public function display($tpl = null)
     {
         $db = JFactory::getDbo();
-        $db->setQuery("SELECT * FROM `#__farm_profile`");
+        $db->setQuery("SELECT * FROM `#__farm_profile` WHERE `published` = 1");
         $db->query();
         $farm_profiles = $db->loadObjectList("id");
         
@@ -25,7 +25,8 @@ class JeRegisterViewFindAFarm extends JViewLegacy
 
     protected function setDocument()
     {
-        $GOOGLE_API_KEY = "AIzaSyAjNtOu6POzKyKwp7U3OgUfRkOaPcXtr90";
+        $params = JComponentHelper::getParams('com_jeregister');
+        $GOOGLE_API_KEY = $params->get('google_maps_api_key');
 
         JHtml::_('jquery.framework');
 

@@ -30,7 +30,8 @@ class JeRegisterViewFarmProfile extends JViewLegacy
 
     protected function setDocument()
     {
-        $GOOGLE_API_KEY = "AIzaSyAjNtOu6POzKyKwp7U3OgUfRkOaPcXtr90";
+        $params = JComponentHelper::getParams('com_jeregister');
+        $GOOGLE_API_KEY = $params->get('google_maps_api_key');
 
         JHtml::_('jquery.framework');
 

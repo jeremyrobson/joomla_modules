@@ -9,6 +9,11 @@ class JeRegisterViewProfiles extends JViewLegacy
 		$this->items = $this->get('Items');
 		$this->pagination = $this->get('Pagination');
 
+		if (JFactory::getUser()->authorise('core.admin', 'com_jeregister')) 
+		{
+			JToolBarHelper::preferences('com_jeregister');
+		}
+
 		$this->addToolBar();
 
 		parent::display($tpl);

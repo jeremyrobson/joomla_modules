@@ -48,5 +48,5 @@ class JeRegisterModelProfile extends JModelAdmin
 		}
 
 		return $data;
-    }
+	}
 }

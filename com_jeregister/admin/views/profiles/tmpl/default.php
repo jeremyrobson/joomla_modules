@@ -14,7 +14,7 @@ defined('_JEXEC') or die('Restricted Access');
 			<th width="15%">
 				<?php echo JText::_('COM_JEREGISTER_USERNAME'); ?>
 			</th>
-			<th width="30%">
+			<th width="25%">
 				<?php echo JText::_('COM_JEREGISTER_PROFILE_FARM_NAME'); ?>
 			</th>
 			<th width="20%">
@@ -25,6 +25,9 @@ defined('_JEXEC') or die('Restricted Access');
 			</th>
 			<th width="15%">
 				<?php echo JText::_('COM_JEREGISTER_ACTIONS'); ?>
+			</th>
+			<th width="5%">
+				<?php echo JText::_('COM_JEREGISTER_PAID'); ?>
 			</th>
 			<th width="2%">
 				<?php echo JText::_('COM_JEREGISTER_ID'); ?>
@@ -74,6 +77,13 @@ defined('_JEXEC') or die('Restricted Access');
 							<a href="<?php echo JUri::base(); ?>index.php?option=com_jeregister&task=transactions.view&user_id=<?php echo $row->id; ?>">
 								Transactions
 							</a>
+						</td>
+						<td>
+							<?php if ($row->paid): ?>
+								<div class="label label-success"><i class="icon-checkmark"></i>&nbsp;Paid</div>
+							<?php else: ?>
+								<div class="label label-danger"><i class="icon-remove"></i>&nbsp;Not paid</div>
+							<?php endif; ?>
 						</td>
 						<td align="center">
 							<?php echo $row->id; ?>

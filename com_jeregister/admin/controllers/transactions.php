@@ -18,10 +18,20 @@ class JeRegisterControllerTransactions extends JControllerAdmin
 		$view->setModel($model, true);
 		$view->display();
 	}
-	
-	public function cancel($key = null)
+
+	/*
+	public function delete($key = null)
+	{
+		$return = parent::delete($key, $urlVar);
+		$this->setRedirect(JRoute::_("index.php?option=com_jeregister&view=transactions&user_id=$this->user_id"));
+		return $return;
+	}
+*/
+
+	public function back($key = null)
 	{
 		$this->setRedirect(JRoute::_('index.php?option=com_jeregister&view=registrations'));
+		return;
 	}
 
 }

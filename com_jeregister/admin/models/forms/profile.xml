@@ -196,15 +196,8 @@
 			/>
 		<field
 			name="published"
-			type="hidden"
-			value="0"
-			/>
-		<field
-			name="published"
 			type="checkbox"
 			label="COM_JEREGISTER_PROFILE_PUBLISHED"
-			value="0"
-			default="0"
 			/>
 	</fieldset>
 </form>
