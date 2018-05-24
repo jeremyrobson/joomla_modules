@@ -1,0 +1,34 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+
+<extension type = "module" version = "1.0.0" client = "site" method="upgrade">
+
+   <name>FindAFarm</name>
+   <author>Jeremy Robson</author>
+   <version>1.0.0</version>
+   <description>Find a Farm!</description>
+   
+    <files>
+        <filename>mod_findafarm.xml</filename>
+        <filename module="mod_findafarm">mod_findafarm.php</filename>
+        <filename>index.html</filename>
+        <filename>helper.php</filename>
+        <filename>tmpl/default.php</filename>
+        <filename>tmpl/index.html</filename>
+        <filename>js/findafarm.js</filename>
+    </files>
+
+   <config>
+        <fields name="params">
+            <fieldset name="basic">
+                <field
+                    name="google_api_key"
+                    type="text"
+                    default=""
+                    label="Google API Key"
+                    description=""
+                    filter="raw" />
+            </fieldset>
+        </fields>
+   </config>
+
+</extension>
