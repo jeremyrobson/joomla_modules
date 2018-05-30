@@ -19,7 +19,7 @@ CREATE TABLE `#__transaction` (
     `registration_id`   INT(11)         NOT NULL,
     `json`              BLOB            NOT NULL,
     `date`              DATETIME        NOT NULL,
-    `status`            INT(11)         NOT NULL,
+    `status`            VARCHAR(255)    NOT NULL,
     PRIMARY KEY (`id`)
 )
     ENGINE = MyISAM

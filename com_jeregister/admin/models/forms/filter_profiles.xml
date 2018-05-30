@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fields name="filter">
+        <field
+            name="search"
+            type="text"
+            label="COM_JEREGISTER_SEARCH_PROFILES"
+            class="js-stools-search-string"
+        />
+        <field
+            name="payment_status"
+            type="list"
+            label="COM_JEREGISTER_PAID_FILTER"
+            statuses="not_paid,paid"
+            description="COM_JEREGISTER_PAID_FILTER_DESC"
+            onchange="this.form.submit();"
+        >
+            <option value="">-- Select --</option>
+            <option value="paid">COM_JEREGISTER_PAID</option>
+            <option value="not_paid">COM_JEREGISTER_NOT_PAID</option>
+        </field>
+        <field
+            name="username"
+            type="text"
+            label="COM_JEREGISTER_USERNAME"
+        />
+    </fields>
+
+    <fields name="list">
+        <field
+            name="fullordering"
+            type="list"
+            label="COM_JEREGISTER_PROFILE_FULL_ORDERING"
+            description="COM_JEREGISTER_PROFILE_FULL_ORDERING_DESC"
+            onchange="this.form.submit();"
+            default="b.username ASC"
+        >
+            <option value="">JGLOBAL_SORT_BY</option>
+        </field>
+        <field
+            name="limit"
+            type="limitbox"
+            class="input-mini"
+            default="25"
+            label="COM_CONTENT_LIST_LIMIT"
+            description="COM_JEREGISTER_LIST_LIMIT_DESC"
+            onchange="this.form.submit();"
+        />
+    </fields>
+</form>

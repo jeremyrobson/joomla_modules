@@ -2,6 +2,15 @@
 defined('_JEXEC') or die('Restricted Access');
 ?>
 <form action="index.php?option=com_jeregister&view=profiles" method="post" id="adminForm" name="adminForm">
+    <div class="row-fluid">
+        <div class="span6">
+            <?php
+                //requires models/forms/filter_profiles.xml
+                echo JLayoutHelper::render('joomla.searchtools.default', array('view' => $this));
+            ?>
+        </div>
+    </div>
+
 	<table class="table table-striped table-hover">
 		<thead>
 		<tr>
@@ -12,22 +21,22 @@ defined('_JEXEC') or die('Restricted Access');
 				<?php echo JHtml::_('grid.checkall'); ?>
 			</th>
 			<th width="15%">
-				<?php echo JText::_('COM_JEREGISTER_USERNAME'); ?>
+                <?php echo JHtml::_('searchtools.sort', 'COM_JEREGISTER_USERNAME', 'b.username', $this->sortDirection, $this->sortColumn); ?>
 			</th>
 			<th width="25%">
-				<?php echo JText::_('COM_JEREGISTER_PROFILE_FARM_NAME'); ?>
+				<?php echo JHtml::_('searchtools.sort', 'COM_JEREGISTER_PROFILE_FARM_NAME', 'a.farm_name', $this->sortDirection, $this->sortColumn); ?>
 			</th>
 			<th width="20%">
-				<?php echo JText::_('COM_JEREGISTER_PROFILE_CONTACT'); ?>
+                <?php echo JHtml::_('searchtools.sort', 'COM_JEREGISTER_PROFILE_CONTACT', 'a.contact', $this->sortDirection, $this->sortColumn); ?>
 			</th>
 			<th width="15%">
-				<?php echo JText::_('COM_JEREGISTER_PROFILE_EMAIL'); ?>
+                <?php echo JHtml::_('searchtools.sort', 'COM_JEREGISTER_PROFILE_EMAIL', 'a.email', $this->sortDirection, $this->sortColumn); ?>
 			</th>
 			<th width="15%">
 				<?php echo JText::_('COM_JEREGISTER_ACTIONS'); ?>
 			</th>
 			<th width="5%">
-				<?php echo JText::_('COM_JEREGISTER_PAID'); ?>
+				<?php echo JHtml::_('searchtools.sort', 'COM_JEREGISTER_PAYMENT_STATUS', 'a.status', $this->sortDirection, $this->sortColumn); ?>
 			</th>
 			<th width="2%">
 				<?php echo JText::_('COM_JEREGISTER_ID'); ?>
@@ -79,7 +88,7 @@ defined('_JEXEC') or die('Restricted Access');
 							</a>
 						</td>
 						<td>
-							<?php if ($row->paid): ?>
+							<?php if ($row->payment_status == "paid"): ?>
 								<div class="label label-success"><i class="icon-checkmark"></i>&nbsp;Paid</div>
 							<?php else: ?>
 								<div class="label label-danger"><i class="icon-remove"></i>&nbsp;Not paid</div>
@@ -95,5 +104,8 @@ defined('_JEXEC') or die('Restricted Access');
 	</table>
 
 	<input type="hidden" name="task" value="" />
+    <input type="hidden" name="listOrdering" value="<?php echo $this->sortColumn; ?>" />
+    <input type="hidden" name="listDirection" value="<?php echo $this->sortDirection; ?>" />
+
 	<?php echo JHtml::_('form.token'); ?>
 </form>

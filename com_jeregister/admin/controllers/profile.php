@@ -4,7 +4,6 @@ defined('_JEXEC') or die('Restricted access');
 
 class JeRegisterControllerProfile extends JControllerForm
 {
-
 	//must override save because parent redirects to "profiles" with an "s" by default
 	public function save($key = null, $urlVar = null)
 	{
@@ -19,5 +18,4 @@ class JeRegisterControllerProfile extends JControllerForm
 		$this->setRedirect(JRoute::_('index.php?option=com_jeregister&view=registrations'));
 		return $return;
 	}
-
 }
