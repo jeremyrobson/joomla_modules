@@ -3,15 +3,20 @@ defined('_JEXEC') or die('Restricted access');
 
 class JeRegisterModelProfiles extends JModelList
 {
-    protected function populateState($ordering = null, $direction = null)
+    public function __construct($config = array())
     {
-        $app = JFactory::getApplication();
+        $config['filter_fields'] = array(
+			'b.username',
+            'a.farm_name',
+            'a.contact',
+            'a.email',
+            'a.payment_status'
+        );
+        parent::__construct($config);
+    }
 
-        $ordering  = $app->input->get('listOrdering', $ordering);
-        $direction = $app->input->get('listDirection', $direction);
-
-        echo "populateState: ".$ordering.' - '.$direction.'<br />';
-
+    protected function populateState($ordering = "b.username", $direction = "asc")
+    {
         parent::populateState($ordering, $direction);
     }
 
@@ -46,10 +51,8 @@ class JeRegisterModelProfiles extends JModelList
         }
 
         $state = $this->state;
-        $query->order($db->escape($this->getState("list.ordering", "b.username")) . ' ' . $db->escape($this->getState("list.direction", "asc")));
+        $query->order($db->escape($this->state->get("list.ordering", "b.username")) . ' ' . $db->escape($this->state->get("list.direction", "asc")));
 
-        print_r($this->getState());
-        echo "<br>";
         //echo "<pre>" . $query->__toString(); die;
 
         return $query;

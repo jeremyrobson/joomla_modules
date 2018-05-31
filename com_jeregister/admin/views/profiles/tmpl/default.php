@@ -1,5 +1,8 @@
 <?php
 defined('_JEXEC') or die('Restricted Access');
+
+$sortColumn = $this->state->get('list.ordering', 'b.username');
+$sortDirection = $this->state->get('list.direction', 'asc');
 ?>
 <form action="index.php?option=com_jeregister&view=profiles" method="post" id="adminForm" name="adminForm">
     <div class="row-fluid">
@@ -21,22 +24,22 @@ defined('_JEXEC') or die('Restricted Access');
 				<?php echo JHtml::_('grid.checkall'); ?>
 			</th>
 			<th width="15%">
-                <?php echo JHtml::_('searchtools.sort', 'COM_JEREGISTER_USERNAME', 'b.username', $this->sortDirection, $this->sortColumn); ?>
+                <?php echo JHtml::_('searchtools.sort', 'COM_JEREGISTER_USERNAME', 'b.username', $sortDirection, $sortColumn); ?>
 			</th>
 			<th width="25%">
-				<?php echo JHtml::_('searchtools.sort', 'COM_JEREGISTER_PROFILE_FARM_NAME', 'a.farm_name', $this->sortDirection, $this->sortColumn); ?>
+				<?php echo JHtml::_('searchtools.sort', 'COM_JEREGISTER_PROFILE_FARM_NAME', 'a.farm_name', $sortDirection, $sortColumn); ?>
 			</th>
 			<th width="20%">
-                <?php echo JHtml::_('searchtools.sort', 'COM_JEREGISTER_PROFILE_CONTACT', 'a.contact', $this->sortDirection, $this->sortColumn); ?>
+                <?php echo JHtml::_('searchtools.sort', 'COM_JEREGISTER_PROFILE_CONTACT', 'a.contact', $sortDirection, $sortColumn); ?>
 			</th>
 			<th width="15%">
-                <?php echo JHtml::_('searchtools.sort', 'COM_JEREGISTER_PROFILE_EMAIL', 'a.email', $this->sortDirection, $this->sortColumn); ?>
+                <?php echo JHtml::_('searchtools.sort', 'COM_JEREGISTER_PROFILE_EMAIL', 'a.email', $sortDirection, $sortColumn); ?>
 			</th>
 			<th width="15%">
 				<?php echo JText::_('COM_JEREGISTER_ACTIONS'); ?>
 			</th>
 			<th width="5%">
-				<?php echo JHtml::_('searchtools.sort', 'COM_JEREGISTER_PAYMENT_STATUS', 'a.status', $this->sortDirection, $this->sortColumn); ?>
+				<?php echo JHtml::_('searchtools.sort', 'COM_JEREGISTER_PAYMENT_STATUS', 'a.status', $sortDirection, $sortColumn); ?>
 			</th>
 			<th width="2%">
 				<?php echo JText::_('COM_JEREGISTER_ID'); ?>
@@ -104,8 +107,5 @@ defined('_JEXEC') or die('Restricted Access');
 	</table>
 
 	<input type="hidden" name="task" value="" />
-    <input type="hidden" name="listOrdering" value="<?php echo $this->sortColumn; ?>" />
-    <input type="hidden" name="listDirection" value="<?php echo $this->sortDirection; ?>" />
-
 	<?php echo JHtml::_('form.token'); ?>
 </form>

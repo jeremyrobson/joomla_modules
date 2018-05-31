@@ -12,8 +12,6 @@ class JeRegisterViewProfiles extends JViewLegacy
         $this->pagination = $this->get('Pagination');
         $this->state = $this->get('State');
 
-        $this->sortColumn = $this->get('list.ordering', 'b.username');
-        $this->sortDirection = $this->get('list.direction', 'asc');
         $this->filterForm = $this->get('FilterForm');
         $this->activeFilters = $this->get('ActiveFilters');
         
@@ -46,5 +44,16 @@ class JeRegisterViewProfiles extends JViewLegacy
 		$document = JFactory::getDocument();
 		$document->setTitle(JText::_('COM_JEREGISTER_PROFILES'));
 		JToolBarHelper::title("BGO Profiles");
+    }
+    
+	protected function getSortFields()
+	{
+		return array(
+            'b.username' => JText::_('COM_JEREGISTER_USERNAME'),
+            'a.farm_name' => JText::_('COM_JEREGISTER_PROFILE_FARM_NAME'),
+            'a.contact' => JText::_('COM_JEREGISTER_PROFILE_CONTACT'),
+            'a.email' => JText::_('COM_JEREGISTER_PROFILE_EMAIL'),
+            'a.payment_status' => JText::_('COM_JEREGISTER_PAYMENT_STATUS'),
+		);
 	}
 }
