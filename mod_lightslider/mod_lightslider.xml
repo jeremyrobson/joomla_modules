@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" version="1.0.0" client="site" method="upgrade">
+    <name>LightSlider</name>
+    <author>Jeremy Robson</author>
+    <version>1.0.0</version>
+    <description>A Slider</description>
+    <files>
+        <filename>mod_lightslider.xml</filename>
+        <filename module="mod_lightslider">mod_lightslider.php</filename>
+        <filename>index.html</filename>
+        <filename>helper.php</filename>
+        <filename>tmpl/default.php</filename>
+        <filename>tmpl/index.html</filename>
+        <filename>js/lightslider.min.js</filename>
+        <filename>css/lightslider.min.css</filename>
+    </files>
+    <config>
+        <fields name="params">
+            <fieldset name="basic" >
+                <field
+                    name="images_path"
+                    type="text"
+                    label="Images Path"
+                    description="The path to the folder that contains the images"
+                    default="images"
+                    filter="raw"
+                />
+            </fieldset>
+        </fields>
+    </config>
+
+</extension>

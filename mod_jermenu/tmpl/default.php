@@ -11,77 +11,29 @@
                 <span class="icon-bar"></span>
             </button>
             <a class="navbar-brand" href="#">
-                <img src="img/cscc_logo_notext.png" width="150px">
+                <img src="<?php echo $logo; ?>" width="150px">
             </a>
         </div>
 
         <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
+                <?php foreach($list as $item_id => $item): ?>
+
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle navbar-text" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                        About Us
+                        <?php echo $item->title ?>
                     </a>
+
+                <?php if ($item->deeper): ?>
                     <ul class="dropdown-menu">
-                        <li>
-                            <a href="#">Awards and Grants</a>
-                        </li>
-                        <li>
-                            <a href="#">CSCC Governance</a>
-                        </li>
-                        <li>
-                            <a href="#">CSCC Archives</a>
-                        </li>
-                        <li>
-                            <a href="#">About Logo</a>
-                        </li>
-                        <li>
-                            <a href="#">CSCC By-Laws</a>
-                        </li>
-                        <li>
-                            <a href="#">Interest Groups and Committees</a>
-                        </li>
-                        <li>
-                            <a href="#">What Is a Clinical Biochemist?</a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle navbar-text" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                        Membership
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li>
-                            <a href="#">Test</a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle navbar-text" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                        Chemist Library
-                    </a>
-                </li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle navbar-text" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                        Academy
-                    </a>
-                </li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle navbar-text" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                        Events
-                    </a>
-                </li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle navbar-text" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                        Provincial Sections
-                    </a>
-                </li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle navbar-text" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                        <span class="icon">
-                            <i class="fa fa-search"></i>&nbsp;</span>
-                        <span class="text">Search</span>
-                    </a>
-                </li>
+                <?php elseif ($item->shallower): ?>
+                    </li>
+                    <?php str_repeat('</ul></li>', $item->level_diff); ?>
+                <?php else: ?>
+                    </li>
+                <?php endif; ?>
+
+                <?php endforeach; ?>
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
