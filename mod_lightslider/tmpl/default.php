@@ -1,9 +1,9 @@
 
 <div>
     <ul id="lightSlider">
-        <?php foreach ($images as $image): ?>
+        <?php foreach ($files as $file): ?>
         <li>
-            <img src="<?php echo $this->baseurl ?>/<?php echo $image->src; ?>" width="160px" />
+            <img src="<?php echo $file; ?>" width="160px" />
         </li>
         <?php endforeach; ?>
     </ul>

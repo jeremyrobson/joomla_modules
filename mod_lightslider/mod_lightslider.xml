@@ -14,19 +14,19 @@
         <filename>js/lightslider.min.js</filename>
         <filename>css/lightslider.min.css</filename>
     </files>
-    <config>
+    
+   <config>
         <fields name="params">
-            <fieldset name="basic" >
+            <fieldset name="basic">
                 <field
                     name="images_path"
                     type="text"
-                    label="Images Path"
-                    description="The path to the folder that contains the images"
                     default="images"
-                    filter="raw"
-                />
+                    label="Images Path"
+                    description="Images Path"
+                    filter="raw" />
             </fieldset>
         </fields>
-    </config>
+   </config>
 
 </extension>

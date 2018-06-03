@@ -1,20 +1,22 @@
 <?php
-defined('_JEXEC') or die;
+    defined('_JEXEC') or die;
 
-require_once dirname(__FILE__) . '/helper.php';
+    require_once dirname(__FILE__) . '/helper.php';
 
-$document = JFactory::getDocument();
-$document->addScript('modules/mod_lightslider/js/lightslider.min.js');
-$document->addStyleSheet('modules/mod_lightslider/css/lightslider.min.css');
+    $config = JFactory::getConfig();
+    $images_path = $params->get("images_path");
+    $image_paths = scandir(JPATH_BASE . "/" . $images_path);
 
-$config = JFactory::getConfig();
-$images_path = $config->get('images_path');
-$image_paths = scandir($images_path);
+    //echo "<pre>"; print_r($image_paths); echo '</pre>';
 
-echo "<h1>";
-print_r($images_path);
-print_r($image_paths);
-echo "</h1>";
+    $files = preg_grep("/.*\.(jpg|jpeg|png|gif)$/", $image_paths);
+    $files = preg_filter('/^/', JURI::base() . $images_path . "/", $files);
 
-//$ls = modLightSliderHelper::getHello($params);
-require JModuleHelper::getLayoutPath('mod_lightslider');
+    //echo "<pre>"; print_r($files); echo '</pre>';
+
+    $document = JFactory::getDocument();
+    $document->addScript('modules/mod_lightslider/js/lightslider.min.js');
+    $document->addStyleSheet('modules/mod_lightslider/css/lightslider.min.css');
+
+    require JModuleHelper::getLayoutPath('mod_lightslider');
+?>
