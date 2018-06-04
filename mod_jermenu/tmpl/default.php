@@ -1,64 +1,140 @@
-<?php defined('_JEXEC') or die; ?>
+<?php
+/**
+ * @package     Joomla.Site
+ * @subpackage  mod_menu
+ *
+ * @copyright   Copyright (C) 2005 - 2018 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE.txt
+ */
+
+defined('_JEXEC') or die;
+
+$id = '';
+
+if ($tagId = $params->get('tag_id', ''))
+{
+	$id = ' id="' . $tagId . '"';
+}
+
+// The menu class is deprecated. Use nav instead
+?>
 
 <nav class="navbar navbar-default navbar-fixed-top">
-    <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse" aria-expanded="false"
-                aria-controls="navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="#">
-                <img src="<?php echo $logo; ?>" width="150px">
-            </a>
-        </div>
 
-        <div class="collapse navbar-collapse">
-            <ul class="nav navbar-nav">
-                <?php foreach($list as $item_id => $item): ?>
+<div class="container">
 
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle navbar-text" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                        <?php echo $item->title ?>
-                    </a>
+<div class="navbar-header">
+    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+    </button>
+    <!--
+    <a class="navbar-brand" href="#">
+        <img src="" width="150px">
+    </a>
+    -->
+</div>
 
-                <?php if ($item->deeper): ?>
-                    <ul class="dropdown-menu">
-                <?php elseif ($item->shallower): ?>
-                    </li>
-                    <?php str_repeat('</ul></li>', $item->level_diff); ?>
-                <?php else: ?>
-                    </li>
-                <?php endif; ?>
+<div class="collapse navbar-collapse">
 
-                <?php endforeach; ?>
-            </ul>
+<ul class="nav navbar-nav menu<?php echo $class_sfx; ?>"<?php echo $id; ?>>
 
-            <ul class="nav navbar-nav navbar-right">
-                <li>
-                    <a href="#" class="navbar-text">
-                        <span class="icon">
-                            <i class="fa fa-home"></i>&nbsp;</span>
-                        <span class="text">Home</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#" class="navbar-text">
-                        <span class="icon">
-                            <i class="fa fa-phone"></i>&nbsp;</span>
-                        <span class="text">Contact Us</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#" class="navbar-text">
-                        <span class="icon">
-                            <i class="fa fa-sign-in"></i>&nbsp;</span>
-                        <span class="text">Login</span>
-                    </a>
-                </li>
-            </ul>
-        </div>
-    </div>
+<?php foreach ($list as $i => &$item)
+{
+	$class = 'item-' . $item->id;
+
+	if ($item->id == $default_id)
+	{
+		//$class .= ' default';
+	}
+
+	if ($item->id == $active_id || ($item->type === 'alias' && $item->params->get('aliasoptions') == $active_id))
+	{
+		//$class .= ' current';
+	}
+
+	if (in_array($item->id, $path))
+	{
+		//$class .= ' active';
+	}
+	elseif ($item->type === 'alias')
+	{
+		$aliasToId = $item->params->get('aliasoptions');
+
+		if (count($path) > 0 && $aliasToId == $path[count($path) - 1])
+		{
+			$class .= ' active';
+		}
+		elseif (in_array($aliasToId, $path))
+		{
+			$class .= ' alias-parent-active';
+		}
+	}
+
+	if ($item->type === 'separator')
+	{
+		//$class .= ' divider';
+	}
+
+	if ($item->deeper)
+	{
+        $class .= ' deeper';
+        if ($item->level > 1) {
+            $class .= ' dropdown-submenu';
+            //$item->title .= '<i class="fa fa-chevron-right pull-right"></i>';
+        }
+	}
+
+	if ($item->parent)
+	{
+		//$class .= ' parent';
+    }
+    
+    if ($item->level == 1)
+    {
+        $class .= ' dropdown';
+    }
+
+	echo '<li class="' . $class . '">';
+
+	switch ($item->type) :
+		case 'separator':
+		case 'component':
+		case 'heading':
+		case 'url':
+			require JModuleHelper::getLayoutPath('mod_menu', 'default_' . $item->type);
+			break;
+
+		default:
+			require JModuleHelper::getLayoutPath('mod_menu', 'default_url');
+			break;
+	endswitch;
+
+	// The next item is deeper.
+	if ($item->deeper)
+	{
+        echo '<ul class="dropdown-menu">';
+	}
+	// The next item is shallower.
+	elseif ($item->shallower)
+	{
+		echo '</li>';
+		echo str_repeat('</ul></li>', $item->level_diff);
+	}
+	// The next item is on the same level.
+	else
+	{
+		echo '</li>';
+	}
+}
+?>
+
+</div>
+
+</ul>
+
+</div>
+
 </nav>
