@@ -1,24 +1,8 @@
 <?php
-/**
- * @package     Joomla.Site
- * @subpackage  com_helloworld
- *
- * @copyright   Copyright (C) 2005 - 2018 Open Source Matters, Inc. All rights reserved.
- * @license     GNU General Public License version 2 or later; see LICENSE.txt
- */
+
 // No direct access to this file
 defined('_JEXEC') or die('Restricted access');
 
-/**
- * HelloWorld Controller
- *
- * @package     Joomla.Site
- * @subpackage  com_helloworld
- *
- * Used to handle the http POST from the front-end form which allows 
- * users to enter a new helloworld message
- *
- */
 class JeRegisterControllerRegistration extends JControllerForm
 {   
     public function cancel($key = null)
@@ -32,10 +16,6 @@ class JeRegisterControllerRegistration extends JControllerForm
 		);
     }
     
-    /*
-     * Function handing the save for adding a new helloworld record
-     * Based on the save() function in the JControllerForm class
-     */
     public function save($key = null, $urlVar = null)
     {
 		// Check for request forgeries.

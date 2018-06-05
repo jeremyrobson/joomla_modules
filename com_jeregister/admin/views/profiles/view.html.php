@@ -35,7 +35,7 @@ class JeRegisterViewProfiles extends JViewLegacy
 			$title .= "<span style='font-size: 0.5em; vertical-align: middle;'>(" . $this->pagination->total . ")</span>";
 		}
 
-		JToolBarHelper::custom("registrations.import", "archive", "", "Import CSV", false);
+        JToolBarHelper::custom("profile.preview", "archive", "", "Import Missing Profiles", false);
 		JToolBarHelper::custom("declarations.list", "archive", "", "View Declarations", false);
 	}
 
