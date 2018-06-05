@@ -24,19 +24,24 @@ class JeRegisterModelProfiles extends JModelList
     {
         $db    = JFactory::getDbo();
         $query = $db->getQuery(true);
-        $subquery = $db->getQuery(true);
+        $transactions = $db->getQuery(true);
+        $most_recent_transaction = $db->getQuery(true);
 
-        $subquery
+        $most_recent_transaction
+            ->select('MAX(t2.date)')
+            ->from($db->quoteName('#__transaction', 't2'))
+            ->where('t2.user_id = t1.user_id');
+
+        $transactions
             ->select(array('user_id', 'json', 'date', 'status'))
-            ->from($db->quoteName("#__transaction", "t"))
-            ->order($db->quoteName("date") . " DESC")
-            ->setLimit(1);
+            ->from($db->quoteName('#__transaction', 't1'))
+            ->where('t1.date = (' . $most_recent_transaction . ')');
 
         $query
-            ->select('a.*, b.username, latest_transaction.*')
-            ->from($db->quoteName("#__farm_profile", "a"))
+            ->select('a.*, b.username, t.*')
+            ->from($db->quoteName('#__farm_profile', 'a'))
             ->join("LEFT", $db->quoteName("#__users", "b") . " ON " . $db->quoteName("a.id") . " = " . $db->quoteName("b.id"))
-            ->join("LEFT", "(" . $subquery . ") AS " . $db->quoteName("latest_transaction") . " ON " . $db->quoteName("latest_transaction.user_id") . " = " . $db->quoteName("a.id"));
+            ->join("LEFT", "(" . $transactions . ") AS " . $db->quoteName("t") . " ON " . $db->quoteName("t.user_id") . " = " . $db->quoteName("a.id"));
 
         $search = $this->getState('filter.search');
 
@@ -47,7 +52,7 @@ class JeRegisterModelProfiles extends JModelList
 
         $payment_status = $this->getState("filter.payment_status");
         if (!empty($payment_status)) {
-            $query->where("latest_transaction.status = '$payment_status'");
+            $query->where("t.status = '$payment_status'");
         }
 
         $state = $this->state;
@@ -63,13 +68,11 @@ class JeRegisterModelProfiles extends JModelList
     {
         $items = parent::getItems();
 
-        //determine if amount as been paid this year (status == 1)
+        //determine if amount as been paid this year
         foreach ($items as $id => $item) {
-
-            $transaction_year = date('Y', strtotime('2018-04-11 00:06:57'));
+            $transaction_year = date('Y', strtotime($item->date));
             $current_year = date("Y");
-            //$items[$id]->payment_status = $transaction_year == $current_year && $items[$id]->status == "paid";
-            $items[$id]->payment_status = $items[$id]->status;
+            $items[$id]->payment_status = $transaction_year == $current_year && $items[$id]->status == "paid" ? "paid" : "not_paid";
         }
 
         return $items;
