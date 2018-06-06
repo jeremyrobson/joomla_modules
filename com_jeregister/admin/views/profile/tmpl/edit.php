@@ -20,6 +20,6 @@ $id = (int) $this->item->id;
 		</fieldset>
 	</div>
     
-	<input type="hidden" name="task" value="profile.edit" />
+	<input type="hidden" name="task" value="" />
 	<?php echo JHtml::_('form.token'); ?>
 </form>

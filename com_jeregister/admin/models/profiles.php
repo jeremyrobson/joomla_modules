@@ -15,9 +15,9 @@ class JeRegisterModelProfiles extends JModelList
         parent::__construct($config);
     }
 
-    protected function populateState($ordering = "b.username", $direction = "asc")
+    protected function populateState($ordering = null, $direction = null)
     {
-        parent::populateState($ordering, $direction);
+        parent::populateState("b.username", "asc");
     }
 
     protected function getListQuery()
@@ -55,8 +55,7 @@ class JeRegisterModelProfiles extends JModelList
             $query->where("t.status = '$payment_status'");
         }
 
-        $state = $this->state;
-        $query->order($db->escape($this->state->get("list.ordering", "b.username")) . ' ' . $db->escape($this->state->get("list.direction", "asc")));
+        $query->order($db->escape($this->getState("list.ordering", "b.username")) . ' ' . $db->escape($this->getState("list.direction", "asc")));
 
         //echo "<pre>" . $query->__toString(); die;
 

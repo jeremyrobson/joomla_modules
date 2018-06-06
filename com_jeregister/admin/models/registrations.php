@@ -13,10 +13,10 @@ class JeRegisterModelRegistrations extends JModelList
 
         // Create the base select statement.
         $query
-                ->select('*')
-                ->from($db->quoteName("#__users", "a"))
-                ->join("LEFT", $db->quoteName("#__farm_profile", "b") . " ON " . $db->quoteName("a.id") . " = " . $db->quoteName("b.id"))
-                ->where("b.id IS NULL");
+            ->select('a.id,a.name,a.username,a.email')
+            ->from($db->quoteName("#__users", "a"))
+            ->join("LEFT", $db->quoteName("#__farm_profile", "b") . " ON " . $db->quoteName("a.id") . " = " . $db->quoteName("b.id"))
+            ->where("b.id IS NULL");
 
         return $query;
     }
@@ -26,7 +26,12 @@ class JeRegisterModelRegistrations extends JModelList
     {
         $items = parent::getItems();
 
+        //key by id
+        $arr = array();
+        foreach ($items as $item) {
+            $arr[$item->id] = $item;
+        }
 
-        return $items;
+        return $arr;
     }
 }

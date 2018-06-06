@@ -7,9 +7,6 @@
 
     $farm_profiles = json_encode($farm_profiles, JSON_FORCE_OBJECT);
 
-    //$config = JFactory::getConfig();
-    //$google_api_key = $config->get("google_api_key");
-
     $google_api_key = $params->get("google_api_key");
 
     JHtml::_('jquery.framework');

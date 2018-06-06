@@ -1,8 +1,7 @@
 <?php
 defined('_JEXEC') or die('Restricted Access');
 
-$sortColumn = $this->state->get('list.ordering', 'b.username');
-$sortDirection = $this->state->get('list.direction', 'asc');
+echo "<pre>"; print_r($this->sortColumn); echo "</pre>";
 ?>
 <form action="index.php?option=com_jeregister&view=profiles" method="post" id="adminForm" name="adminForm">
     <div class="row-fluid">
@@ -24,22 +23,22 @@ $sortDirection = $this->state->get('list.direction', 'asc');
 				<?php echo JHtml::_('grid.checkall'); ?>
 			</th>
 			<th width="15%">
-                <?php echo JHtml::_('searchtools.sort', 'COM_JEREGISTER_USERNAME', 'b.username', $sortDirection, $sortColumn); ?>
+                <?php echo JHtml::_('grid.sort', 'COM_JEREGISTER_USERNAME', 'b.username', $this->sortDirection, $this->sortColumn); ?>
 			</th>
 			<th width="25%">
-				<?php echo JHtml::_('searchtools.sort', 'COM_JEREGISTER_PROFILE_FARM_NAME', 'a.farm_name', $sortDirection, $sortColumn); ?>
+				<?php echo JHtml::_('grid.sort', 'COM_JEREGISTER_PROFILE_FARM_NAME', 'a.farm_name', $this->sortDirection, $this->sortColumn); ?>
 			</th>
 			<th width="20%">
-                <?php echo JHtml::_('searchtools.sort', 'COM_JEREGISTER_PROFILE_CONTACT', 'a.contact', $sortDirection, $sortColumn); ?>
+                <?php echo JHtml::_('grid.sort', 'COM_JEREGISTER_PROFILE_CONTACT', 'a.contact', $this->sortDirection, $this->sortColumn); ?>
 			</th>
 			<th width="15%">
-                <?php echo JHtml::_('searchtools.sort', 'COM_JEREGISTER_PROFILE_EMAIL', 'a.email', $sortDirection, $sortColumn); ?>
+                <?php echo JHtml::_('grid.sort', 'COM_JEREGISTER_PROFILE_EMAIL', 'a.email', $this->sortDirection, $this->sortColumn); ?>
 			</th>
 			<th width="15%">
 				<?php echo JText::_('COM_JEREGISTER_ACTIONS'); ?>
 			</th>
 			<th width="5%">
-				<?php echo JHtml::_('searchtools.sort', 'COM_JEREGISTER_PAYMENT_STATUS', 'a.status', $sortDirection, $sortColumn); ?>
+				<?php echo JHtml::_('grid.sort', 'COM_JEREGISTER_PAYMENT_STATUS', 'a.status', $this->sortDirection, $this->sortColumn); ?>
 			</th>
 			<th width="2%">
 				<?php echo JText::_('COM_JEREGISTER_ID'); ?>
@@ -106,6 +105,8 @@ $sortDirection = $this->state->get('list.direction', 'asc');
 		</tbody>
 	</table>
 
+	<input type="hidden" name="filter_order" value="<?php echo $this->sortColumn; ?>" />
+	<input type="hidden" name="filter_order_Dir" value="<?php echo $this->sortDirection; ?>" />
 	<input type="hidden" name="task" value="" />
 	<?php echo JHtml::_('form.token'); ?>
 </form>
