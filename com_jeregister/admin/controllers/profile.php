@@ -66,4 +66,10 @@ class JeRegisterControllerProfile extends JControllerForm
 
         $this->setRedirect(JRoute::_("index.php?option=com_jeregister&view=profiles", false), JText::_($message), $status);
     }
+
+	public function cancel($key = null)
+	{
+		$this->setRedirect(JRoute::_('index.php?option=com_jeregister&view=profiles'));
+		return;
+	}
 }

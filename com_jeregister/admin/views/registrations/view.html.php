@@ -31,12 +31,13 @@ class JeRegisterViewRegistrations extends JViewLegacy
 	{
 		$title = JText::_('COM_JEREGISTER_MANAGER_REGISTRATIONS');
 
-		JToolBarHelper::custom("profile.import", "archive", "", "Import Selected", false);
+        JToolBarHelper::custom("profile.import", "archive", "", "Import Selected", false);
+        JToolBarHelper::cancel("profile.cancel");
 	}
 	
 	protected function setDocument() 
 	{
 		$document = JFactory::getDocument();
-		$document->setTitle(JText::_('COM_JEREGISTER_ADMINISTRATION'));
+		$document->setTitle(JText::_('COM_JEREGISTER_IMPORT_PREVIEW'));
 	}
 }

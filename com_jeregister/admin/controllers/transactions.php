@@ -30,7 +30,7 @@ class JeRegisterControllerTransactions extends JControllerAdmin
 
 	public function back($key = null)
 	{
-		$this->setRedirect(JRoute::_('index.php?option=com_jeregister&view=registrations'));
+		$this->setRedirect(JRoute::_('index.php?option=com_jeregister&view=profiles'));
 		return;
 	}
 
