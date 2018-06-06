@@ -10,7 +10,7 @@ class JeRegisterModelProfiles extends JModelList
             'a.farm_name',
             'a.contact',
             'a.email',
-            'a.payment_status'
+            't.status'
         );
         parent::__construct($config);
     }

@@ -1,7 +1,5 @@
 <?php
 defined('_JEXEC') or die('Restricted Access');
-
-echo "<pre>"; print_r($this->sortColumn); echo "</pre>";
 ?>
 <form action="index.php?option=com_jeregister&view=profiles" method="post" id="adminForm" name="adminForm">
     <div class="row-fluid">
@@ -38,7 +36,7 @@ echo "<pre>"; print_r($this->sortColumn); echo "</pre>";
 				<?php echo JText::_('COM_JEREGISTER_ACTIONS'); ?>
 			</th>
 			<th width="5%">
-				<?php echo JHtml::_('grid.sort', 'COM_JEREGISTER_PAYMENT_STATUS', 'a.status', $this->sortDirection, $this->sortColumn); ?>
+				<?php echo JHtml::_('grid.sort', 'COM_JEREGISTER_PAYMENT_STATUS', 't.status', $this->sortDirection, $this->sortColumn); ?>
 			</th>
 			<th width="2%">
 				<?php echo JText::_('COM_JEREGISTER_ID'); ?>
