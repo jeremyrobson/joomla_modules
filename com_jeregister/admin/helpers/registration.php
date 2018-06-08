@@ -4,13 +4,13 @@ defined('_JEXEC') or die('Restricted access');
 
 abstract class RegistrationHelper
 {
-	public static function send_email($params) {
+    public static function send_email($params) {
         $mailer = JFactory::getMailer();
         $mailer->isHTML(true);
         $mailer->setSender("info@ontarioberries.com");
         $mailer->addRecipient($params["email"]);
         $mailer->addBcc("jeremy@dragonflyit.ca");
-        $mailer->addBcc("info@ontarioberries.com");
+        //$mailer->addBcc("info@ontarioberries.com");
         $mailer->setSubject("Thank you for submitting you Ontario Berry Growser Declaration for the 2018 season!");
         
         require_once(JPATH_ROOT .'/components/com_jeregister/models/summary.php');
@@ -19,20 +19,23 @@ abstract class RegistrationHelper
         $model = JModelLegacy::getInstance("Summary", "JeregisterModel");
 
         $view = new JeRegisterViewSummary();
-        $view->item = $model->getItem();
+        $view->setModel($model);
+        $view->set("form", $model->getForm());
+        $view->setLayout("summary");
+        $view->isEmail = true;
 
-		try {
+        try {
             ob_start();
-            $view->setLayout("summary");
-            $view->display();
+            $view->render();
             $body = ob_get_clean();
             $mailer->setBody($body);
-			$mailer->send();
-		}
-		catch (Exception $e){
+            $mailer->send();
+            ob_end_clean();
+        }
+        catch (Exception $e){
             echo $e->getMessage(); die;
-			JLog::add('Caught exception: ' . $e->getMessage(), JLog::Error, 'jerror');
-		}
+            JLog::add('Caught exception: ' . $e->getMessage(), JLog::Error, 'jerror');
+        }
     }
 
     public static function getRegistrationStatus($user_id) {
