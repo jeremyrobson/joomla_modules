@@ -3,6 +3,8 @@
 defined('_JEXEC') or die('Restricted access');
 JLoader::import('helpers.registration',dirname(JPATH_COMPONENT_ADMINISTRATOR .DIRECTORY_SEPARATOR.'helpers'.DIRECTORY_SEPARATOR));
 
+
+
 class JeRegisterControllerInvoice extends JControllerForm
 {   
     public function back($key = null)
@@ -78,7 +80,7 @@ class JeRegisterControllerInvoice extends JControllerForm
                 $currentUri,
                 JText::_('COM_JEREGISTER_DECLARATION_SAVED_SUCCESS')
             );
-            
+
             //send email to user and admins
             $params = array(
                 "username" => $current_user->get("username"),
@@ -86,7 +88,7 @@ class JeRegisterControllerInvoice extends JControllerForm
             );
             
             RegistrationHelper::send_email($params);
-            
+
             return true;
         }
         else {

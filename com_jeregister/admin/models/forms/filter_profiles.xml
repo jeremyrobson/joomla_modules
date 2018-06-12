@@ -27,6 +27,7 @@
     </fields>
 
     <fields name="list">
+    <!--
         <field
             name="fullordering"
             type="list"
@@ -36,14 +37,17 @@
             default="b.username ASC"
         >
             <option value="">JGLOBAL_SORT_BY</option>
+            <option value="b.username ASC">Username Ascending</option>
+            <option value="b.username DESC">Username Descending</option>
         </field>
+    -->
         <field
             name="limit"
             type="limitbox"
-            class="input-mini"
+            class="inputbox input-mini"
             default="25"
-            label="COM_CONTENT_LIST_LIMIT"
-            description="COM_JEREGISTER_LIST_LIMIT_DESC"
+            label="Limit"
+            description=""
             onchange="this.form.submit();"
         />
     </fields>

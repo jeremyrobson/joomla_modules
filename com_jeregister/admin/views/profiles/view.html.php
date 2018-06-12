@@ -10,7 +10,10 @@ class JeRegisterViewProfiles extends JViewLegacy
 
 		$this->items = $this->get('Items');
         $this->pagination = $this->get('Pagination');
-        $this->state = $this->get('State');
+
+        $state = $this->get('State');
+        $this->sortColumn = $state->get('list.ordering');
+        $this->sortDirection = $state->get('list.direction');
 
         $this->filterForm = $this->get('FilterForm');
         $this->activeFilters = $this->get('ActiveFilters');
@@ -35,7 +38,7 @@ class JeRegisterViewProfiles extends JViewLegacy
 			$title .= "<span style='font-size: 0.5em; vertical-align: middle;'>(" . $this->pagination->total . ")</span>";
 		}
 
-		JToolBarHelper::custom("registrations.import", "archive", "", "Import CSV", false);
+        JToolBarHelper::custom("profile.preview", "archive", "", "Import Missing Profiles", false);
 		JToolBarHelper::custom("declarations.list", "archive", "", "View Declarations", false);
 	}
 
@@ -53,7 +56,7 @@ class JeRegisterViewProfiles extends JViewLegacy
             'a.farm_name' => JText::_('COM_JEREGISTER_PROFILE_FARM_NAME'),
             'a.contact' => JText::_('COM_JEREGISTER_PROFILE_CONTACT'),
             'a.email' => JText::_('COM_JEREGISTER_PROFILE_EMAIL'),
-            'a.payment_status' => JText::_('COM_JEREGISTER_PAYMENT_STATUS'),
+            'a.status' => JText::_('COM_JEREGISTER_PAYMENT_STATUS'),
 		);
 	}
 }

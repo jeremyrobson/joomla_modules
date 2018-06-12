@@ -12,10 +12,8 @@ class JeRegisterViewThankyou extends JViewLegacy
         $app = JFactory::getApplication();
 		$app->setUserState("com_jeregister.page", "declaration");
 
-		// Call the parent display to display the layout file
 		parent::display($tpl);
 
-		// Set properties of the html document
 		$this->setDocument();
 	}
 

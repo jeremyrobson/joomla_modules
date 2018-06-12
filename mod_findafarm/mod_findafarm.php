@@ -7,16 +7,13 @@
 
     $farm_profiles = json_encode($farm_profiles, JSON_FORCE_OBJECT);
 
-    //$config = JFactory::getConfig();
-    //$google_api_key = $config->get("google_api_key");
-
     $google_api_key = $params->get("google_api_key");
 
     JHtml::_('jquery.framework');
 
     $document = JFactory::getDocument();
     $document->setTitle(JText::_('Find a Farm'));
-    $document->addScript("http://maps.googleapis.com/maps/api/js?key=$google_api_key");
+    $document->addScript("https://maps.googleapis.com/maps/api/js?key=$google_api_key");
     $document->addScript("modules/mod_findafarm/js/findafarm.js");
     $document->addScriptDeclaration("
         var farm_profiles = $farm_profiles;

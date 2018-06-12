@@ -63,7 +63,7 @@
 			description=""
 			class="inputbox"
 			required="true"
-			default="0"
+			default="not_paid"
 			/>
 		<field
 			name="date"

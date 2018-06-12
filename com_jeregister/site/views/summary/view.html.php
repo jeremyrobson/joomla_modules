@@ -6,20 +6,24 @@ class JeRegisterViewSummary extends JViewLegacy
 {
     protected $form = null;
     protected $canDo;
+    public $isEmail = false;
 
-	public function display($tpl = null)
-	{
-		$option = JRequest::getCmd('option'); //com_jregister namespace
-		$app = JFactory::getApplication();
+    public function display($tpl = null)
+    {
+        $app = JFactory::getApplication();
 
-		$this->form = $this->get('Form');
+        $this->form = $this->get('Form');
         $this->item = $this->get("Item");
         $this->script = $this->get("Script");
 
-		parent::display($tpl);
+        parent::display($tpl);
 
-		$this->setDocument();
-	}
+        $this->setDocument();
+    }
+
+    public function render() {
+        parent::display($tpl);
+    }
 
 	protected function setDocument() 
 	{

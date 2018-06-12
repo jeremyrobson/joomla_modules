@@ -15,22 +15,22 @@ defined('_JEXEC') or die('Restricted Access');
 				<?php echo JHtml::_('grid.checkall'); ?>
 			</th>
 			<th width="15%">
-				<?php echo JText::_('COM_JEREGISTER_USERNAME'); ?>
+				<?php echo JText::_('COM_JEREGISTER_TRANSACTION_USERNAME'); ?>
 			</th>
 			<th width="40%">
-				<?php echo JText::_('COM_JEREGISTER_MEMBERSHIP_FEE'); ?>
+				<?php echo JText::_('COM_JEREGISTER_TRANSACTION_MEMBERSHIP_FEE'); ?>
 			</th>
 			<th width="20%">
-				<?php echo JText::_('COM_JEREGISTER_PAYMENT_METHOD'); ?>
+				<?php echo JText::_('COM_JEREGISTER_TRANSACTION_PAYMENT_METHOD'); ?>
 			</th>
 			<th width="15%">
 				<?php echo JText::_('COM_JEREGISTER_TRANSACTION_DATE'); ?>
 			</th>
 			<th width="5%">
-				<?php echo JText::_('COM_JEREGISTER_STATUS'); ?>
+				<?php echo JText::_('COM_JEREGISTER_TRANSACTION_STATUS'); ?>
 			</th>
 			<th width="2%">
-				<?php echo JText::_('COM_JEREGISTER_ID'); ?>
+				<?php echo JText::_('COM_JEREGISTER_TRANSACTION_ID'); ?>
 			</th>
 		</tr>
 		</thead>

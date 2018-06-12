@@ -37,7 +37,7 @@ class JeRegisterViewFarmProfile extends JViewLegacy
 
         $document = JFactory::getDocument();
         $document->setTitle(JText::_('COM_JEREGISTER_FARMPROFILE'));
-        $document->addScript("http://maps.googleapis.com/maps/api/js?key=$GOOGLE_API_KEY");
+        $document->addScript("https://maps.googleapis.com/maps/api/js?key=$GOOGLE_API_KEY");
         $document->addScript(JURI::root() . "administrator/components/com_jeregister/models/forms/farmprofile.js");
         $document->addScriptDeclaration("
             var farm_profile = $this->farm_profile;
