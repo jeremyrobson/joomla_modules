@@ -18,7 +18,7 @@ class JeRegisterModelProfile extends JModelAdmin
 
         $address = str_replace(" ", "+", $table->address . ", " . $table->city . ", " . $table->province . ", " . "Canada");
 
-        $json = file_get_contents("http://maps.google.com/maps/api/geocode/json?address=$address&key=$GOOGLE_API_KEY");
+        $json = file_get_contents("https://maps.google.com/maps/api/geocode/json?address=$address&key=$GOOGLE_API_KEY");
         $json = json_decode($json);
         $location = $json->results[0]->geometry->location;
         
