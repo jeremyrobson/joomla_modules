@@ -3,7 +3,7 @@
     <ul id="lightSlider">
         <?php foreach ($files as $file): ?>
         <li>
-            <img src="<?php echo $file; ?>" width="160px" />
+            <a href="<?php echo $file["url"]; ?>" target="_blank"><img src="<?php echo $file["image"]; ?>" width="160px" /></a>
         </li>
         <?php endforeach; ?>
     </ul>

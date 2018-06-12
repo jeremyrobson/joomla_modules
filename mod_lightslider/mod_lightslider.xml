@@ -19,24 +19,121 @@
    <config>
         <fields name="params">
             <fieldset name="basic">
+
                 <field
-                    name="lightslider_json"
-                    type="textarea"
-                    default="
-                    [
-                        {
-                            \"image_path\": \"images/HomePageBlocks/Crawler/AACC-2017.png",
-                            \"url\": \"http://www.aacc.org\"
-                        },
-                        {
-                            \"image_path\": \"images/HomePageBlocks/Crawler/IFCClogo.gif",
-                            \"url\": \"http://www.ifcc.org\"
-                        }
-                    ]
-                    "
-                    label="Settings JSON"
-                    description="Enter JSON data here"
+                    name="lightslider_image_0"
+                    id="lightslider_image_0"
+                    type="text"
+                    default="images/HomePageBlocks/Crawler/AACC-2017.png"
+                    label="Image 1"
+                    description="Image Url"
+                    class="span6"
                     filter="raw" />
+                <field
+                    name="lightslider_url_0"
+                    id="lightslider_url_0"
+                    type="text"
+                    default="http://www.aacc.org"
+                    label="URL 1"
+                    description="Image URL"
+                    class="span6"
+                    filter="raw" />
+
+                <field
+                    name="lightslider_image_1"
+                    id="lightslider][image_1"
+                    type="text"
+                    default="images/HomePageBlocks/Crawler/IFCClogo.gif"
+                    label="Image 2"
+                    description="Image Url"
+                    class="span6"
+                    filter="raw" />
+                <field
+                    name="lightslider_url_1"
+                    id="lightslider][url_1"
+                    type="text"
+                    default="http://www.ifcc.org"
+                    label="URL 2"
+                    description="Image URL"
+                    class="span6"
+                    filter="raw" />
+
+                <field
+                    name="lightslider_image_2"
+                    id="lightslider_image_2"
+                    type="text"
+                    default="images/HomePageBlocks/Crawler/Choosing-Wisely.gif"
+                    label="Image 3"
+                    description="Image Url"
+                    class="span6"
+                    filter="raw" />
+                <field
+                    name="lightslider_url_2"
+                    id="lightslider_url_2"
+                    type="text"
+                    default="https://choosingwiselycanada.org/"
+                    label="URL 3"
+                    description="Image URL"
+                    class="span6"
+                    filter="raw" />
+
+                <field
+                    name="lightslider_image_3"
+                    id="lightslider_image_3"
+                    type="text"
+                    default="images/HomePageBlocks/Crawler/labs_are_vital.gif"
+                    label="Image 4"
+                    description="Image Url"
+                    class="span6"
+                    filter="raw" />
+                <field
+                    name="lightslider_url_3"
+                    id="lightslider_url_3"
+                    type="text"
+                    default="http://www.labsarevital.com"
+                    label="URL 4"
+                    description="Image URL"
+                    class="span6"
+                    filter="raw" />
+
+                <field
+                    name="lightslider_image_4"
+                    id="lightslider_image_4"
+                    type="text"
+                    default="images/HomePageBlocks/Crawler/LabTestsOnline.gif"
+                    label="Image 5"
+                    description="Image Url"
+                    class="span6"
+                    filter="raw" />
+                <field
+                    name="lightslider_url_4"
+                    id="lightslider_url_4"
+                    type="text"
+                    default="http://www.labtestsonline.org"
+                    label="URL 5"
+                    description="Image URL"
+                    class="span6"
+                    filter="raw" />
+
+                <field
+                    name="lightslider_image_5"
+                    id="lightslider_image_5"
+                    type="text"
+                    default=""
+                    label="Image 6"
+                    description="Image Url"
+                    class="span6"
+                    filter="raw" />
+                <field
+                    name="lightslider_url_5"
+                    id="lightslider_url_5"
+                    type="text"
+                    default=""
+                    label="URL 6"
+                    description="Image URL"
+                    class="span6"
+                    filter="raw" />
+
             </fieldset>
         </fields>
    </config>
