@@ -19,11 +19,22 @@
         <fields name="params">
             <fieldset name="basic">
                 <field
-                    name="images_path"
-                    type="text"
-                    default="images"
-                    label="Images Path"
-                    description="Images Path"
+                    name="lightslider_json"
+                    type="textarea"
+                    default="
+                    [
+                        {
+                            \"image_path\": \"images/HomePageBlocks/Crawler/AACC-2017.png",
+                            \"url\": \"http://www.aacc.org\"
+                        },
+                        {
+                            \"image_path\": \"images/HomePageBlocks/Crawler/IFCClogo.gif",
+                            \"url\": \"http://www.ifcc.org\"
+                        }
+                    ]
+                    "
+                    label="Settings JSON"
+                    description="Enter JSON data here"
                     filter="raw" />
             </fieldset>
         </fields>
