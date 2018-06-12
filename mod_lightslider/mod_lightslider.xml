@@ -13,6 +13,7 @@
         <filename>tmpl/index.html</filename>
         <filename>js/lightslider.min.js</filename>
         <filename>css/lightslider.min.css</filename>
+        <filename>img/controls.png</filename>
     </files>
     
    <config>
