@@ -3,7 +3,12 @@ defined('_JEXEC') or die('Restricted access');
 
 class JeRegisterViewProfiles extends JViewLegacy
 {
-
+	protected $state;
+	protected $items;
+	protected $item;
+	protected $pagination;
+    protected $params;
+    
 	function display($tpl = null)
 	{
         $app = JFactory::getApplication();
@@ -11,13 +16,16 @@ class JeRegisterViewProfiles extends JViewLegacy
 		$this->items = $this->get('Items');
         $this->pagination = $this->get('Pagination');
 
-        $state = $this->get('State');
-        $this->sortColumn = $state->get('list.ordering');
-        $this->sortDirection = $state->get('list.direction');
+        $this->state = $this->get('State');
+        $this->sortColumn = $this->state->get('list.ordering');
+        $this->sortDirection = $this->state->get('list.direction');
+        $this->limit = $this->state->get('list.start');
+        $this->limitstart = $this->state->get('list.limitstart');
+        $this->searchterms = $this->state->get('filter.search');
 
         $this->filterForm = $this->get('FilterForm');
         $this->activeFilters = $this->get('ActiveFilters');
-        
+
 		if (JFactory::getUser()->authorise('core.admin', 'com_jeregister')) 
 		{
 			JToolBarHelper::preferences('com_jeregister');

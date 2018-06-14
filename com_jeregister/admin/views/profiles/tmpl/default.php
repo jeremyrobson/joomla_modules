@@ -4,10 +4,23 @@ defined('_JEXEC') or die('Restricted Access');
 <form action="index.php?option=com_jeregister&view=profiles" method="post" id="adminForm" name="adminForm">
     <div class="row-fluid">
         <div class="span6">
-            <?php
-                //requires models/forms/filter_profiles.xml
-                echo JLayoutHelper::render('joomla.searchtools.default', array('view' => $this));
-            ?>
+            <div class="input-append">
+                <input type="text" name="filter_search" id="filter_search" value="<?php echo $this->escape($this->searchterms); ?>" placeholder="Search" ?>" />
+                <button type="submit" class="btn hasToolTip">
+                    <span class="icon-search" aria-hidden="true"></span>
+                </button>
+            </div>
+
+            <div class="control-group"style="display: inline-block; margin-bottom: 9px; vertical-align: middle;">
+                <button type="button" onclick="jQuery('#filter_search').val('');this.form.submit();" class="btn hasTooltip">
+                    <?php echo JText::_('JSEARCH_FILTER_CLEAR'); ?>
+                </button>
+            </div>
+        </div>
+        <div class="span6">
+            <div class="pull-right">
+                Results per page: <?php echo $this->pagination->getLimitBox(); ?>
+            </div>
         </div>
     </div>
 
@@ -105,6 +118,8 @@ defined('_JEXEC') or die('Restricted Access');
 
 	<input type="hidden" name="filter_order" value="<?php echo $this->sortColumn; ?>" />
 	<input type="hidden" name="filter_order_Dir" value="<?php echo $this->sortDirection; ?>" />
+    <!--<input type="hidden" name="limit" value="<?php echo $this->limit; ?>" />
+    <input type="hidden" name="limitstart" value="<?php echo $this->limitstart; ?>" />-->
 	<input type="hidden" name="task" value="" />
 	<?php echo JHtml::_('form.token'); ?>
 </form>
