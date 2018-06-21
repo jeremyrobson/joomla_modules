@@ -16,26 +16,15 @@ jQuery(function ($) {
                 }
             });
 
+            var markers = [];
             $.each(farm_profiles, function () {
                 var link = this["profile_link"];
                 var infowindow = new google.maps.InfoWindow({
                     content: '<div>' +
-                        '<div id="siteNotice">' +
-                        '</div>' +
-                        '<h2>' + this["farm_name"] + '</h2>' +
+                        '<h4>' + this["farm_name"] + '</h4>' +
                         '<div id="bodyContent">' +
-                        '<table class="table">' +
-                        '<tbody>' +
-                        '<tr><th>Address</th><td>' + this["address"] + '</td></tr>' +
-                        '<tr><th>City</th><td>' + this["city"] + '</td></tr>' +
-                        '<tr><th>Postal Code</th><td>' + this["postal_code"] + '</td></tr>' +
-                        '<tr><th>Contact</th><td>' + this["contact"] + '</td></tr>' +
-                        '<tr><th>Telephone</th><td>' + this["telephone"] + '</td></tr>' +
-                        '<tr><th>Email</th><td>' + this["email"] + '</td></tr>' +
-                        '<tr><th>Website</th><td>' + this["website"] + '</td></tr>' +
-                        '</tbody>' +
-                        '</table>' +
-                        //'<a href="' + link + '" class="btn pull-right">View Profile&nbsp;<i class="fa fa-arrow-right"></i></a>' +
+                        '<p>' + this["address"] + 
+                        '<br>' + this["city"] + " " + this["postal_code"] + '</p>' +
                         '</div>' +
                         '</div>'
                 });
@@ -60,12 +49,18 @@ jQuery(function ($) {
                 marker.addListener('mouseout', function () {
                     infowindow.close();
                 });
+
+                markers.push(marker);
+            });
+
+            var markerCluster = new MarkerClusterer(map, markers, {
+                imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'
             });
 
             $("#map").css({ "width": "100%", "height": "700px", "min-width": "300px", "min-height": "300px" });
             google.maps.event.trigger(map, "resize");
         }
-
+/*
         if (typeof market_view !== "undefined") {
             var latlng = new google.maps.LatLng(parseFloat(market_latlng["lat"]), parseFloat(market_latlng["lng"]));
 
@@ -82,6 +77,7 @@ jQuery(function ($) {
             $("#map").css({ "width": "100%", "height": "100%", "min-width": "400px", "min-height": "400px" });
             google.maps.event.trigger(map, "resize");
         }
+*/
     });
 
 });

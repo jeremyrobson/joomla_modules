@@ -46,10 +46,21 @@ defined('_JEXEC') or die('Restricted access');
         <?php if ($this->profile->acres_raspberry): ?>
             <div class="row">
                 <div class="col-md-6">
-                    Blueberry Acres
+                    Raspberry Acres
                 </div>
                 <div class="col-md-6">
                     <?=$this->profile->acres_raspberry; ?>
+                </div>
+            </div>
+        <?php endif; ?>
+
+        <?php if ($this->profile->acres_strawberry): ?>
+            <div class="row">
+                <div class="col-md-6">
+                    Strawberry Acres
+                </div>
+                <div class="col-md-6">
+                    <?=$this->profile->acres_strawberry; ?>
                 </div>
             </div>
         <?php endif; ?>

@@ -10,7 +10,7 @@ class JeRegisterViewFarmProfiles extends JViewLegacy
         $jinput = JFactory::getApplication()->input;
         
         $db = JFactory::getDbo();
-        $db->setQuery("SELECT * FROM `#__farm_profile` WHERE `published` = 1");
+        $db->setQuery("SELECT * FROM `#__farm_profile` WHERE `published` = 1 ORDER BY `farm_name` ASC");
         $db->query();
         $farm_profiles = $db->loadObjectList("id");
 

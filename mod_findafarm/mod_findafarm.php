@@ -14,6 +14,7 @@
     $document = JFactory::getDocument();
     $document->setTitle(JText::_('Find a Farm'));
     $document->addScript("https://maps.googleapis.com/maps/api/js?key=$google_api_key");
+    $document->addScript("modules/mod_findafarm/js/markerclusterer.js");
     $document->addScript("modules/mod_findafarm/js/findafarm.js");
     $document->addScriptDeclaration("
         var farm_profiles = $farm_profiles;
