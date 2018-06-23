@@ -31,11 +31,14 @@ class JeRegisterViewFarmProfile extends JViewLegacy
     protected function setDocument()
     {
         $params = JComponentHelper::getParams('com_jeregister');
+        $GOOGLE_API_KEY = $params->get('google_maps_api_key');
 
         JHtml::_('jquery.framework');
 
         $document = JFactory::getDocument();
         $document->setTitle(JText::_('COM_JEREGISTER_FARMPROFILE'));
+        $document->addScript("https://maps.googleapis.com/maps/api/js?key=$GOOGLE_API_KEY");
+        $document->addScript(JURI::root() . "administrator/components/com_jeregister/models/forms/farmprofile.js");
         $document->addScriptDeclaration("
             var farm_profile = $this->farm_profile;
         ");

@@ -17,7 +17,10 @@ class JeRegisterModelProfile extends JModelAdmin
         $params = JComponentHelper::getParams('com_jeregister');
         $GOOGLE_API_KEY = $params->get('google_maps_api_key');
 
-        $address = str_replace(" ", "+", $table->address . ", " . $table->city . ", " . $table->province . ", " . "Canada");
+		$address = str_replace(" ", "+", $table->farm_name . ", " . $table->address . ", " . $table->city . ", " . $table->province . ", " . "Canada");
+		$address = str_replace("&", "%26", $address); //ampersands not allowed in street name
+
+		//echo "<pre>"; print_r($address); die;
 
 		$json = file_get_contents("https://maps.google.com/maps/api/geocode/json?address=$address&key=$GOOGLE_API_KEY");
 		$json = json_decode($json);
