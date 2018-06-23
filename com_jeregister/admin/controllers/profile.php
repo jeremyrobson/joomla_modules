@@ -4,6 +4,25 @@ defined('_JEXEC') or die('Restricted access');
 
 class JeRegisterControllerProfile extends JControllerForm
 {
+    //inject extra info into profile save
+    /*
+    public function save($key = null, $urlVar = null) {
+        $jform = JRequest::getVar('jform', array(), 'post', 'array');
+    
+        echo "<pre>"; print_r($jform); die;
+
+        $latitude = 0;
+        $longitude = 0;
+
+        $jform["latitude"] = $latitude;
+        $jform["longitude"] = $longitude;
+
+        JRequest::setVar('jform', $jform, 'post');
+    
+        return parent::save('id', $urlVar);
+    }
+    */
+
     public function preview($key = null, $urlVar = null)
     {
         $model = $this->getModel("registrations");

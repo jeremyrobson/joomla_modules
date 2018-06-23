@@ -15,6 +15,7 @@
         <filename>tmpl/default.php</filename>
         <filename>tmpl/index.html</filename>
         <filename>js/findafarm.js</filename>
+        <filename>js/markerclusterer.js</filename>
     </files>
 
    <config>

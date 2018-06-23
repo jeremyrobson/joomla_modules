@@ -13,17 +13,25 @@ class JeRegisterModelProfile extends JModelAdmin
         //$table->tags = implode(",", $table->tags); //only if converting to/from multi-select
         //note: the field "tags" is reserved by joomla in AdminModel.php, use "profile_tags" instead!
 
+		//todo: move geocoding to controller profile.save
         $params = JComponentHelper::getParams('com_jeregister');
         $GOOGLE_API_KEY = $params->get('google_maps_api_key');
 
         $address = str_replace(" ", "+", $table->address . ", " . $table->city . ", " . $table->province . ", " . "Canada");
 
-        $json = file_get_contents("https://maps.google.com/maps/api/geocode/json?address=$address&key=$GOOGLE_API_KEY");
-        $json = json_decode($json);
-        $location = $json->results[0]->geometry->location;
-        
-        $table->latitude = $location->lat;
-        $table->longitude = $location->lng;
+		$json = file_get_contents("https://maps.google.com/maps/api/geocode/json?address=$address&key=$GOOGLE_API_KEY");
+		$json = json_decode($json);
+
+		if ($json->status != "OK") {
+			$error = $json->error_message;
+			$application = JFactory::getApplication();
+			$application->enqueueMessage("Geocoding failed. Could not get latitude/longitude. Here is what Google has to say: <strong>$error</strong>", 'error');
+		}
+		else {
+			$location = $json->results[0]->geometry->location;
+			$table->latitude = $location->lat;
+			$table->longitude = $location->lng;
+		}
     }
 
 	public function getForm($data = array(), $loadData = true)
