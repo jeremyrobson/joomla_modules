@@ -21,7 +21,7 @@ if ($tagId = $params->get('tag_id', ''))
 
 <nav class="navbar navbar-default navbar-fixed-top">
 
-	<div class="container-fluid">
+	<div class="container">
 
 		<div class="navbar-header">
 			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse" aria-expanded="false" aria-controls="navbar">
