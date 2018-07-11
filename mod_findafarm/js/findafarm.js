@@ -7,7 +7,7 @@ jQuery(function ($) {
         $("html").css({ "width": "100%", "height": "100%" });
         $("body").css({ "width": "100%", "height": "100%" });
 
-        if (typeof farm_profiles !== "undefined") {
+        if (farm_profiles) {
             map = new google.maps.Map(document.getElementById("map"), {
                 zoom: 6,
                 center: {
@@ -60,24 +60,23 @@ jQuery(function ($) {
             $("#map").css({ "width": "100%", "height": "700px", "min-width": "300px", "min-height": "300px" });
             google.maps.event.trigger(map, "resize");
         }
-/*
-        if (typeof market_view !== "undefined") {
-            var latlng = new google.maps.LatLng(parseFloat(market_latlng["lat"]), parseFloat(market_latlng["lng"]));
 
+        if (farm_profile) {
+            var center = { "lat": parseFloat(farm_profile["latitude"]), "lng": parseFloat(farm_profile["longitude"]) };
+    
             map = new google.maps.Map(document.getElementById("map"), {
                 zoom: 15,
-                center: latlng
+                center: center
             });
-
+    
             var marker = new google.maps.Marker({
-                position: latlng,
+                position: center,
                 map: map
             });
-
+    
             $("#map").css({ "width": "100%", "height": "100%", "min-width": "400px", "min-height": "400px" });
             google.maps.event.trigger(map, "resize");
         }
-*/
     });
 
 });

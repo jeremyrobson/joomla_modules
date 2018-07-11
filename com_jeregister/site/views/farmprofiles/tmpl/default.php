@@ -48,9 +48,10 @@ defined('_JEXEC') or die('Restricted access');
         foreach ($tags as $tag) {
             $filter_classes[] = $tag;
         }
+        $url = "index.php/find-a-farm/find-a-farm-by-location?profile_id=$id";
     ?>
         <div class="grid-item <?php echo implode(" ", $filter_classes); ?>">
-            <a href="index.php?option=com_jeregister&view=farmprofile&id=<?=$id?>">
+            <a href="<?php echo $url; ?>">
                 <strong><?php echo $profile->farm_name; ?></strong>
                 <p>
                     <?php echo $profile->address; ?><br>
