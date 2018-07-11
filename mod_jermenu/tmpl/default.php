@@ -21,25 +21,25 @@ if ($tagId = $params->get('tag_id', ''))
 
 <nav class="navbar navbar-default navbar-fixed-top">
 
-<div class="container">
+	<div class="container-fluid">
 
-<div class="navbar-header">
-    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse" aria-expanded="false" aria-controls="navbar">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-    </button>
-    <!--
-    <a class="navbar-brand" href="#">
-        <img src="" width="150px">
-    </a>
-    -->
-</div>
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse" aria-expanded="false" aria-controls="navbar">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<!--
+			<a class="navbar-brand" href="#">
+				<img src="" width="150px">
+			</a>
+			-->
+		</div>
 
-<div class="collapse navbar-collapse">
+		<div class="collapse navbar-collapse">
 
-<ul class="nav navbar-nav menu<?php echo $class_sfx; ?>"<?php echo $id; ?>>
+			<ul class="nav navbar-nav menu<?php echo $class_sfx; ?>"<?php echo $id; ?>>
 
 <?php foreach ($list as $i => &$item)
 {
@@ -131,10 +131,10 @@ if ($tagId = $params->get('tag_id', ''))
 }
 ?>
 
-</div>
+			</div>
 
-</ul>
+		</ul>
 
-</div>
+	</div>
 
 </nav>
