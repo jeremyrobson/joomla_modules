@@ -47,29 +47,27 @@ if ($tagId = $params->get('tag_id', ''))
 		//$class .= ' divider';
 	}
 
+    $url = $item->flink;
+
 	if ($item->deeper)
 	{
         $class .= " deeper";
+        $url = "#";
 	}
 
 	if ($item->parent)
 	{
 		//$class .= ' parent';
     }
-    
-    if ($item->level == 1)
-    {
-        $class .= ' dropdown';
-    }
 
-	echo '<li class="jm-item ' . $class . '">';
+	echo '<li class="jm-item' . $class . '">';
 
-	echo '<a href="#" class="jm-link">' . $item->text . '</a>';
+	echo '<a href="' . $url . '" class="jm-link">' . $item->title . '</a>';
 
 	// The next item is deeper.
 	if ($item->deeper)
 	{
-        echo '<ul class="jm-sub jm-level-{$item->level}">';
+        echo "<ul class='jm-sub jm-level-{$item->level}'>";
 	}
 	// The next item is shallower.
 	elseif ($item->shallower)

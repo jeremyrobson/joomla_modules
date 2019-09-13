@@ -3,8 +3,8 @@
 }
 
 .jm-navicon {
-    width: 2em;
-    height: 2em;
+    width: 3em;
+    height: 3em;
     padding: 0;
     display: none;
     font-family: Arial,sans-serif;
@@ -17,6 +17,9 @@
 
 .jm-navicon:after {
     content: '\2261';
+    font-size: 3em;
+    line-height: 1em;
+    color: #555;
 }
 
 .jm-nav {
@@ -68,13 +71,13 @@
 }
 
 .jm-nav .jm-item.deeper > .jm-link:after {
-    content: '\2BC6';
+    content: '\21D3';
     text-align: right;
     float: right;
 }
 
 .jm-nav .jm-item.deeper > .jm-link.jm-open:after {
-    content: '\2BC5';
+    content: '\21D1';
     text-align: right;
     float: right;
 }

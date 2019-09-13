@@ -21,6 +21,7 @@ $class_sfx  = htmlspecialchars($params->get('class_sfx'), ENT_COMPAT, 'UTF-8');
 
 $document = JFactory::getDocument();
 $document->addScriptDeclaration('jQuery.noConflict()');
+$document->addScript('modules/mod_jermenu/js/popper.min.js');
 $document->addScript('modules/mod_jermenu/js/bootstrap.min.js');
 $document->addScript('modules/mod_jermenu/js/jermenu.js');
 $document->addStyleSheet('modules/mod_jermenu/css/bootstrap.css');

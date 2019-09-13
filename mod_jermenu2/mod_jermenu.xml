@@ -13,6 +13,7 @@
         <filename>tmpl/index.html</filename>
 		<filename>js/jquery-3.3.1.min.js</filename>
 		<filename>css/bootstrap.css</filename>
+		<filename>js/popper.min.js</filename>
 		<filename>js/bootstrap.min.js</filename>
 		<filename>css/jermenu.css</filename>
 		<filename>js/jermenu.js</filename>
