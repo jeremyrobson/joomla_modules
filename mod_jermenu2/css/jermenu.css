@@ -1,0 +1,121 @@
+.jm-collapse {
+    display: block;
+}
+
+.jm-navicon {
+    width: 2em;
+    height: 2em;
+    padding: 0;
+    display: none;
+    font-family: Arial,sans-serif;
+    font-size: 2em;
+    color: black;
+    background-color: white;
+    border: 1px solid #dddddd;
+    border-radius: 8px;
+}
+
+.jm-navicon:after {
+    content: '\2261';
+}
+
+.jm-nav {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.jm-nav > .jm-item {
+    flex: 1 1 auto;
+}
+
+.jm-nav .jm-item {
+    list-style: none;
+    border-left: 1px solid rgba(255,255,255,0.3);
+    border-right: 1px solid rgba(0,0,0,0.1);
+    border-top: 1px solid rgba(255,255,255,0.3);
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+
+.jm-nav .jm-sub {
+    margin: 0;
+    padding: 0;
+}
+
+.jm-nav .deeper .jm-sub {
+    display: none;
+    background-color: #ffffff;
+    color: #000000;
+}
+
+.jm-nav > .deeper > .jm-sub {
+    position: absolute;
+    width: 200px;
+}
+
+.jm-nav .jm-link {
+    text-decoration: none;
+    display: block;
+    padding: 1em;
+    height: 100%;
+    color: #000000;
+}
+
+.jm-nav .jm-link:hover {
+    background: rgba(0, 0, 0, 0.10);
+}
+
+.jm-nav .jm-item.deeper > .jm-link:after {
+    content: '\2BC6';
+    text-align: right;
+    float: right;
+}
+
+.jm-nav .jm-item.deeper > .jm-link.jm-open:after {
+    content: '\2BC5';
+    text-align: right;
+    float: right;
+}
+
+@media only screen and (max-width: 768px) {
+    .jm-navicon {
+        display: block;
+    }
+
+    .jm-collapse {
+        display: none;
+    }
+
+    .jm-nav {
+        flex-direction: column;
+    }
+
+    .jm-nav > .deeper > .jm-sub {
+        position: relative;
+        width: 100%;
+    }
+}
+
+.jm-open {
+    display: block !important;
+}
+
+.jm-active {
+    /*background-color: rgb(0, 0, 0, 0.3);*/
+}
+
+.jm-level-0 { background-color: #eeeeee !important; }
+.jm-level-1 { background-color: #cccccc !important; }
+.jm-level-2 { background-color: #aaaaaa !important; }
+.jm-level-3 { background-color: #888888 !important; }
+.jm-level-4 { background-color: #666666 !important; }
+.jm-level-5 { background-color: #444444 !important; }
+.jm-level-6 { background-color: #222222 !important; }
+.jm-level-7 { background-color: #000000 !important; }
+
+.main {
+    background-color: #888888;
+    height: 1000px;
+}
