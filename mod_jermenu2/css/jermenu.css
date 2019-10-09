@@ -49,8 +49,6 @@
 
 .jm-nav .deeper .jm-sub {
     display: none;
-    background-color: #ffffff;
-    color: #000000;
 }
 
 .jm-nav > .deeper > .jm-sub {
@@ -109,6 +107,7 @@
     /*background-color: rgb(0, 0, 0, 0.3);*/
 }
 
+/*
 .jm-level-0 { background-color: #eeeeee !important; }
 .jm-level-1 { background-color: #cccccc !important; }
 .jm-level-2 { background-color: #aaaaaa !important; }
@@ -117,6 +116,16 @@
 .jm-level-5 { background-color: #444444 !important; }
 .jm-level-6 { background-color: #222222 !important; }
 .jm-level-7 { background-color: #000000 !important; }
+*/
+
+.jm-item {
+    background-color: white;
+    color: black;
+}
+
+.jm-hover {
+    background-color: royalblue;
+}
 
 .main {
     background-color: #888888;

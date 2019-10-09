@@ -1,6 +1,9 @@
 (function($) {
 
     $(document).ready(function () {
+        var currentMenu = null;
+        var timeout = null;
+
         $(".jm-item.deeper > .jm-link").click(function () {
             $(".jm-active").removeClass("jm-active");
 
@@ -21,7 +24,28 @@
         });
 
         $(".jm-navicon").click(function () {
-            $(".jm-collapse").toggle();
+            $(".jm-collapse").toggleClass("jm-open");
+        });
+
+        $(".jm-navbar").mouseout(function() {
+            currentMenu = null;
+            window.clearTimeout(timeout);
+            timeout = window.setTimeout(function() {
+                if (currentMenu === null) {
+                    $(".jm-active").removeClass("jm-active");
+                    $(".jm-open").removeClass("jm-open");
+                }
+            }, 500);
+            console.log("Menu timeout started.");
+        });
+
+        $(".jm-item").mouseover(function() {
+            $(this).addClass("jm-hover");
+            currentMenu = this;
+        });
+
+        $(".jm-item").mouseout(function() {
+            $(this).removeClass("jm-hover");
         });
     });
 

@@ -83,9 +83,8 @@ if ($tagId = $params->get('tag_id', ''))
 }
 ?>
 
-			</div>
 
-		</ul>
+    </ul>
 
 	</div>
 
